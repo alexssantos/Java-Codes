@@ -10,7 +10,7 @@ public class Lista1Ex9 {
         System.out.println("Entre com o raio: ");
         raio = entrada.nextDouble();
         System.out.println("Entre com a base: ");
-        area = 4 * Math.PI * Math.pow(raio, 2)
+        area = 4 * Math.PI * Math.pow(raio, 2);
                
         
         System.out.println("Area = " + area);
