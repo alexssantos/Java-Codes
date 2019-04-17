@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            // ..........
+            "console": "integratedTerminal"
+            // **********
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Lista1Ex5<Lista1Ex5>",
+            "request": "launch",
+            "mainClass": "lista1.ex5.Lista1Ex5",
+            "projectName": "Lista1Ex5"
+        }
+    ]
+}
