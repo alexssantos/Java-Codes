@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8755208-307f-43d7-ade3-8b8496ef3dcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lista1/ex5/MainEx5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lista1/ex6/MainEx6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,11 +78,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lista1/ex5/MainEx5.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+            <state relative-caret-position="432">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+              <folding>
+                <element signature="e#114#115#0" expanded="true" />
+                <element signature="e#141#142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lista1/ex6/MainEx6.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
               <folding>
                 <element signature="e#114#115#0" expanded="true" />
                 <element signature="e#141#142#0" expanded="true" />
@@ -115,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/lista1/ex3/MainEx3.java" />
         <option value="$PROJECT_DIR$/src/lista1/ex4/MainEx4.java" />
         <option value="$PROJECT_DIR$/src/lista1/ex5/MainEx5.java" />
+        <option value="$PROJECT_DIR$/src/lista1/ex6/MainEx6.java" />
       </list>
     </option>
   </component>
@@ -154,7 +169,7 @@
               <item name="ex1" type="58d84e3e:PackageViewProjectNode" />
               <item name="ex1" type="616d4139:PackageViewModuleNode" />
               <item name="lista1" type="1f31426a:PackageElementNode" />
-              <item name="ex5" type="1f31426a:PackageElementNode" />
+              <item name="ex6" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -223,26 +238,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainEx5">
+  <component name="RunManager" selected="Application.MainEx6">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.main.Main" />
       <module name="ex1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex1.MainEx1" />
-      <module name="ex1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lista1.ex1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -289,13 +291,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainEx6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lista1.ex6.MainEx6" />
+      <module name="ex1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lista1.ex6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainEx6" />
         <item itemvalue="Application.MainEx5" />
         <item itemvalue="Application.MainEx4" />
         <item itemvalue="Application.MainEx2" />
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.MainEx1" />
       </list>
     </recent_temporary>
   </component>
@@ -328,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556460798982</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Exercise 5 - DONE">
+      <created>1556467556225</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556467556225</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -344,7 +366,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -354,7 +376,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.3290461" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3290461" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3290461" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -402,7 +424,8 @@
     <MESSAGE value="Exercise 2 - DONE" />
     <MESSAGE value="Exercise 3 - DONE" />
     <MESSAGE value="Exercise 4 - DONE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exercise 4 - DONE" />
+    <MESSAGE value="Exercise 5 - DONE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exercise 5 - DONE" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/lista1/ex1/ex1.java">
@@ -487,8 +510,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lista1/ex5/MainEx5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+        <state relative-caret-position="432">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#114#115#0" expanded="true" />
+            <element signature="e#141#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lista1/ex6/MainEx6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
           <folding>
             <element signature="e#114#115#0" expanded="true" />
             <element signature="e#141#142#0" expanded="true" />
