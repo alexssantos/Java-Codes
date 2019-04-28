@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8755208-307f-43d7-ade3-8b8496ef3dcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lista1/ex8/MainEx8.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lista1/ex10/MainEx10.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,15 +16,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/main/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lista1/ex1/MainEx1.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -117,14 +107,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lista1/ex8/MainEx8.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="414">
+              <caret line="23" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
               <folding>
                 <element signature="e#115#116#0" expanded="true" />
                 <element signature="e#142#143#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lista1/ex9/MainEx9.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+              <folding>
+                <element signature="e#114#115#0" expanded="true" />
+                <element signature="e#141#142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lista1/ex10/MainEx10.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="24" />
+              <folding>
+                <element signature="e#116#117#0" expanded="true" />
+                <element signature="e#143#144#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,6 +174,8 @@
         <option value="$PROJECT_DIR$/src/lista1/ex7/MainEx7.java" />
         <option value="$PROJECT_DIR$/src/lista1/ex6/MainEx6.java" />
         <option value="$PROJECT_DIR$/src/lista1/ex8/MainEx8.java" />
+        <option value="$PROJECT_DIR$/src/lista1/ex9/MainEx9.java" />
+        <option value="$PROJECT_DIR$/src/lista1/ex10/MainEx10.java" />
       </list>
     </option>
   </component>
@@ -192,6 +210,18 @@
               <item name="ex1" type="58d84e3e:PackageViewProjectNode" />
               <item name="ex1" type="616d4139:PackageViewModuleNode" />
               <item name="lista1" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="ex1" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ex1" type="616d4139:PackageViewModuleNode" />
+              <item name="lista1" type="1f31426a:PackageElementNode" />
+              <item name="ex9" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="ex1" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ex1" type="616d4139:PackageViewModuleNode" />
+              <item name="lista1" type="1f31426a:PackageElementNode" />
+              <item name="ex10" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -260,13 +290,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainEx8">
-    <configuration name="MainEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex4.MainEx4" />
+  <component name="RunManager" selected="Application.MainEx10">
+    <configuration name="MainEx10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lista1.ex10.MainEx10" />
       <module name="ex1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="lista1.ex4.*" />
+          <option name="PATTERN" value="lista1.ex10.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -328,11 +358,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainEx10" />
         <item itemvalue="Application.MainEx8" />
         <item itemvalue="Application.MainEx7" />
         <item itemvalue="Application.MainEx6" />
         <item itemvalue="Application.MainEx5" />
-        <item itemvalue="Application.MainEx4" />
       </list>
     </recent_temporary>
   </component>
@@ -386,7 +416,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556468233964</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Exercise 8 - DONE">
+      <created>1556468845119</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556468845119</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Exercise 9 - DONE">
+      <created>1556469007332</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556469007332</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -400,8 +444,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -411,7 +456,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.3290461" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3290461" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3290461" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -462,7 +507,9 @@
     <MESSAGE value="Exercise 5 - DONE" />
     <MESSAGE value="Exercise 6 - DONE" />
     <MESSAGE value="Exercise 7 - DONE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exercise 7 - DONE" />
+    <MESSAGE value="Exercise 8 - DONE" />
+    <MESSAGE value="Exercise 9 - DONE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exercise 9 - DONE" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/lista1/ex1/ex1.java">
@@ -580,11 +627,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lista1/ex8/MainEx8.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="414">
+          <caret line="23" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
           <folding>
             <element signature="e#115#116#0" expanded="true" />
             <element signature="e#142#143#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lista1/ex9/MainEx9.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+          <folding>
+            <element signature="e#114#115#0" expanded="true" />
+            <element signature="e#141#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lista1/ex10/MainEx10.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="24" />
+          <folding>
+            <element signature="e#116#117#0" expanded="true" />
+            <element signature="e#143#144#0" expanded="true" />
           </folding>
         </state>
       </provider>
