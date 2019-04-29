@@ -42,7 +42,7 @@ public class Main {
         if (choice.equals("/"))
         {
             if ((num2 == 0) || (num1 == 0)){
-                msg("Alerta! Não é possivel fazer a divisão 0/0 ", null);
+                msg("Alerta! Não é possível fazer a divisão por '0' ", null);
             }
             else{
                 result = num1 / num2;
@@ -53,7 +53,7 @@ public class Main {
 
     public static void msg(String msg, Double result){
         if (result == null){
-            JOptionPane.showMessageDialog(null,"Alerta! Não é possível fazer a divisão por '0' ");
+            JOptionPane.showMessageDialog(null,msg);
         }
         else{
             JOptionPane.showMessageDialog(null,msg + result);
