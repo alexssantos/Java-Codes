@@ -24,20 +24,24 @@ public class Main {
         double num2 =Double.parseDouble(numb2);
 
         double result;
-        if (choice.equals("+")){
+        if (choice.equals("+"))
+        {
             result = num1 + num2;
             msg("Resultado: ", result);
         }
-        if (choice.equals("-")){
+        if (choice.equals("-"))
+        {
             result = num1 - num2;
             msg("Resultado: ", result);
         }
-        if (choice.equals("*")){
+        if (choice.equals("*"))
+        {
             result = num1 * num2;
             msg("Resultado: ", result);
         }
-        if (choice.equals("/")){
-            if (num2 == 0 && num1 == 0){
+        if (choice.equals("/"))
+        {
+            if ((num2 == 0) && (num1 == 0)){
                 msg("Alerta! Não é possivel fazer a divisão 0/0 ", null);
             }
             else{
