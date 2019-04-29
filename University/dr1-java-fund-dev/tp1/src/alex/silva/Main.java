@@ -41,7 +41,7 @@ public class Main {
         }
         if (choice.equals("/"))
         {
-            if ((num2 == 0) && (num1 == 0)){
+            if ((num2 == 0) || (num1 == 0)){
                 msg("Alerta! Não é possivel fazer a divisão 0/0 ", null);
             }
             else{
