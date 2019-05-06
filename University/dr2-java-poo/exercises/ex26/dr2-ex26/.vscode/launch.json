@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "<debug port of the debuggee>"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "dr2-ex26"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ex26",
+            "request": "launch",
+            "mainClass": "ex26.ex26",
+            "projectName": "dr2-ex26"
+        }
+    ]
+}
