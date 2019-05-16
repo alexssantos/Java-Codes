@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85da8163-4317-4b83-8b84-0349f7113189" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/ex34/src/alex/silva/Estagiario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/ex34/src/alex/silva/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/ex34/src/alex/silva/Vendedor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/src/alex/silva/Entities/Banco.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/src/alex/silva/Entities/Conta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/src/alex/silva/Entities/ContaComum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/src/alex/silva/Entities/ContaEspecial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dr2-java-poo/exercicio35/src/alex/silva/Entities/ContaPoupanca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dr2-java-poo/ex34/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../dr2-java-poo/ex34/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
