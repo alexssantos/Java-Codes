@@ -8,7 +8,7 @@ public class ContaComum extends Conta{
     }
 
     @Override
-    public boolean Sacar(float quantidade) {
+    public boolean sacar(float quantidade) {
         boolean saqueOk = false;
 
         if ((saldo - quantidade) >= 0){

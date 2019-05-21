@@ -18,11 +18,11 @@ public class ContaEspecial extends Conta{
     }
 
     @Override
-    public boolean Sacar(float quantidade) {
+    public boolean sacar(float quantidade) {
 
         boolean saqueOk = false;
 
-        if (Math.abs(this.saldo+LIMITE_EXTRA-quantidade) >= 0){
+        if ((this.saldo+LIMITE_EXTRA-quantidade) >= 0){
             saldo -= quantidade;
             saqueOk =true;
         }
