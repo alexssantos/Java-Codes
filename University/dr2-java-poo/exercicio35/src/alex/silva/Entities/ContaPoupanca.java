@@ -7,9 +7,7 @@ public class ContaPoupanca extends Conta{
     }
 
 
-    public float CalculaRendimento(float percentual){
-
-
-        return saldo;
+    public void CalculaRendimento(float percentual){
+        this.saldo = this.saldo +(saldo*(percentual/100));
     }
 }

@@ -13,11 +13,14 @@ public class Main {
         Conta c2 = new ContaEspecial(1500,002,500);
         Conta c3 = new ContaPoupanca(2000,003);
 
-
+        if(c3 instanceof ContaPoupanca){
+            ((ContaPoupanca) c3).CalculaRendimento(30);
+        }
+        c3.consultarSaldo();
 
         // <Intanciado> instanceof <Tipo>
-        Banco banco = new Banco();
-        banco.setManyContas();
+        //Banco banco = new Banco();
+        //banco.setManyContas();
         if (c3 instanceof ContaPoupanca){
 
         }

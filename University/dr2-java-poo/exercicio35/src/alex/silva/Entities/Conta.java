@@ -7,9 +7,6 @@ public class Conta {
 
 
     //CONSTRUTORES  =============
-    public Conta() {
-    }
-
     public Conta(float saldo, int contaNumero) {
         this.saldo = saldo;
         this.contaNumero = contaNumero;
@@ -17,12 +14,6 @@ public class Conta {
 
 
     //GET SET  ============
-
-    /*public void setSaldo(float saldo) {
-        this.saldo = saldo;
-    }
-     */
-
     public int getContaNumero() {
         return contaNumero;
     }
@@ -37,7 +28,7 @@ public class Conta {
 
 
     //METODOS
-    public boolean Depositar(float quantidade){
+    public boolean depositar(float quantidade){
         boolean depositoOk = false;
 
         if (quantidade != 0){
@@ -48,7 +39,7 @@ public class Conta {
         return depositoOk;
     }
 
-    public boolean Sacar(float quantidade){
+    public boolean sacar(float quantidade){
         boolean depositoOk = false;
 
         if (quantidade != 0){
@@ -59,7 +50,8 @@ public class Conta {
         return depositoOk;
     }
 
-    public float ConsultarSaldo(){
-        return saldo;
+    public void consultarSaldo(){
+        System.out.println("Saldo = " + saldo);
+        //return saldo;
     }
 }
