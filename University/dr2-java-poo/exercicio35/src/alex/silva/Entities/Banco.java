@@ -4,24 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Banco {
-    private static List<Conta> contas;
+    private int codigo;
+    private String nome;
+    private Conta contas[];
 
-    public Banco() {
-        if (contas == null){
-            contas = new ArrayList<>();
-        }
+    public Banco(int codigo, String nome, int qtdMaxContas) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.contas = new Conta[qtdMaxContas];
     }
 
-    public void setConta(Conta newConta){
-        if (newConta != null){
-            contas.add(newConta);
-        }
-    }
-
-    public void setManyContas(List<Conta> contas){
-        for (Conta conta: contas) {
-            this.contas.add(conta);
-        }
-    }
+    
 
 }
