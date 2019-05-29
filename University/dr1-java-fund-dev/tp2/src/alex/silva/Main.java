@@ -3,6 +3,8 @@ package alex.silva;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    Calculadora calculadora = new Calculadora();
+
+	    calculadora.start();
     }
 }
