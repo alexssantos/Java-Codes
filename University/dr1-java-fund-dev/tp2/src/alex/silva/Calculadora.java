@@ -13,6 +13,51 @@ public class Calculadora implements ICalculator {
         this.numb2 = numb2;
     }
 
+    public void start(){
+        String[] operations = {"+","-","/","*"};
+
+        this.numb1 = JOptionPane.showInputDialog(null, "Digite o Primeiro valor: ");
+        double num1 =Double.parseDouble(numb1);
+
+        String choice = (String) JOptionPane.showInputDialog(null,
+                "Operação:",            //msg
+                "Escolha da operação.",     //title
+                JOptionPane.QUESTION_MESSAGE,   //title
+                null,          // icon
+                operations,         // Array of choices
+                operations[1]       // Initial choice
+        );
+
+        this.numb2 = JOptionPane.showInputDialog(null, "Digite o segundo valor: ");
+        double num2 =Double.parseDouble(numb2);
+
+        String resultado = calcula(choice, num1,num2);
+        if (resultado == null){
+            //ERRO
+            return;
+        }
+        else
+        {
+            msg(null, resultado);
+        }
+    }
+
+    public Double soma(Double num1, Double num2){
+        return num1 + num2;
+    }
+
+    public Double subtracao(Double num1, Double num2){
+        return num1 - num2;
+    }
+
+    public Double multiplicacao(Double num1, Double num2){
+        return num1 * num2;
+    }
+
+    public Double divisao(Double num1, Double num2){
+        return num1 / num2;
+    }
+
     public String calcula(String choice, double num1, double num2){
 
         String retorno = "";
@@ -35,7 +80,9 @@ public class Calculadora implements ICalculator {
         else if (choice.equals("/"))
         {
             if ((num2 == 0) || (num1 == 0)){
-                retorno = "Alerta! Não é possível fazer a divisão por '0' ";
+                String erroMsg = "Alerta! Não é possível fazer a divisão por '0' ";
+                msg(erroMsg, null);
+                retorno = null;
             }
             else{
                 result = divisao(num1, num2);
@@ -46,47 +93,12 @@ public class Calculadora implements ICalculator {
         return retorno;
     }
 
-    public void start(){
-        String[] operations = {"+","-","/","*"};
-
-        String choice = (String) JOptionPane.showInputDialog(null,
-                "Operação:",            //msg
-                "Escolha da operação.",     //title
-                JOptionPane.QUESTION_MESSAGE,   //title
-                null,          // icon
-                operations,         // Array of choices
-                operations[1]       // Initial choice
-        );
-
-        this.numb1 = JOptionPane.showInputDialog(null, "Digite o Primeiro valor: ");
-        double num1 =Double.parseDouble(numb1);
-
-        this.numb2 = JOptionPane.showInputDialog(null, "Digite o segundo valor: ");
-        double num2 =Double.parseDouble(numb2);
-    }
-
-    public Double soma(Double num1, Double num2){
-        return num1 + num2;
-    }
-
-    public Double subtracao(Double num1, Double num2){
-        return num1 - num2;
-    }
-
-    public Double multiplicacao(Double num1, Double num2){
-        return num1 * num2;
-    }
-
-    public Double divisao(Double num1, Double num2){
-        return num1 / num2;
-    }
-
-    public static void msg(String msg, Double result){
+    public static void msg(String erroMsg, String result){
         if (result == null){
-            JOptionPane.showMessageDialog(null,msg);
+            JOptionPane.showMessageDialog(null,erroMsg);
         }
         else{
-            JOptionPane.showMessageDialog(null,msg + result);
+            JOptionPane.showMessageDialog(null,result);
         }
     };
 
