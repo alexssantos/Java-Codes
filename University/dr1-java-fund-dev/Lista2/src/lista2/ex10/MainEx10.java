@@ -7,6 +7,10 @@ public class MainEx10 {
     }
 
     public static void executeEx(){
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> java-poo-dr2
     }
 }
