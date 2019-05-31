@@ -1,40 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8755208-307f-43d7-ade3-8b8496ef3dcd" name="Default Changelist" comment="">
+    <list default="true" id="fbf39c7f-d636-4021-bf36-af3cfc288487" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/List1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/dr1-lista1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/out/production/ex1/META-INF/ex1.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/app/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex1/MainEx1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex10/MainEx10.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex2/MainEx2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex3/MainEx3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex4/MainEx4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex5/MainEx5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex6/MainEx6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex7/MainEx7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex8/MainEx8.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1/src/lista1/ex9/MainEx9.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/.idea/list1-proj.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/src/app/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list1-proj/src/lista1/ex1/Lista1Ex1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lista2/.idea/project-template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lista2/.idea/project-template.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lista2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lista2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lista2/src/lista2/ex10/MainEx10.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lista2/src/lista2/ex10/MainEx10.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,126 +22,30 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/lista1/ex1/MainEx1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="e#151#152#0" expanded="true" />
-                <element signature="e#178#179#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>E:\Development\Develop\GitHub\Java-Codes\University\dr1-java-fund-dev\lista1</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex1/Main.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex1/ex1.java" />
-        <option value="$PROJECT_DIR$/.idea/project-template.xml" />
-        <option value="$PROJECT_DIR$/src/lista1/ex1/MainEx1.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex2/MainEx2.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex3/MainEx3.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex4/MainEx4.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex5/MainEx5.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex7/MainEx7.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex6/MainEx6.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex8/MainEx8.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex9/MainEx9.java" />
-        <option value="$PROJECT_DIR$/src/lista1/ex10/MainEx10.java" />
-        <option value="$PROJECT_DIR$/src/app/main/Main.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="134" />
-    <option name="y" value="113" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="347" />
+    <option name="y" value="-8" />
+    <option name="width" value="933" />
+    <option name="height" value="947" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="List1" type="58d84e3e:PackageViewProjectNode" />
-              <item name="dr1-lista1" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="List1" type="58d84e3e:PackageViewProjectNode" />
-              <item name="dr1-lista1" type="616d4139:PackageViewModuleNode" />
-              <item name="lista1" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="List1" type="58d84e3e:PackageViewProjectNode" />
-              <item name="dr1-lista1" type="616d4139:PackageViewModuleNode" />
-              <item name="lista1" type="1f31426a:PackageElementNode" />
-              <item name="ex1" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../University/dr1-java-fund-dev/lista1" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="lista1.ex1" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Development\Develop\GitHub\Java-Codes\University\dr1-java-fund-dev\lista1" />
-    </key>
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -176,471 +59,57 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainEx1">
-    <configuration name="MainEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex1.MainEx1" />
-      <module name="dr1-lista1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lista1.ex1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainEx10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex10.MainEx10" />
-      <module name="dr1-lista1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lista1.ex10.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainEx6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex6.MainEx6" />
-      <module name="dr1-lista1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lista1.ex6.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainEx7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex7.MainEx7" />
-      <module name="dr1-lista1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lista1.ex7.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainEx8" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lista1.ex8.MainEx8" />
-      <module name="dr1-lista1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lista1.ex8.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MainEx1" />
-        <item itemvalue="Application.MainEx10" />
-        <item itemvalue="Application.MainEx8" />
-        <item itemvalue="Application.MainEx7" />
-        <item itemvalue="Application.MainEx6" />
-      </list>
-    </recent_temporary>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f8755208-307f-43d7-ade3-8b8496ef3dcd" name="Default Changelist" comment="" />
-      <created>1556402045743</created>
+      <changelist id="fbf39c7f-d636-4021-bf36-af3cfc288487" name="Default Changelist" comment="" />
+      <created>1557969608975</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1556402045743</updated>
+      <updated>1557969608975</updated>
+      <workItem from="1557969613840" duration="403000" />
     </task>
-    <task id="LOCAL-00001" summary="Exercise 2 - DONE">
-      <created>1556460382627</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1556460382627</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Exercise 3 - DONE">
-      <created>1556460481855</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1556460481855</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Exercise 4 - DONE">
-      <created>1556460798982</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1556460798982</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Exercise 5 - DONE">
-      <created>1556467556225</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1556467556225</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Exercise 6 - DONE">
-      <created>1556468002635</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1556468002635</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Exercise 7 - DONE">
-      <created>1556468233964</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1556468233964</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Exercise 8 - DONE">
-      <created>1556468845119</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1556468845119</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Exercise 9 - DONE">
-      <created>1556469007332</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1556469007332</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Exercise 10 - DONE">
-      <created>1556469458923</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1556469458923</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Lista 1 - Main app calling all functions">
-      <created>1556469631802</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1556469631802</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1380597" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16471216" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3290461" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.71382636" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3290461" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.32985073" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Exercise 2 - DONE" />
-    <MESSAGE value="Exercise 3 - DONE" />
-    <MESSAGE value="Exercise 4 - DONE" />
-    <MESSAGE value="Exercise 5 - DONE" />
-    <MESSAGE value="Exercise 6 - DONE" />
-    <MESSAGE value="Exercise 7 - DONE" />
-    <MESSAGE value="Exercise 8 - DONE" />
-    <MESSAGE value="Exercise 9 - DONE" />
-    <MESSAGE value="Exercise 10 - DONE" />
-    <MESSAGE value="Lista 1 - Main app calling all functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lista 1 - Main app calling all functions" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex1/ex1.java" />
-    <entry file="file://$PROJECT_DIR$/.idea/description.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex2/MainEx2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex3/MainEx3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex4/MainEx4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex5/MainEx5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="24" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex6/MainEx6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex7/MainEx7.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="24" column="5" selection-start-line="5" selection-start-column="3" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex8/MainEx8.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex9/MainEx9.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex10/MainEx10.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
-          <folding>
-            <element signature="e#116#117#0" expanded="true" />
-            <element signature="e#143#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dr1-lista1.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/project-template.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lista1/ex1/MainEx1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#178#179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>ex1</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
 </project>
