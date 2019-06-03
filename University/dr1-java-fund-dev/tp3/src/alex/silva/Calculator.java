@@ -4,17 +4,22 @@ import javax.swing.*;
 
 public class Calculator implements ICalculator {
     String numb1, numb2;
+    String optionLog = "Show Historic";
+    String[] operations = {"+","-","/","*", optionLog};
+    Log Log;
 
     public Calculator() {
+        Log = new Log();
     }
 
     public Calculator(String numb1, String numb2) {
         this.numb1 = numb1;
         this.numb2 = numb2;
+        Log = new Log();
     }
 
     public void start(){
-        String[] operations = {"+","-","/","*"};
+
 
         this.numb1 = JOptionPane.showInputDialog(null, "Digite o Primeiro valor: ");
         if (canceledOption(this.numb1)){
@@ -27,9 +32,14 @@ public class Calculator implements ICalculator {
                 "Escolha da operação.",     //title
                 JOptionPane.QUESTION_MESSAGE,   //title
                 null,          // icon
-                operations,         // Array of choices
-                operations[1]       // Initial choice
+                this.operations,         // Array of choices
+                this.operations[1]       // Initial choice
         );
+        if (choice.equals(optionLog))
+        {
+            toString();
+            return;
+        }
         if (canceledOption(choice)){
             return;
         }
@@ -70,7 +80,7 @@ public class Calculator implements ICalculator {
     public String calcula(String choice, double num1, double num2){
 
         String retorno = "";
-        double result;
+        double result = 0;
         if (choice.equals("+"))
         {
             result = soma(num1, num2);
@@ -98,6 +108,8 @@ public class Calculator implements ICalculator {
                 retorno = "Resultado: " + result;
             }
         }
+        String newLog = numb1+" "+choice+" "+numb2+" = "+result;
+        Log.writeLOG(newLog);
 
         return retorno;
     }
@@ -115,7 +127,7 @@ public class Calculator implements ICalculator {
     {
         if (value ==null)
         {
-            msg("Saindo do programa...",null);
+            msg("Opção CALCEL selecionada.\nSaindo do programa...",null);
             return true;
         }
         else
@@ -124,4 +136,14 @@ public class Calculator implements ICalculator {
         }
     }
 
+    @Override
+    public String toString() {
+        String logHistory = "";
+
+        for (int i = 0; i < Log.LOG.length; i++)
+        {
+            logHistory += Log.LOG[i] + "\n";
+        }
+        return logHistory;
+    }
 }
