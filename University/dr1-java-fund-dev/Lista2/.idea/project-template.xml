@@ -1,3 +1,7 @@
 <template>
+<<<<<<< HEAD
   <input-field default="app.main">IJ_BASE_PACKAGE</input-field>
+=======
+  <input-field default="com.company">IJ_BASE_PACKAGE</input-field>
+>>>>>>> java-poo-dr2
 </template>
