@@ -22,19 +22,18 @@ public class Log {
         if (!isLogFull()){
             if (nextLogIndex == 0) //EMPTY
             {
-                LOG[0] = newLOG;
+                LOG[0] = "0) " + newLOG;
             }
             else
             {
-                LOG[nextLogIndex] = newLOG;
+                LOG[nextLogIndex] = nextLogIndex + ") " + newLOG;
             }
-            nextLogIndex++;
         }
         else    //LOG Full
         {
             overriteLog(newLOG);
         }
-
+        nextLogIndex ++;
     }
 
     private boolean isLogFull()
@@ -48,11 +47,11 @@ public class Log {
 
     private void overriteLog(String newLOG)
     {
-        for (int i = 0; i < (LOG.length-1); i++)
+        for (int i = 0; i < (MAX_LOG_LENGTH-1); i++)
         {
-            LOG[i] = LOG[i+i];
+            LOG[i] = LOG[i+1];
         }
-        int nextIndex = nextLogIndex % MAX_LOG_LENGTH;
-        LOG[nextIndex] = newLOG;
+
+        LOG[MAX_LOG_LENGTH-1] = nextLogIndex + ") " + newLOG;
     }
 }
