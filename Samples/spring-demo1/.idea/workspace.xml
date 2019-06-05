@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1689ff34-c6a1-4e6a-82e8-96a8913783f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../empty.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,10 +37,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="347" />
-    <option name="y" value="-8" />
-    <option name="width" value="933" />
-    <option name="height" value="947" />
+    <option name="x" value="493" />
+    <option name="y" value="29" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -149,6 +147,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -250,12 +249,12 @@
       <workItem from="1557972901131" duration="257000" />
       <workItem from="1558465494521" duration="595000" />
       <workItem from="1559007891674" duration="284000" />
-      <workItem from="1559008269724" duration="1476000" />
+      <workItem from="1559008269724" duration="2420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3275000" />
+    <option name="totallyTimeSpent" value="4219000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -268,6 +267,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.35535714" visible="true" weight="0.2260128" />
       <window_info id="Structure" order="1" sideWeight="0.642015" side_tool="true" weight="0.15671642" />
