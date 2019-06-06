@@ -31,7 +31,6 @@ tomcat
 *.jar
 *.rar
 *.tar
-*.zip
 *.war
 *.ear
 *.sar
