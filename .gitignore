@@ -39,11 +39,13 @@ tomcat
 # Maven 
 target/
 
-# IntelliJ project files 
-*.iml
-*.iws
-*.ipr
-.idea/
+# IntelliJ project files [https://stackoverflow.com/a/40092361/8941680]
+#*.iml
+#*.iws
+#*.ipr
+#.idea/
+workspace.xml
+
 
 # eclipse project file
 .settings/
