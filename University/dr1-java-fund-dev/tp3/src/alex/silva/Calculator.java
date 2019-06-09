@@ -64,10 +64,12 @@ public class Calculator implements ICalculator {
         return retorno;
     }
 
-
-
     @Override
     public String toString() {
+        if (Log.LOG[0] == null){
+            return "Nenhum operação realizada.";
+        }
+
         String logHistory = "";
 
         for (int i = 0; i < Log.LOG.length; i++)

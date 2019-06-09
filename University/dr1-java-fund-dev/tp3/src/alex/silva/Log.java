@@ -22,11 +22,11 @@ public class Log {
         if (!isLogFull()){
             if (nextLogIndex == 0) //EMPTY
             {
-                LOG[0] = "0) " + newLOG;
+                LOG[0] = "1) " + newLOG;
             }
             else
             {
-                LOG[nextLogIndex] = nextLogIndex + ") " + newLOG;
+                LOG[nextLogIndex] = (nextLogIndex+1) + ") " + newLOG;
             }
         }
         else    //LOG Full
@@ -52,6 +52,6 @@ public class Log {
             LOG[i] = LOG[i+1];
         }
 
-        LOG[MAX_LOG_LENGTH-1] = nextLogIndex + ") " + newLOG;
+        LOG[MAX_LOG_LENGTH-1] = (nextLogIndex+1)+ ") " + newLOG;
     }
 }
