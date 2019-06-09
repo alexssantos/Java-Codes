@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1689ff34-c6a1-4e6a-82e8-96a8913783f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/src/alex/silva/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../University/dr1-java-fund-dev/tp3/src/alex/silva/Calculator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -249,12 +249,12 @@
       <workItem from="1557972901131" duration="257000" />
       <workItem from="1558465494521" duration="595000" />
       <workItem from="1559007891674" duration="284000" />
-      <workItem from="1559008269724" duration="2420000" />
+      <workItem from="1559008269724" duration="2715000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4219000" />
+    <option name="totallyTimeSpent" value="4514000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
