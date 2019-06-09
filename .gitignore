@@ -45,6 +45,7 @@ target/
 #*.ipr
 #.idea/
 workspace.xml
+workspace*.xml
 
 
 # eclipse project file
