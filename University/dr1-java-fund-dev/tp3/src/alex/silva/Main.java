@@ -10,6 +10,7 @@ public class Main {
         boolean exit = false;
         final String HISTORICO_OPTION = "Histórico";
         final String SOMAR_OPTION = "( + ) SOMAR";
+        final String ERROR_INVALID_INPUT = "ERRO!\nEntrada Invalida!";
 
 
         Calculator calc = new Calculator();
@@ -45,8 +46,10 @@ public class Main {
                 exit = getOut();
                 continue;
             }
-            if (numb1 == "")
+            if (numb1.equals("")){
+                msg(null,ERROR_INVALID_INPUT);
                 continue;
+            }
             double num1 = Double.parseDouble(numb1);
 
             String operation = numb1+" "+choice+" ...";
@@ -57,8 +60,10 @@ public class Main {
                 exit = getOut();
                 continue;
             }
-            if (numb2 == "")
+            if (numb2.equals("")){
+                msg(null,ERROR_INVALID_INPUT);
                 continue;
+            }
             double num2 = Double.parseDouble(numb2);
 
 

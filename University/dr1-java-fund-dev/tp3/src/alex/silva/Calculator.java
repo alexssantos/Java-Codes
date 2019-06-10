@@ -10,7 +10,6 @@ public class Calculator implements ICalculator {
         Log = new Log();
     }
 
-
     public Double soma(Double num1, Double num2){
         return num1 + num2;
     }
@@ -51,7 +50,7 @@ public class Calculator implements ICalculator {
             if ((num2 == 0) || (num1 == 0)){
                 String erroMsg = "Alerta! Não é possível fazer a divisão por '0' ";
                 //FIXME: trow exception
-                retorno = null;
+                retorno = erroMsg;
             }
             else{
                 result = divisao(num1, num2);
