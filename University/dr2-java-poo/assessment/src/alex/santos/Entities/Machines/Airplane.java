@@ -1,6 +1,4 @@
-package alex.santos.Entities.Aircraft;
-
-import alex.santos.Entities.Interfaces.IAircraft;
+package alex.santos.Entities.Machines;
 
 public class Airplane extends AbstractAircraft {
     private int seatAmount;

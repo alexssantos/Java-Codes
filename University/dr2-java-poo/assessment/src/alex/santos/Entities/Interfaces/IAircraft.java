@@ -1,6 +1,8 @@
 package alex.santos.Entities.Interfaces;
 
 public interface IAircraft {
+
+    // TODO: rubrica!
     public String getPrefix();
 
     public void setPrefix(String prefix);
