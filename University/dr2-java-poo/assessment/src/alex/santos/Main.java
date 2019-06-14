@@ -8,7 +8,7 @@ public class Main {
 	// write your code here
 
         Flight voo = new Flight();
-        int flightNumber = voo.flightNumber;
+        int flightNumber = voo.getFlightNumber();
 
         System.out.println(flightNumber);
     }

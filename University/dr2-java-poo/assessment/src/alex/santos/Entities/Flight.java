@@ -5,19 +5,19 @@ import alex.santos.Entities.Interfaces.IAircraft;
 import java.util.Date;
 
 public class Flight {
-    public final int flightNumber = this.generateFlightNumber();
-    public int totalVacancy;
+    private final int flightNumber = this.generateFlightNumber();
+    private int totalVacancy;
 
     //public Date takeOffDate;
     //public Date arriveDate;
-    public String arriveTimeStr;
-    public String arriveDateStr;
-    public String takeOffDateStr;
-    public String takeOffTimeStr;
+    private String arriveTimeStr;
+    private String arriveDateStr;
+    private String takeOffDateStr;
+    private String takeOffTimeStr;
 
-    Airport airportOrigin;
-    Airport airportDestiny;
-    IAircraft aircraft;
+    private Airport airportOrigin;
+    private Airport airportDestiny;
+    private IAircraft aircraft;
 
     public Flight() {
     }
@@ -32,8 +32,7 @@ public class Flight {
         this.aircraft = aircraft;
     }
 
-    // GET SETs
-
+    // GET SETs   /////////////////////////////////////////////////
 
     public int getFlightNumber() {
         return flightNumber;
