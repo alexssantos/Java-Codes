@@ -5,23 +5,24 @@ import alex.santos.Entities.Interfaces.IAircraft;
 import java.util.Date;
 
 public class Flight {
-    public int flightNumber;
+    public final int flightNumber = this.generateFlightNumber();
     public int totalVacancy;
+
+    //public Date takeOffDate;
+    //public Date arriveDate;
+    public String arriveTimeStr;
+    public String arriveDateStr;
     public String takeOffDateStr;
     public String takeOffTimeStr;
-    public Date takeOffDate;
-    public String arriveDateStr;
-    public String arriveTimeStr;
-    public Date arriveDate;
 
     Airport airportOrigin;
     Airport airportDestiny;
     IAircraft aircraft;
 
+    public Flight() {
+    }
 
-    public Flight(int flightNumber, int totalVacancy, String takeOffDate, String takeOffTime, String arriveDate, String arriveTime, Airport airportOrigin, Airport airportDestiny, IAircraft aircraft) {
-        this.flightNumber = flightNumber;
-        this.totalVacancy = totalVacancy;
+    public Flight(String takeOffDate, String takeOffTime, String arriveDate, String arriveTime, Airport airportOrigin, Airport airportDestiny, IAircraft aircraft) {
         this.takeOffDateStr = takeOffDate;
         this.takeOffTimeStr = takeOffTime;
         this.arriveDateStr = arriveDate;
@@ -29,6 +30,83 @@ public class Flight {
         this.airportOrigin = airportOrigin;
         this.airportDestiny = airportDestiny;
         this.aircraft = aircraft;
+    }
+
+    // GET SETs
+
+
+    public int getFlightNumber() {
+        return flightNumber;
+    }
+
+    public int getTotalVacancy() {
+        return totalVacancy;
+    }
+
+    public void setTotalVacancy(int totalVacancy) {
+        this.totalVacancy = totalVacancy;
+    }
+
+    public String getArriveTimeStr() {
+        return arriveTimeStr;
+    }
+
+    public void setArriveTimeStr(String arriveTimeStr) {
+        this.arriveTimeStr = arriveTimeStr;
+    }
+
+    public String getArriveDateStr() {
+        return arriveDateStr;
+    }
+
+    public void setArriveDateStr(String arriveDateStr) {
+        this.arriveDateStr = arriveDateStr;
+    }
+
+    public String getTakeOffDateStr() {
+        return takeOffDateStr;
+    }
+
+    public void setTakeOffDateStr(String takeOffDateStr) {
+        this.takeOffDateStr = takeOffDateStr;
+    }
+
+    public String getTakeOffTimeStr() {
+        return takeOffTimeStr;
+    }
+
+    public void setTakeOffTimeStr(String takeOffTimeStr) {
+        this.takeOffTimeStr = takeOffTimeStr;
+    }
+
+    public Airport getAirportOrigin() {
+        return airportOrigin;
+    }
+
+    public void setAirportOrigin(Airport airportOrigin) {
+        this.airportOrigin = airportOrigin;
+    }
+
+    public Airport getAirportDestiny() {
+        return airportDestiny;
+    }
+
+    public void setAirportDestiny(Airport airportDestiny) {
+        this.airportDestiny = airportDestiny;
+    }
+
+    public IAircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(IAircraft aircraft) {
+        this.aircraft = aircraft;
+    }
+
+
+    // METODOS ///////////////////////////////////////
+    private int generateFlightNumber(){
+        return 1;
     }
 
 

@@ -1,15 +1,15 @@
 package alex.santos.Entities.Machines;
 
 import alex.santos.Entities.Interfaces.IHelicopter;
-import alex.santos.Shared.SharedEnums;
+import static alex.santos.Shared.SharedEnums.*;
 
 public class HelicopterAirTaxi extends AbstractHelicopter implements IHelicopter {
 
 
 
     // CONSTRUTOR
-    public HelicopterAirTaxi(String prefix, String model, String manufacturer, SharedEnums.HelicopterTypeEnum typeHelicopter) {
-        super(prefix, model, manufacturer, typeHelicopter.toString());
+    public HelicopterAirTaxi(String prefix, String model, String manufacturer) {
+        super(prefix, model, manufacturer,  HelicopterTypeEnum.AirTaxi);
     }
 
 

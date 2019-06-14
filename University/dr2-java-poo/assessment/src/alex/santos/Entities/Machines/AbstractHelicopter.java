@@ -1,11 +1,11 @@
 package alex.santos.Entities.Machines;
 
-import alex.santos.Entities.Machines.AbstractAircraft;
-import alex.santos.Entities.Interfaces.IHelicopter;
+
+import static alex.santos.Shared.SharedEnums.*;
 
 public abstract class AbstractHelicopter extends AbstractAircraft {
 
-    public String typeHelicopter;
+    public HelicopterTypeEnum typeHelicopter;
 
 
     // CONSTRUTORES
@@ -13,7 +13,7 @@ public abstract class AbstractHelicopter extends AbstractAircraft {
         super(prefix, model, manufacturer);
     }
 
-    public AbstractHelicopter(String prefix, String model, String manufacturer, String typeHelicopter) {
+    public AbstractHelicopter(String prefix, String model, String manufacturer, HelicopterTypeEnum typeHelicopter) {
         super(prefix, model, manufacturer);
         this.typeHelicopter = typeHelicopter;
     }
@@ -22,10 +22,10 @@ public abstract class AbstractHelicopter extends AbstractAircraft {
 
     // GET SET
     public String getTypeHelicopter() {
-        return typeHelicopter;
+        return typeHelicopter.toString();
     }
 
-    public void setTypeHelicopter(String typeHelicopter) {
+    public void setTypeHelicopter(HelicopterTypeEnum typeHelicopter) {
         this.typeHelicopter = typeHelicopter;
     }
 }
