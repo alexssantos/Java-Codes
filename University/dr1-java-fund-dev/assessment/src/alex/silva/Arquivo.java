@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
 
+
 public class Arquivo
 {
     private String nomeArq;
@@ -38,7 +39,7 @@ public class Arquivo
         return saida;
     }
 
-    public void leArquivo(Scanner entrada, ArrayList<Cliente> turma) {
+    public void leArquivo(Scanner entrada, ArrayList<Cliente> clientes) {
 
         String linha;
         String[] campos;
@@ -46,12 +47,16 @@ public class Arquivo
             while (entrada.hasNext())
             {
                 linha = entrada.nextLine();
-                campos = linha.split(";");
-//                Cliente cliente = new Cliente(
-//                        campos[0],
-//                        Integer.parseInt(campos[1]),
-//                        Integer.parseInt(campos[2]));
-//                turma.add(cliente);
+                campos = linha.split(" \\| ");
+
+                long numero = Long.parseLong(campos[0]);
+                String nome = campos[1];
+                Cliente.ClientePlanoTipo plano = (Cliente.ClientePlanoTipo.PosPago.toString() == campos[2]) ? Cliente.ClientePlanoTipo.PosPago : Cliente.ClientePlanoTipo.PrePago;
+                String[] creditos = campos[3].split(":");
+                int creditosMinuto = Integer.parseInt((Integer.parseInt(creditos[0])/60)+creditos[1]);
+
+                Cliente cliente = new Cliente(numero,nome,plano,creditosMinuto);
+                clientes.add(cliente);
             }
         }
         catch (Exception e) {
