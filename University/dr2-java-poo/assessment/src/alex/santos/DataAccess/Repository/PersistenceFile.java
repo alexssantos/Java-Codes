@@ -11,21 +11,27 @@ public class PersistenceFile<E> {
     private String file_db;
     Scanner readerDb;
     Formatter writerDb;
+    private final String FILE_EXT = ".txt";
+    private final String REPO_PATH = "\\src\\alex\\santos\\DataAccess\\Repository\\";
+    String workingDir = System.getProperty("user.dir");
 
     public PersistenceFile(TypeDb nameDb) {
-        file_db = nameDb.toString();
-        openReadConn();
-        openWriteConn();
+        System.out.println(workingDir);
+        file_db = workingDir+REPO_PATH+nameDb.toString()+FILE_EXT;
+        //openReadConn();
+        //openWriteConn();
     }
 
     // READ  ----------------------------------------
-    public void openReadConn() {
+    public boolean openReadConn() {
         try {
             readerDb = new Scanner(new File(file_db));
             System.out.println("DONE: abertura de leitura da base: "+file_db);
+            return true;
         }
         catch (FileNotFoundException e) {
             System.out.println("Erro: abertura de leitura da base: "+file_db);
+            return false;
         }
     }
 
