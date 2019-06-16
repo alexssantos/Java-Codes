@@ -1,2 +1,2 @@
-2188889999 | Alex | Pre-Pago | 08:20
-2122223333 | Leticia | Pos-Pago | 10:00
+2188889999 | Alex | PrePago | 20
+2122223333 | Leticia | PrePago | 0

@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Arquivo
 {
     private String nomeArq;
+    private final String SEPARADOR = " \\| ";
 
     public Arquivo(String nome) {
         nomeArq = nome;
@@ -47,7 +48,8 @@ public class Arquivo
             while (entrada.hasNext())
             {
                 linha = entrada.nextLine();
-                campos = linha.split(" \\| ");
+
+                campos = linha.split(SEPARADOR);
 
                 long numero = Long.parseLong(campos[0]);
                 String nome = campos[1];
@@ -68,8 +70,12 @@ public class Arquivo
 
         for (Cliente cliente : clientes) {
             try {
-//                saida.format("%s;%d;%d\n", cliente.getNome(), cliente.getN1(),
-//                        cliente.getN2());
+
+                saida.format("%d | %s | %s | %s\n",
+                        cliente.getNumeroCelular(),
+                        cliente.getNomeCliente(),
+                        cliente.getPlanoCliente().toString(),
+                        cliente.getCreditos());
             }
             catch (Exception e) {
                 System.out.println("Erro: gravacao do arquivo");
