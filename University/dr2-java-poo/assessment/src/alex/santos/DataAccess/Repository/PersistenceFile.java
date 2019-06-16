@@ -12,8 +12,8 @@ public class PersistenceFile<E> {
     Scanner readerDb;
     Formatter writerDb;
 
-    public PersistenceFile(String nameDb) {
-        file_db = nameDb;
+    public PersistenceFile(TypeDb nameDb) {
+        file_db = nameDb.toString();
         openReadConn();
         openWriteConn();
     }
@@ -103,8 +103,10 @@ public class PersistenceFile<E> {
         }
     }
 
-
-
-
-
+    public enum TypeDb {
+        airports_bd,
+        cities_db,
+        machines_db,
+        flights_db
+    }
 }
