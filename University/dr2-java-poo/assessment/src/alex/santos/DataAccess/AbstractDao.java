@@ -6,7 +6,7 @@ import alex.santos.Entities.Machines.AbstractAircraft;
 
 import java.util.List;
 
-public class AbstractDao<T extends IEntityDao> {
+public class AbstractDao<T> {
 
     public final Class<?> persistentClass;
     public PersistenceFile db;
@@ -25,15 +25,15 @@ public class AbstractDao<T extends IEntityDao> {
         return  retorno;
     }
 
-    public void saveAllAircrafts(List<? extends AbstractAircraft> objs )
+    public void persisteMany(List<T> list )
     {
         if (!db.openWriteConn()){
             return;
         }
 
-        for ( Object obj: objs)
+        for (T item: list)
         {
-            db.write(obj);
+            db.write(item);
         }
         db.closeWriteConn();
     }

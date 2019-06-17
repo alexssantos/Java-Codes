@@ -2,11 +2,7 @@ package alex.santos;
 
 import alex.santos.DataAccess.AirplaneDao;
 import alex.santos.DataAccess.HelicopterDao;
-import alex.santos.Entities.Flight;
-import alex.santos.Entities.Interfaces.IAircraft;
-import alex.santos.Entities.Interfaces.IHelicopter;
 import alex.santos.Entities.Machines.*;
-import alex.santos.Services.AirportService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +44,7 @@ public class Main {
             avioes.add(aviao);
         }
         AirplaneDao airplaneDao = new AirplaneDao();
-        airplaneDao.saveAllAircrafts(avioes);
+        airplaneDao.persisteMany(avioes);
 
 
         // Helicopteros     ---------------------------------------

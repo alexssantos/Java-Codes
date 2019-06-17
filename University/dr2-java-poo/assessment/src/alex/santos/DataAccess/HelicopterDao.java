@@ -1,7 +1,6 @@
 package alex.santos.DataAccess;
 
 import alex.santos.DataAccess.Repository.PersistenceFile.*;
-import alex.santos.Entities.Interfaces.IHelicopter;
 import alex.santos.Entities.Machines.*;
 import alex.santos.Shared.SharedEnums.*;
 import java.util.ArrayList;
@@ -28,22 +27,22 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
     {
         if (typeEnum == HelicopterTypeEnum.AirTaxi)
         {
-            saveAllAircrafts(airTaxisList);
+            persisteMany(airTaxisList);
         }
         if (typeEnum == HelicopterTypeEnum.CostGuard)
         {
-            saveAllAircrafts(guardCostsList);
+            persisteMany(guardCostsList);
         }
         if (typeEnum == HelicopterTypeEnum.Rescue)
         {
-            saveAllAircrafts(rescuesList);
+            persisteMany(rescuesList);
         }
     }
 
     public void persisteAll(){
-        saveAllAircrafts(airTaxisList);
-        saveAllAircrafts(guardCostsList);
-        saveAllAircrafts(rescuesList);
+        persisteMany(airTaxisList);
+        persisteMany(guardCostsList);
+        persisteMany(rescuesList);
     }
 
     public <E extends AbstractHelicopter> void save(E helicopter){

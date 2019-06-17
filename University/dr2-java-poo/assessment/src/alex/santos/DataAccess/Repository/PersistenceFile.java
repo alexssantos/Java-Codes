@@ -83,29 +83,29 @@ public class PersistenceFile<E> {
     }
 
     // Save
-    public void write(E obj)
+    public void write(E item)
     {
         try {
 
             //TODO: metodo 'ToString' precisa estar criado na entidade.
 
-            writerDb.format(obj.toString());
+            writerDb.format(item.toString());
             writerDb.format("\n");
         }
         catch (Exception e) {
-            System.out.println("Erro: gravacao da arquivo. Obj: "+obj.toString());
+            System.out.println("Erro: gravacao da arquivo. Obj: "+item.toString());
         }
 
     }
         // SAVE many
-    public void write(ArrayList<E> objsList) {   //public void write(ArrayList<? extends 'Interface'> objList) {
+    public void write(ArrayList<E> list) {   //public void write(ArrayList<? extends 'Interface'> objList) {
 
-        for (E obj : objsList) {
+        for (E item : list) {
             try {
 
                 //TODO: metodo 'ToString' precisa estar criado na entidade.
 
-                writerDb.format(obj.toString());
+                writerDb.format(item.toString());
                 writerDb.format("\n");
             }
             catch (Exception e) {
