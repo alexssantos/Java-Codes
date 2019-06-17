@@ -1,5 +1,6 @@
 package alex.santos.DataAccess.Repository;
 
+import javax.sound.midi.Track;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -60,13 +61,15 @@ public class PersistenceFile<E> {
     }
 
     // WRITE    ---------------------------------
-    public void openWriteConn() {
+    public boolean openWriteConn() {
         try {
             writerDb = new Formatter(new File(file_db));
             System.out.println("DONE: abertura de gravação da base: "+file_db);
+            return true;
         }
         catch (FileNotFoundException e) {
             System.out.println("Erro: abertura de gravação da base: "+file_db);
+            return false;
         }
     }
 
@@ -88,7 +91,7 @@ public class PersistenceFile<E> {
             writerDb.format("\n");
         }
         catch (Exception e) {
-            System.out.println("Erro: gravacao da arquivo");
+            System.out.println("Erro: gravacao da arquivo. Obj: "+obj.toString());
         }
 
     }
@@ -112,7 +115,8 @@ public class PersistenceFile<E> {
     public enum TypeDb {
         airports_bd,
         cities_db,
-        machines_db,
+        airplanes_db,
+        helicopters_db,
         flights_db
     }
 }

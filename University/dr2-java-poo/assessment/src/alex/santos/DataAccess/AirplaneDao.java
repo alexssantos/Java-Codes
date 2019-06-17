@@ -8,26 +8,18 @@ import alex.santos.Entities.Machines.Airplane;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MachineDao<T> extends AbstractDao
+public class AirplaneDao extends AbstractDao
 {
     // List == INTERFACE
     public List<Airplane> avioesCadastrados;
-    public List<IHelicopter> helicopterosCadastrados;
-    public Class typeClass;
 
-    public MachineDao(T machine)
+    public AirplaneDao()
     {
-        super(machine.getClass(), TypeDb.machines_db);
-        typeClass = machine.getClass();
+        super(Airplane.class, TypeDb.airplanes_db);
 
-        if (machine.getClass() == null)
+        if (avioesCadastrados == null)
         {
             avioesCadastrados = new ArrayList<>();
         }
-        if (helicopterosCadastrados == null)
-        {
-            helicopterosCadastrados = new ArrayList<>();
-        }
-
     }
 }

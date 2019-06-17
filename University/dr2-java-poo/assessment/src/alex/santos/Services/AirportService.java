@@ -1,7 +1,8 @@
 package alex.santos.Services;
 
+import alex.santos.DataAccess.AirplaneDao;
 import alex.santos.DataAccess.AirportDao;
-import alex.santos.DataAccess.MachineDao;
+import alex.santos.DataAccess.HelicopterDao;
 import alex.santos.Entities.Machines.AbstractHelicopter;
 import alex.santos.Entities.Machines.Airplane;
 
@@ -11,14 +12,14 @@ public class AirportService {
 
     // DataAccess objs
     AirportDao aeroportosDao;
-    MachineDao aviaoDao;
-    MachineDao helicopteroDao;
+    AirplaneDao aviaoDao;
+    HelicopterDao helicopteroDao;
 
     public AirportService() {
         aeroportosDao = new AirportDao();
         startEntities();
-        aviaoDao = new MachineDao(Airplane.class);
-        helicopteroDao = new MachineDao(AbstractHelicopter.class);
+        aviaoDao = new AirplaneDao();
+        helicopteroDao = new HelicopterDao();
     }
 
     public boolean isInternational()
