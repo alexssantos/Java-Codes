@@ -13,20 +13,14 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
     private final String SEPARETOR_DEFAULT = " | ";
 
     //STATIS LISTS
-    public static List<HelicopterAirTaxi> airTaxisList;
-    public static List<HelicopterCostGuard> guardCostsList;
-    public static List<HelicopterRescue> rescuesList;
+    public static List<HelicopterAirTaxi> airTaxisList = new ArrayList<>();
+    public List<HelicopterCostGuard> guardCostsList = new ArrayList<>();
+    public List<HelicopterRescue> rescuesList = new ArrayList<>();
     //public List<? extends IHelicopter> genericList;
 
 
     public HelicopterDao() {
         super(AbstractHelicopter.class, TypeDb.helicopters_db);
-
-        airTaxisList = new ArrayList<>();
-        guardCostsList = new ArrayList<>();
-        rescuesList = new ArrayList<>();
-        //genericList = new ArrayList<>();
-
         populateEntities();
     }
 
@@ -52,7 +46,7 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
         saveAllAircrafts(rescuesList);
     }
 
-    public static <E extends AbstractHelicopter> void save(E helicopter){
+    public <E extends AbstractHelicopter> void save(E helicopter){
         if (helicopter.typeHelicopter == HelicopterTypeEnum.AirTaxi)
         {
             airTaxisList.add((HelicopterAirTaxi) helicopter);
@@ -68,7 +62,7 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
     }
 
 
-    public static <T extends AbstractHelicopter> void saveMany(List<T> list){
+    public <T extends AbstractHelicopter> void saveMany(List<T> list){
         for (T item: list) {
             save(item);
         }

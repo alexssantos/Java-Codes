@@ -34,20 +34,24 @@ public class Main {
 
     private static void generateAircrafts()
     {
+        //  pre-Atributos  ------------------------------
         int ix = 5;
         String PREFIX = "prefix-";
         String MODEL = "model-";
         String MANUFACTOR = "manufactor-";
 
+
+        // Avioes ----------------------------------------
         List<Airplane> avioes = new ArrayList<>();
         for (int i=0; i < ix; i++) {
             Airplane aviao = new Airplane(PREFIX+i,MODEL+i,MANUFACTOR+i);
             avioes.add(aviao);
         }
-
         AirplaneDao airplaneDao = new AirplaneDao();
         airplaneDao.saveAllAircrafts(avioes);
 
+
+        // Helicopteros     ---------------------------------------
         HelicopterAirTaxi airTaxi = new HelicopterAirTaxi(
                 PREFIX+ix,MODEL+ix,MANUFACTOR+ix++
         );
@@ -60,18 +64,20 @@ public class Main {
 
         HelicopterDao helicopterDao = new HelicopterDao();
         helicopterDao.save(airTaxi);
-        helicopterDao.save(costGuard);
-        helicopterDao.save(rescue);
-
         for (var item: HelicopterDao.airTaxisList) {
             System.out.println(item);
         }
-        for (var item: HelicopterDao.guardCostsList) {
+
+        helicopterDao.save(costGuard);
+        for (var item: helicopterDao.guardCostsList) {
             System.out.println(item);
         }
-        for (var item: HelicopterDao.rescuesList) {
+
+        helicopterDao.save(rescue);
+        for (var item: helicopterDao.rescuesList) {
             System.out.println(item);
         }
+
     }
 
     private static void generateCities()

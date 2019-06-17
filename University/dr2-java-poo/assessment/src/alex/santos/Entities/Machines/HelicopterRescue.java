@@ -18,10 +18,14 @@ public class HelicopterRescue extends AbstractHelicopter implements IHelicopter 
 
     @Override
     public String toString() {
-        return this.typeHelicopter+this.sep+
-                this.getPrefix()+this.sep+
-                this.getModel()+this.sep+
-                this.getManufacturer();
+        return
+            this.getPrefix()
+                +this.sep+
+            this.getModel()
+                +this.sep+
+            this.getManufacturer()
+                +this.sep+
+            this.typeHelicopter;
         //++ more atribults
         //++ more atribults
     }
