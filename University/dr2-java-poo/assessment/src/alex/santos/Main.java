@@ -74,6 +74,10 @@ public class Main {
             System.out.println(item);
         }
 
+
+        System.out.println("Granvando Helicopteros no Arquivo.");
+        int qtdd = helicopterDao.persisteAll();
+        System.out.println(qtdd+" Helicopteros salvos em Arquivo.");
     }
 
     private static void generateCities()

@@ -2,7 +2,6 @@ package alex.santos.DataAccess;
 
 import alex.santos.DataAccess.Repository.PersistenceFile.*;
 import alex.santos.DataAccess.Repository.PersistenceFile;
-import alex.santos.Entities.Machines.AbstractAircraft;
 
 import java.util.List;
 
@@ -27,6 +26,13 @@ public class AbstractDao<T> {
 
     public void persisteMany(List<T> list )
     {
+        db.writeMany(list);
+    }
+
+
+    //ERRADO
+    /*public void persisteMany(List<T> list )
+    {
         if (!db.openWriteConn()){
             return;
         }
@@ -36,5 +42,5 @@ public class AbstractDao<T> {
             db.write(item);
         }
         db.closeWriteConn();
-    }
+    }*/
 }

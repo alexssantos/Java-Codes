@@ -1,7 +1,6 @@
 package alex.santos.DataAccess.Repository;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
@@ -29,11 +28,11 @@ public class PersistenceFile<E> {
     public boolean openReadConn() {
         try {
             readerDb = new Scanner(new File(fullPathFileDb));
-            System.out.println("DONE: abertura de leitura da base: "+file_db);
+            System.out.println("DONE: abertura de leitura da base: "+file_db+"\n");
             return true;
         }
         catch (FileNotFoundException e) {
-            System.out.println("Erro: abertura de leitura da base: "+file_db);
+            System.out.println("Erro: abertura de leitura da base: "+file_db+"\n");
             return false;
         }
     }
@@ -45,7 +44,6 @@ public class PersistenceFile<E> {
         }
     }
 
-        // GetAll
     public List<String> readAll() {
 
         List<String> linhas = new ArrayList<>();
@@ -57,7 +55,7 @@ public class PersistenceFile<E> {
             return linhas;
         }
         catch (Exception e) {
-            System.out.println("Erro: na leitura da base: "+file_db);
+            System.out.println("Erro: na leitura da base: "+file_db+"\n");
         }
         return new ArrayList<>();
     }
@@ -65,24 +63,26 @@ public class PersistenceFile<E> {
     // WRITE    ---------------------------------
     public boolean openWriteConn() {
         try {
-            writerDb = new Formatter(new File(fullPathFileDb));
-            System.out.println("DONE: abertura de gravação da base: "+file_db);
+            File db = new File(fullPathFileDb);
+            writerDb = new Formatter(db);
+            System.out.println("DONE: abertura de gravação da base: "+file_db+"\n");
             return true;
         }
         catch (FileNotFoundException e) {
-            System.out.println("Erro: abertura de gravação da base: "+file_db);
-            return false;
+            System.out.println("Erro: abertura de gravação da base: "+file_db+"\n");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return false;
     }
 
-    public void closeWriteConn() {
-
+    public void closeWriteConn()
+    {
         if (writerDb != null) {
             writerDb.close();
         }
     }
 
-    // Save
     public void write(E item)
     {
         try {
@@ -93,25 +93,32 @@ public class PersistenceFile<E> {
             writerDb.format("\n");
         }
         catch (Exception e) {
-            System.out.println("Erro: gravacao da arquivo. Obj: "+item.toString());
+            System.out.println("Erro: gravacao da base - item: "+item.toString()+"\n");
         }
-
     }
-        // SAVE many
-    public void write(ArrayList<E> list) {   //public void write(ArrayList<? extends 'Interface'> objList) {
 
-        for (E item : list) {
-            try {
+    // SAVE many
+    public void writeMany(List<E> list)
+    {
+        //TODO: metodo 'ToString' precisa estar criado na entidade.
 
-                //TODO: metodo 'ToString' precisa estar criado na entidade.
-
-                writerDb.format(item.toString());
-                writerDb.format("\n");
-            }
-            catch (Exception e) {
-                System.out.println("Erro: gravacao do arquivo");
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(fullPathFileDb, true)))
+        {
+            for (E item : list)
+            {
+                bw.write(item.toString());
+                bw.newLine();
             }
         }
+        catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Erro: gravacao da base - item\n");
+        }
+    }
+
+    public void cleanFile()
+    {
+        openWriteConn();
     }
 
     public enum TypeDb {

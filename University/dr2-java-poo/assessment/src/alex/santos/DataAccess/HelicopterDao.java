@@ -39,25 +39,33 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
         }
     }
 
-    public void persisteAll(){
+    public int persisteAll(){
+        db.cleanFile();
         persisteMany(airTaxisList);
         persisteMany(guardCostsList);
         persisteMany(rescuesList);
+        int qtdd = airTaxisList.size() + guardCostsList.size() + rescuesList.size();
+        return qtdd;
     }
 
-    public <E extends AbstractHelicopter> void save(E helicopter){
+    public <E extends AbstractHelicopter> int save(E helicopter){
+        int qtdd = 0;
         if (helicopter.typeHelicopter == HelicopterTypeEnum.AirTaxi)
         {
             airTaxisList.add((HelicopterAirTaxi) helicopter);
+            qtdd += airTaxisList.size();
         }
         if (helicopter.typeHelicopter == HelicopterTypeEnum.CostGuard)
         {
             guardCostsList.add((HelicopterCostGuard) helicopter);
+            qtdd += guardCostsList.size();
         }
         if (helicopter.typeHelicopter == HelicopterTypeEnum.Rescue)
         {
             rescuesList.add((HelicopterRescue) helicopter);
+            qtdd += rescuesList.size();
         }
+        return qtdd;
     }
 
 
