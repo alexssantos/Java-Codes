@@ -5,6 +5,7 @@ import alex.santos.Entities.Interfaces.IAircraft;
 import java.util.Date;
 
 public class Flight {
+
     private final int flightNumber = this.generateFlightNumber();
     private int totalVacancy;
 
@@ -15,20 +16,23 @@ public class Flight {
     private String takeOffDateStr;
     private String takeOffTimeStr;
 
-    private Airport airportOrigin;
-    private Airport airportDestiny;
+    private int airportOrigin;
+    private int airportDestiny;
     private IAircraft aircraft;
 
     public Flight() {
     }
 
-    public Flight(String takeOffDate, String takeOffTime, String arriveDate, String arriveTime, Airport airportOrigin, Airport airportDestiny, IAircraft aircraft) {
+    public Flight(
+            String takeOffDate, String takeOffTime, String arriveDate, String arriveTime,
+            int airportOriginCode, int airportDestinyCode, IAircraft aircraft)
+    {
         this.takeOffDateStr = takeOffDate;
         this.takeOffTimeStr = takeOffTime;
         this.arriveDateStr = arriveDate;
         this.arriveTimeStr = arriveTime;
-        this.airportOrigin = airportOrigin;
-        this.airportDestiny = airportDestiny;
+        this.airportOrigin = airportOriginCode;
+        this.airportDestiny = airportDestinyCode;
         this.aircraft = aircraft;
     }
 
@@ -78,19 +82,19 @@ public class Flight {
         this.takeOffTimeStr = takeOffTimeStr;
     }
 
-    public Airport getAirportOrigin() {
+    public int getAirportOrigin() {
         return airportOrigin;
     }
 
-    public void setAirportOrigin(Airport airportOrigin) {
+    public void setAirportOrigin(int airportOrigin) {
         this.airportOrigin = airportOrigin;
     }
 
-    public Airport getAirportDestiny() {
+    public int getAirportDestiny() {
         return airportDestiny;
     }
 
-    public void setAirportDestiny(Airport airportDestiny) {
+    public void setAirportDestiny(int airportDestiny) {
         this.airportDestiny = airportDestiny;
     }
 

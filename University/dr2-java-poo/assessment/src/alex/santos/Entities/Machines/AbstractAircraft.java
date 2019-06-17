@@ -2,17 +2,10 @@
 
 package alex.santos.Entities.Machines;
 
-public abstract class AbstractAircraft {
+import alex.santos.Entities.Interfaces.IAircraft;
 
-    /*PREFIX models =
-    	PP:	    PP-AAA to PP-ZZZ
-        PR:	    PR-AAA to PR-ZZZ (PR-ZAA to PR-ZZZ is reserved to experimental non-LSA aircraft)
-        PS[a]:	PS-AAA to PS-ZZZ (proposed by ANAC to be available in 2016)[1]
-        PT:	    PT-AAA to PT-ZZZ (PT-ZAA to PT-ZZZ is reserved to experimental non-LSA aircraft)
-        PU:	    PU-AAA to PU-ZZZ (Microlights and experimental LSA aircraft)
+public abstract class AbstractAircraft implements IAircraft {
 
-       / https://en.wikipedia.org/wiki/List_of_aircraft_registration_prefixes
-     */
     private String prefix;
     private String model;
     private String manufacturer;
@@ -25,17 +18,27 @@ public abstract class AbstractAircraft {
     }
 
     // GET SET
-    protected String getPrefix() {
+    public String getPrefix() {
         return prefix;
     }
 
-    protected String getModel() {
+    public String getModel() {
         return model;
     }
 
-    protected String getManufacturer() {
+    public String getManufacturer() {
         return manufacturer;
     }
 
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
 
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 }

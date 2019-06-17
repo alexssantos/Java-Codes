@@ -19,7 +19,7 @@ public class Airport {
     }
 
 
-    // GET SETs
+    // GET SETs     ///////////////////////////////////////////////////////
     public int getAirportCode() {
         return AirportCode;
     }
@@ -54,7 +54,7 @@ public class Airport {
 
 
 
-    // Metodos
+    // METHODS      ///////////////////////////////////////////////////////
     public boolean isInternational()
     {
         return internalStatus;

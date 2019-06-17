@@ -1,18 +1,22 @@
 package alex.santos.DataAccess;
 
 import alex.santos.DataAccess.Repository.PersistenceFile.*;
+import alex.santos.Entities.Interfaces.IHelicopter;
 import alex.santos.Entities.Machines.*;
 import alex.santos.Shared.SharedEnums.*;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class HelicopterDao<T> extends AbstractDao {
+public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
 
-    private final String SEPARETOR_DEFAULT = " \\| ";
+    private final String SEPARETOR_DEFAULT = " | ";
+
+    //STATIS LISTS
     public static List<HelicopterAirTaxi> airTaxisList;
     public static List<HelicopterCostGuard> guardCostsList;
     public static List<HelicopterRescue> rescuesList;
+    //public List<? extends IHelicopter> genericList;
 
 
     public HelicopterDao() {
@@ -21,10 +25,56 @@ public class HelicopterDao<T> extends AbstractDao {
         airTaxisList = new ArrayList<>();
         guardCostsList = new ArrayList<>();
         rescuesList = new ArrayList<>();
+        //genericList = new ArrayList<>();
 
         populateEntities();
     }
 
+    public void persisteAllByType(HelicopterTypeEnum typeEnum)
+    {
+        if (typeEnum == HelicopterTypeEnum.AirTaxi)
+        {
+            saveAllAircrafts(airTaxisList);
+        }
+        if (typeEnum == HelicopterTypeEnum.CostGuard)
+        {
+            saveAllAircrafts(guardCostsList);
+        }
+        if (typeEnum == HelicopterTypeEnum.Rescue)
+        {
+            saveAllAircrafts(rescuesList);
+        }
+    }
+
+    public void persisteAll(){
+        saveAllAircrafts(airTaxisList);
+        saveAllAircrafts(guardCostsList);
+        saveAllAircrafts(rescuesList);
+    }
+
+    public static <E extends AbstractHelicopter> void save(E helicopter){
+        if (helicopter.typeHelicopter == HelicopterTypeEnum.AirTaxi)
+        {
+            airTaxisList.add((HelicopterAirTaxi) helicopter);
+        }
+        if (helicopter.typeHelicopter == HelicopterTypeEnum.CostGuard)
+        {
+            guardCostsList.add((HelicopterCostGuard) helicopter);
+        }
+        if (helicopter.typeHelicopter == HelicopterTypeEnum.Rescue)
+        {
+            rescuesList.add((HelicopterRescue) helicopter);
+        }
+    }
+
+
+    public static <T extends AbstractHelicopter> void saveMany(List<T> list){
+        for (T item: list) {
+            save(item);
+        }
+    }
+
+    //MOCK
     private void populateEntities(){
         List<String> lines = getAll();
         if (lines == null){return;}
@@ -37,31 +87,18 @@ public class HelicopterDao<T> extends AbstractDao {
         }
 
         // MOCK
-        HelicopterAirTaxi airTaxi1 = new HelicopterAirTaxi("prefix-1", "model-1", "fabricante-1");
-        airTaxisList.add(airTaxi1);
-        HelicopterAirTaxi airTaxi2 = new HelicopterAirTaxi("prefix-2", "model-2", "fabricante-2");
-        airTaxisList.add(airTaxi2);
-        HelicopterAirTaxi airTaxi3 = new HelicopterAirTaxi("prefix-3", "model-3", "fabricante-3");
-        airTaxisList.add(airTaxi3);
+        airTaxisList.addAll(
+                Arrays.asList(
+                        new HelicopterAirTaxi("prefix-1", "model-1", "fabricante-1"),
+                        new HelicopterAirTaxi("prefix-2", "model-2", "fabricante-2"),
+                        new HelicopterAirTaxi("prefix-3", "model-3", "fabricante-3"),
+                        new HelicopterAirTaxi("prefix-4", "model-4", "fabricante-4"),
+                        new HelicopterAirTaxi("prefix-5", "model-5", "fabricante-5"),
+                        new HelicopterAirTaxi("prefix-6", "model-6", "fabricante-6"),
+                        new HelicopterAirTaxi("prefix-7", "model-7", "fabricante-7")
+        ));
 
-        saveAll(HelicopterTypeEnum.AirTaxi);
-    }
-
-    public void saveAll(HelicopterTypeEnum typeEnum)
-    {
-        if (typeEnum == HelicopterTypeEnum.AirTaxi)
-        {
-            saveAll(airTaxisList);
-        }
-        if (typeEnum == HelicopterTypeEnum.CostGuard)
-        {
-            saveAll(guardCostsList);
-        }
-        if (typeEnum == HelicopterTypeEnum.Rescue)
-        {
-            saveAll(rescuesList);
-        }
-
-
+        //genericList = airTaxisList;
+        //saveAll(HelicopterTypeEnum.AirTaxi);
     }
 }

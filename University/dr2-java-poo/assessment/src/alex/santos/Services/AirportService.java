@@ -3,9 +3,6 @@ package alex.santos.Services;
 import alex.santos.DataAccess.AirplaneDao;
 import alex.santos.DataAccess.AirportDao;
 import alex.santos.DataAccess.HelicopterDao;
-import alex.santos.Entities.Machines.AbstractHelicopter;
-import alex.santos.Entities.Machines.Airplane;
-
 import java.util.List;
 
 public class AirportService {

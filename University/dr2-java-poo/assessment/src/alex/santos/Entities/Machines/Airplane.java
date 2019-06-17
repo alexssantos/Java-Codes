@@ -1,6 +1,8 @@
 package alex.santos.Entities.Machines;
 
-public class Airplane extends AbstractAircraft {
+import alex.santos.Entities.Interfaces.IAircraft;
+
+public class Airplane extends AbstractAircraft implements IAircraft {
     private int seatAmount;
     private String companyName;
 
@@ -8,6 +10,8 @@ public class Airplane extends AbstractAircraft {
         // Empty
     public Airplane(String prefix, String model, String manufacturer) {
         super(prefix, model, manufacturer);
+        this.seatAmount = 0;
+        this.companyName = "EMPTY_COMPANY";
     }
 
         // Full
@@ -33,4 +37,5 @@ public class Airplane extends AbstractAircraft {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
 }

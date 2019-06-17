@@ -5,7 +5,8 @@ import static alex.santos.Shared.SharedEnums.*;
 
 public class HelicopterAirTaxi extends AbstractHelicopter implements IHelicopter {
 
-    private String sep = " | ";
+
+
 
     // CONSTRUTOR
     public HelicopterAirTaxi(String prefix, String model, String manufacturer) {
@@ -20,9 +21,11 @@ public class HelicopterAirTaxi extends AbstractHelicopter implements IHelicopter
 
     @Override
     public String toString() {
-        return this.typeHelicopter+sep+
-                this.getPrefix()+sep+
-                this.getModel()+sep+
+        return this.typeHelicopter+this.sep+
+                this.getPrefix()+this.sep+
+                this.getModel()+this.sep+
                 this.getManufacturer();
+                //++ more atribults
+                //++ more atribults
     }
 }

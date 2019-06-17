@@ -2,7 +2,6 @@ package alex.santos.DataAccess;
 
 import alex.santos.DataAccess.Repository.PersistenceFile.*;
 import alex.santos.DataAccess.Repository.PersistenceFile;
-import alex.santos.Entities.Interfaces.IHelicopter;
 import alex.santos.Entities.Machines.AbstractAircraft;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class AbstractDao<T extends IEntityDao> {
         return  retorno;
     }
 
-    public void saveAll(List<? extends AbstractAircraft> objs )
+    public void saveAllAircrafts(List<? extends AbstractAircraft> objs )
     {
         if (!db.openWriteConn()){
             return;
