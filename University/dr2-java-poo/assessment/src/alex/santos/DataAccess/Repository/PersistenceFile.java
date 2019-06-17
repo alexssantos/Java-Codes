@@ -1,6 +1,5 @@
 package alex.santos.DataAccess.Repository;
 
-import javax.sound.midi.Track;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,16 +8,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PersistenceFile<E> {
+
     private String file_db;
+    private String fullPathFileDb;
     Scanner readerDb;
     Formatter writerDb;
+
     private final String FILE_EXT = ".txt";
     private final String REPO_PATH = "\\src\\alex\\santos\\DataAccess\\Repository\\";
-    String workingDir = System.getProperty("user.dir");
+    private String workingDir = System.getProperty("user.dir");
 
     public PersistenceFile(TypeDb nameDb) {
-        System.out.println(workingDir);
-        file_db = workingDir+REPO_PATH+nameDb.toString()+FILE_EXT;
+        file_db = nameDb.toString();
+        fullPathFileDb = workingDir+REPO_PATH+file_db+FILE_EXT;
         //openReadConn();
         //openWriteConn();
     }
@@ -26,7 +28,7 @@ public class PersistenceFile<E> {
     // READ  ----------------------------------------
     public boolean openReadConn() {
         try {
-            readerDb = new Scanner(new File(file_db));
+            readerDb = new Scanner(new File(fullPathFileDb));
             System.out.println("DONE: abertura de leitura da base: "+file_db);
             return true;
         }
@@ -63,7 +65,7 @@ public class PersistenceFile<E> {
     // WRITE    ---------------------------------
     public boolean openWriteConn() {
         try {
-            writerDb = new Formatter(new File(file_db));
+            writerDb = new Formatter(new File(fullPathFileDb));
             System.out.println("DONE: abertura de gravação da base: "+file_db);
             return true;
         }

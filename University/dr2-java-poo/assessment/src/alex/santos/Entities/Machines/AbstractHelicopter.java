@@ -5,7 +5,6 @@ import static alex.santos.Shared.SharedEnums.*;
 
 public abstract class AbstractHelicopter extends AbstractAircraft {
 
-    String sep = " | ";
     public HelicopterTypeEnum typeHelicopter;
 
 

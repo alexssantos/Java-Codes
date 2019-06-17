@@ -6,6 +6,7 @@ import alex.santos.Entities.Interfaces.IAircraft;
 
 public abstract class AbstractAircraft implements IAircraft {
 
+    String sep = " | ";
     private String prefix;
     private String model;
     private String manufacturer;

@@ -38,4 +38,19 @@ public class Airplane extends AbstractAircraft implements IAircraft {
         this.companyName = companyName;
     }
 
+    @Override
+    public String toString() {
+        return this.getPrefix()
+                +this.sep+
+                this.getModel()
+                +this.sep+
+                this.getManufacturer()
+                +this.sep+
+                companyName
+                +this.sep+
+                seatAmount;
+        //++ more atribults
+        //++ more atribults
+    }
+
 }

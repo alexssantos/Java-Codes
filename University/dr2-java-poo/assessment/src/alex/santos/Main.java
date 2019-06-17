@@ -63,10 +63,15 @@ public class Main {
         helicopterDao.save(costGuard);
         helicopterDao.save(rescue);
 
-        System.out.println(HelicopterDao.airTaxisList.toString());
-        System.out.println(HelicopterDao.rescuesList.toString());
-        System.out.println(HelicopterDao.guardCostsList.toString());
-
+        for (var item: HelicopterDao.airTaxisList) {
+            System.out.println(item);
+        }
+        for (var item: HelicopterDao.guardCostsList) {
+            System.out.println(item);
+        }
+        for (var item: HelicopterDao.rescuesList) {
+            System.out.println(item);
+        }
     }
 
     private static void generateCities()

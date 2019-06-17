@@ -1,5 +1,5 @@
-alex.santos.Entities.Machines.Airplane@6adede5
-alex.santos.Entities.Machines.Airplane@192b07fd
-alex.santos.Entities.Machines.Airplane@64bfbc86
-alex.santos.Entities.Machines.Airplane@64bf3bbf
-alex.santos.Entities.Machines.Airplane@55d56113
+prefix-0 | model-0 | manufactor-0 | EMPTY_COMPANY | 0
+prefix-1 | model-1 | manufactor-1 | EMPTY_COMPANY | 0
+prefix-2 | model-2 | manufactor-2 | EMPTY_COMPANY | 0
+prefix-3 | model-3 | manufactor-3 | EMPTY_COMPANY | 0
+prefix-4 | model-4 | manufactor-4 | EMPTY_COMPANY | 0
