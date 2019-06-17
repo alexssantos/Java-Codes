@@ -28,19 +28,4 @@ public class AbstractDao<T> {
     {
         db.writeMany(list);
     }
-
-
-    //ERRADO
-    /*public void persisteMany(List<T> list )
-    {
-        if (!db.openWriteConn()){
-            return;
-        }
-
-        for (T item: list)
-        {
-            db.write(item);
-        }
-        db.closeWriteConn();
-    }*/
 }

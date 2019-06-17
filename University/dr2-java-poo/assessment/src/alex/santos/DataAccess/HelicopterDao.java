@@ -9,18 +9,22 @@ import java.util.List;
 
 public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
 
-    private final String SEPARETOR_DEFAULT = " | ";
+    private final String SEPARETOR_DEFAULT = " \\| ";
 
     //STATIS LISTS
-    public static List<HelicopterAirTaxi> airTaxisList = new ArrayList<>();
-    public List<HelicopterCostGuard> guardCostsList = new ArrayList<>();
-    public List<HelicopterRescue> rescuesList = new ArrayList<>();
-    //public List<? extends IHelicopter> genericList;
+    public List<HelicopterAirTaxi> airTaxisList;
+    public List<HelicopterCostGuard> guardCostsList;
+    public List<HelicopterRescue> rescuesList;
 
 
     public HelicopterDao() {
         super(AbstractHelicopter.class, TypeDb.helicopters_db);
-        populateEntities();
+        if (airTaxisList == null){
+            airTaxisList = new ArrayList<>();
+            guardCostsList = new ArrayList<>();
+            rescuesList = new ArrayList<>();
+        }
+        pushEntities();
     }
 
     public void persisteAllByType(HelicopterTypeEnum typeEnum)
@@ -75,19 +79,65 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
         }
     }
 
-    //MOCK
-    private void populateEntities(){
+    private void pushEntities(){
         List<String> lines = getAll();
-        if (lines == null){return;}
-
-        //map Helicopters
-        for (String line : lines)
-        {
-            String[] campos = line.split(SEPARETOR_DEFAULT);
-
+        if (lines == null){
+            return;
         }
 
-        // MOCK
+        for (String line : lines)
+        {
+            String[] filds = line.split(SEPARETOR_DEFAULT);
+            String tipo = filds[3];
+            if (tipo.equals(HelicopterTypeEnum.AirTaxi.toString())){
+                HelicopterAirTaxi item = mapAirTaxi(filds);
+                airTaxisList.add(item);
+            }
+            else if (tipo.equals(HelicopterTypeEnum.CostGuard.toString())){
+                HelicopterCostGuard item = mapCostGuard(filds);
+                guardCostsList.add(item);
+            }
+            else if (tipo.equals(HelicopterTypeEnum.Rescue.toString())){
+                HelicopterRescue item = mapRescue(filds);
+                rescuesList.add(item);
+            }
+        }
+    }
+
+    private HelicopterAirTaxi mapAirTaxi(String[] filds){
+        String prefix = filds[1];
+        String model = filds[2];
+        String manufactor = filds[3];
+
+        HelicopterAirTaxi item = new HelicopterAirTaxi(
+            prefix,model,manufactor
+        );
+        return item;
+    }
+
+    private HelicopterCostGuard mapCostGuard(String[] filds){
+        String prefix = filds[1];
+        String model = filds[2];
+        String manufactor = filds[3];
+
+        HelicopterCostGuard item = new HelicopterCostGuard(
+                prefix,model,manufactor
+        );
+        return item;
+    }
+
+    private HelicopterRescue mapRescue(String[] filds){
+        String prefix = filds[1];
+        String model = filds[2];
+        String manufactor = filds[3];
+
+        HelicopterRescue item = new HelicopterRescue(
+                prefix,model,manufactor
+        );
+        return item;
+    }
+
+    public void mock() {
         airTaxisList.addAll(
                 Arrays.asList(
                         new HelicopterAirTaxi("prefix-1", "model-1", "fabricante-1"),
@@ -97,9 +147,8 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
                         new HelicopterAirTaxi("prefix-5", "model-5", "fabricante-5"),
                         new HelicopterAirTaxi("prefix-6", "model-6", "fabricante-6"),
                         new HelicopterAirTaxi("prefix-7", "model-7", "fabricante-7")
-        ));
-
-        //genericList = airTaxisList;
-        //saveAll(HelicopterTypeEnum.AirTaxi);
+                ));
     }
+
+
 }

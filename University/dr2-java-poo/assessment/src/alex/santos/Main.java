@@ -48,34 +48,39 @@ public class Main {
 
 
         // Helicopteros     ---------------------------------------
+
         HelicopterAirTaxi airTaxi = new HelicopterAirTaxi(
-                PREFIX+ix,MODEL+ix,MANUFACTOR+ix++
+                PREFIX+ix,MODEL+ix,MANUFACTOR+ix
         );
+        ix++;
         HelicopterRescue rescue = new HelicopterRescue(
-                PREFIX+ix,MODEL+ix,MANUFACTOR+ix++
+                PREFIX+ix,MODEL+ix,MANUFACTOR+ix
         );
+        ix++;
         HelicopterCostGuard costGuard = new HelicopterCostGuard(
-                PREFIX+ix,MODEL+ix,MANUFACTOR+ix++
+                PREFIX+ix,MODEL+ix,MANUFACTOR+ix
         );
+
 
         HelicopterDao helicopterDao = new HelicopterDao();
-        helicopterDao.save(airTaxi);
-        for (var item: HelicopterDao.airTaxisList) {
+        // lendo helicopteros do arquivo    ------------
+
+        System.out.println("\nLendo dos Arquivo helicopters_db.txt\n");
+        for (var item: helicopterDao.airTaxisList) {
             System.out.println(item);
         }
-
         helicopterDao.save(costGuard);
         for (var item: helicopterDao.guardCostsList) {
             System.out.println(item);
         }
-
         helicopterDao.save(rescue);
         for (var item: helicopterDao.rescuesList) {
             System.out.println(item);
         }
 
-
-        System.out.println("Granvando Helicopteros no Arquivo.");
+        // ------------------------------
+        helicopterDao.save(airTaxi);
+        System.out.println("\nGranvando Helicopteros no Arquivo.\n");
         int qtdd = helicopterDao.persisteAll();
         System.out.println(qtdd+" Helicopteros salvos em Arquivo.");
     }
