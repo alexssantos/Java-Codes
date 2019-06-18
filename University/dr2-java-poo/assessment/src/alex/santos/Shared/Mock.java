@@ -1,4 +1,4 @@
-package alex.santos.DataAccess;
+package alex.santos.Shared;
 
 import alex.santos.Entities.Airport;
 import alex.santos.Entities.City;

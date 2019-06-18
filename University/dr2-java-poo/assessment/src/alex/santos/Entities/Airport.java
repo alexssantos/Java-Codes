@@ -1,6 +1,6 @@
 package alex.santos.Entities;
 
-import alex.santos.DataAccess.Mock;
+import alex.santos.Shared.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Airport implements Comparable<Airport>{
     }
 
 
-    // GET SETs     ///////////////////////////////////////////////////////
+    // GET SETs     ---------------------------------------------------------
     public String getAirportCode() {
         return AirportCode;
     }
@@ -60,8 +60,7 @@ public class Airport implements Comparable<Airport>{
     }
 
 
-
-    // METHODS      ///////////////////////////////////////////////////////
+    // METHODS      ---------------------------------------------------------
     public boolean isInternational()
     {
         return internalStatus;
@@ -72,28 +71,13 @@ public class Airport implements Comparable<Airport>{
         this.internalStatus = !(this.internalStatus);
     }
 
-    @Override
-    public String toString() {
-        return AirportCode + " : " + Name + ", " + City;
+    //TODO: metodo - aeronave in aeronaveList (prefix)
+    public boolean hasAircraft(){
+
+        return true;
     }
 
-
-    public boolean equals(Airport other){
-        if (compareTo(other) == 0){
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public int compareTo(Airport other) {
-        return getAirportCode().compareTo(other.getAirportCode());
-    }
-
-    //metodo - aeronave in aeronaveList (prefix)
-
-
-    //
+    //TODO:
     public boolean hasRoute(Airport other){
 
         return true;
@@ -107,6 +91,25 @@ public class Airport implements Comparable<Airport>{
                 .toString();
 
         return igual;
+    }
+
+    public boolean equals(Airport other){
+        if (compareTo(other) == 0){
+            return true;
+        }
+        return false;
+    }
+
+
+    // METHODS OVERRIDES ---------------------------------------------------------
+    @Override
+    public String toString() {
+        return AirportCode + " : " + Name + ", " + City;
+    }
+
+    @Override
+    public int compareTo(Airport other) {
+        return getAirportCode().compareTo(other.getAirportCode());
     }
 
 }
