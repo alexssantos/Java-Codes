@@ -13,16 +13,16 @@ public class Main {
     public static void main(String[] args) {
         Mock dados = new Mock();
 
-        System.out.println("Tudo OK!");
 
+        /*TODO: Entities
+        -> AEROPORTOS:
+            1. precisa de Cidade
 
-        /*
-        CRIAR VOO:
-            1. Precisa existir Aeroportos (que precisa existir cidades)
-            2. precisa existir Aeronave
+        -> VOO:
+            1. precisa de Aeronave
+            2. Precisa de Aeroportos (que precisa existir cidades)
          */
 
-
-
+        System.out.println("Tudo OK!");
     }
 }

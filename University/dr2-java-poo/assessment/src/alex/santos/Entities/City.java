@@ -16,6 +16,8 @@ public class City implements Comparable<City>{
         borderCities = new ArrayList<>();
     }
 
+
+    //GET SETs      ----------------------------------------------------------
     public String getName() {
         return Name;
     }
@@ -32,6 +34,8 @@ public class City implements Comparable<City>{
         AreaSquad = areaSquad;
     }
 
+
+    // METHODS      ------------------------------------------------------------
     public boolean equals(City other){
         if (compareTo(other) == 0){
             return true;
@@ -44,13 +48,6 @@ public class City implements Comparable<City>{
             throw new IllegalArgumentException("Limite de fronteira com cidades atingido.");
         }
         borderCities.add(borderCity);
-    }
-
-    @Override
-    public int compareTo(City other) {
-        String filds = (Name+AreaSquad);
-        String otherFilds = (other.Name+other.AreaSquad);
-        return filds.compareTo(otherFilds);
     }
 
     public boolean inBoarder(City other){
@@ -69,6 +66,12 @@ public class City implements Comparable<City>{
         return list;
     }
 
+    // OVERRIDES    ------------------------------------------------------------
+    @Override
+    public int compareTo(City other) {
+        String filds = (Name+AreaSquad);
+        String otherFilds = (other.Name+other.AreaSquad);
+        return filds.compareTo(otherFilds);
+    }
 
-    //
 }
