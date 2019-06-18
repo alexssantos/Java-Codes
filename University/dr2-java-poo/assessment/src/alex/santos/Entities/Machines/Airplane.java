@@ -3,8 +3,10 @@ package alex.santos.Entities.Machines;
 import alex.santos.Entities.Interfaces.IAircraft;
 
 public class Airplane extends AbstractAircraft implements IAircraft {
+
     private int seatAmount;
     private String companyName;
+
 
     // CONSTRUCTORS
         // Empty

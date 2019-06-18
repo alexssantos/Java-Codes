@@ -6,7 +6,7 @@ import static alex.santos.Shared.SharedEnums.*;
 public class HelicopterAirTaxi extends AbstractHelicopter implements IHelicopter {
 
 
-
+    double TaxValue;
 
     // CONSTRUTOR
     public HelicopterAirTaxi(String prefix, String model, String manufacturer) {

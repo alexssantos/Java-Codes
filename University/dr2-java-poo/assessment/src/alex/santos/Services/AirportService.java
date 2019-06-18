@@ -35,7 +35,7 @@ public class AirportService {
     }
 
     private void startEntities(){
-        List<String> aeroportos = aeroportosDao.getAll();
+        //List<String> aeroportos = aeroportosDao.getAll();
 
         System.out.println("startEntities");
 

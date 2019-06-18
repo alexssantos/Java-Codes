@@ -18,7 +18,7 @@ public abstract class AbstractAircraft implements IAircraft {
         this.manufacturer = manufacturer;
     }
 
-    // GET SET
+    // GET SET      ------------------------------------------------
     public String getPrefix() {
         return prefix;
     }
