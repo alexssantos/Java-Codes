@@ -1,3 +1,6 @@
 AirTaxi | prefix-5 | model-5 | manufactor-5
+AirTaxi | prefix-5 | model-5 | manufactor-5
 CostGuard | prefix-7 | model-7 | manufactor-7
+CostGuard | prefix-7 | model-7 | manufactor-7
+Rescue | prefix-6 | model-6 | manufactor-6
 Rescue | prefix-6 | model-6 | manufactor-6

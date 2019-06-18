@@ -24,22 +24,31 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
             guardCostsList = new ArrayList<>();
             rescuesList = new ArrayList<>();
         }
-        pushEntities();
+        readFileFirst();
     }
 
-    public void persisteAllByType(HelicopterTypeEnum typeEnum)
-    {
-        if (typeEnum == HelicopterTypeEnum.AirTaxi)
-        {
-            persisteMany(airTaxisList);
+    private void readFileFirst(){
+        List<String> lines = getAll();
+        if (lines == null){
+            return;
         }
-        if (typeEnum == HelicopterTypeEnum.CostGuard)
+
+        for (String line : lines)
         {
-            persisteMany(guardCostsList);
-        }
-        if (typeEnum == HelicopterTypeEnum.Rescue)
-        {
-            persisteMany(rescuesList);
+            String[] filds = line.split(SEPARETOR_DEFAULT);
+            String tipo = filds[0];
+            if (tipo.equals(HelicopterTypeEnum.AirTaxi.toString())){
+                HelicopterAirTaxi item = mapAirTaxi(filds);
+                airTaxisList.add(item);
+            }
+            else if (tipo.equals(HelicopterTypeEnum.CostGuard.toString())){
+                HelicopterCostGuard item = mapCostGuard(filds);
+                guardCostsList.add(item);
+            }
+            else if (tipo.equals(HelicopterTypeEnum.Rescue.toString())){
+                HelicopterRescue item = mapRescue(filds);
+                rescuesList.add(item);
+            }
         }
     }
 
@@ -72,35 +81,24 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
         return qtdd;
     }
 
-
     public <T extends AbstractHelicopter> void saveMany(List<T> list){
         for (T item: list) {
             save(item);
         }
     }
 
-    private void pushEntities(){
-        List<String> lines = getAll();
-        if (lines == null){
-            return;
-        }
-
-        for (String line : lines)
+    public void persisteAllByType(HelicopterTypeEnum typeEnum){
+        if (typeEnum == HelicopterTypeEnum.AirTaxi)
         {
-            String[] filds = line.split(SEPARETOR_DEFAULT);
-            String tipo = filds[3];
-            if (tipo.equals(HelicopterTypeEnum.AirTaxi.toString())){
-                HelicopterAirTaxi item = mapAirTaxi(filds);
-                airTaxisList.add(item);
-            }
-            else if (tipo.equals(HelicopterTypeEnum.CostGuard.toString())){
-                HelicopterCostGuard item = mapCostGuard(filds);
-                guardCostsList.add(item);
-            }
-            else if (tipo.equals(HelicopterTypeEnum.Rescue.toString())){
-                HelicopterRescue item = mapRescue(filds);
-                rescuesList.add(item);
-            }
+            persisteMany(airTaxisList);
+        }
+        if (typeEnum == HelicopterTypeEnum.CostGuard)
+        {
+            persisteMany(guardCostsList);
+        }
+        if (typeEnum == HelicopterTypeEnum.Rescue)
+        {
+            persisteMany(rescuesList);
         }
     }
 
@@ -149,6 +147,4 @@ public class HelicopterDao<T extends AbstractHelicopter> extends AbstractDao {
                         new HelicopterAirTaxi("prefix-7", "model-7", "fabricante-7")
                 ));
     }
-
-
 }
