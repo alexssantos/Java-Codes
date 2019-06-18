@@ -1,30 +1,37 @@
 package alex.santos.Entities;
 
+import alex.santos.DataAccess.Mock;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Airport {
 
-    private int AirportCode;
+public class Airport implements Comparable<Airport>{
+
+    private String AirportCode;
     private String Name;
     private String City;
     private boolean internalStatus;
-
     private List<Flight> FlightsList;
+    private List<City> DestinyCitiesList;
+
 
     // constructor
-    public Airport(int airportCode, String name, String city) {
+    public Airport(String airportCode, String name, String city) {
         AirportCode = airportCode;
         Name = name;
         City = city;
+        FlightsList = new ArrayList<>();
+        DestinyCitiesList = new ArrayList<>();
     }
 
 
     // GET SETs     ///////////////////////////////////////////////////////
-    public int getAirportCode() {
+    public String getAirportCode() {
         return AirportCode;
     }
 
-    public void setAirportCode(int airportCode) {
+    public void setAirportCode(String airportCode) {
         AirportCode = airportCode;
     }
 
@@ -69,4 +76,37 @@ public class Airport {
     public String toString() {
         return AirportCode + " : " + Name + ", " + City;
     }
+
+
+    public boolean equals(Airport other){
+        if (compareTo(other) == 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int compareTo(Airport other) {
+        return getAirportCode().compareTo(other.getAirportCode());
+    }
+
+    //metodo - aeronave in aeronaveList (prefix)
+
+
+    //
+    public boolean hasRoute(Airport other){
+
+        return true;
+    }
+
+    public static String getAirportName(String code){
+        String igual = Mock.aeroportosList.stream()
+                .filter(x -> code.equals(x.getAirportCode()))
+                .findFirst()
+                .map(x -> x.getName())
+                .toString();
+
+        return igual;
+    }
+
 }

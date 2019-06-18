@@ -2,13 +2,13 @@ package alex.santos.Entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class City implements Comparable<City>{
 
     private String Name;
     private double AreaSquad;
     private List<City> borderCities;
+    private int MAX_BOARDS = 40;
 
     public City(String name, double areaSquad) {
         Name = name;
@@ -37,6 +37,13 @@ public class City implements Comparable<City>{
             return true;
         }
         return false;
+    }
+
+    public void setBorderCity(City borderCity) {
+        if (borderCities.size() >= MAX_BOARDS){
+            throw new IllegalArgumentException("Limite de fronteira com cidades atingido.");
+        }
+        borderCities.add(borderCity);
     }
 
     @Override

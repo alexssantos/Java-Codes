@@ -2,6 +2,7 @@ package alex.santos;
 
 import alex.santos.DataAccess.AirplaneDao;
 import alex.santos.DataAccess.HelicopterDao;
+import alex.santos.DataAccess.Mock;
 import alex.santos.Entities.Machines.*;
 
 import java.util.ArrayList;
@@ -10,10 +11,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	    // write your code here
-        //AirportService airportService = new AirportService();
-        generateAircrafts();
-
+        Mock dados = new Mock();
 
         System.out.println("Tudo OK!");
 
