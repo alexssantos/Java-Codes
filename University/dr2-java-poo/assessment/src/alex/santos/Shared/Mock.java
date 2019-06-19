@@ -17,7 +17,7 @@ import java.util.Random;
 public class Mock {
 
     public static List<Airport> aeroportosList = new ArrayList<>();
-    public static List<Flight> flightList = new ArrayList<>();
+    public static List<Flight> voosList = new ArrayList<>();
     public static List<City> cidadesList = new ArrayList<>();
 
     public static List<Airplane> avioesList = new ArrayList<>();
@@ -90,7 +90,7 @@ public class Mock {
         String code3 = aeroportosList.get(2).getAirportCode();  // GRU
 
         //voo - aviao1
-        flightList.addAll(Arrays.asList(
+        voosList.addAll(Arrays.asList(
            new Flight(today,"04:00",today,"04:00",code1,code2, aviao),
            new Flight(today,"07:00",today,"08:00",code2,code1, aviao),
 
@@ -106,7 +106,7 @@ public class Mock {
             aviao = avioesList.get(getRandomInt(0,avioesList));
         }
 
-        flightList.addAll(Arrays.asList(
+        voosList.addAll(Arrays.asList(
                 new Flight(today,"04:00",today,"04:00",code2,code3, aviao),
                 new Flight(today,"07:00",today,"08:00",code3,code2, aviao),
 
@@ -122,7 +122,7 @@ public class Mock {
     private int getRandomInt(int min, List<?> list){
         //Random rd = new Random();
         int max = list.size()-1;
-        int numb = (int) (Math.random() * (min - max));
+        int numb = (int) (Math.random() * (max - min));
         return numb;
     }
 
