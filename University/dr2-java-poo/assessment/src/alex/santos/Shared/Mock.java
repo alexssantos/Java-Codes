@@ -3,6 +3,7 @@ package alex.santos.Shared;
 import alex.santos.Entities.Airport;
 import alex.santos.Entities.City;
 import alex.santos.Entities.Flight;
+import alex.santos.Entities.Interfaces.IAircraft;
 import alex.santos.Entities.Machines.Airplane;
 import alex.santos.Entities.Machines.HelicopterAirTaxi;
 import alex.santos.Entities.Machines.HelicopterCostGuard;
@@ -11,6 +12,7 @@ import alex.santos.Entities.Machines.HelicopterRescue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Mock {
 
@@ -24,7 +26,10 @@ public class Mock {
     public static List<HelicopterRescue> heliRescueList= new ArrayList<>();
 
     public Mock() {
-
+        generateCities();
+        generateAirports();
+        generateAircrafts();
+        generateFlights();
     }
 
 
@@ -32,12 +37,22 @@ public class Mock {
     public void generateCities(){
         cidadesList.addAll(Arrays.asList(
             new City("Rio de Janeiro",1500000),
-            new City("Cirutiba", 750000),
-            new City("Pairaiba", 800000)
+            new City("Curitiba", 750000),
+            new City("São Paula", 800000)
         ));
     }
 
     //2
+    public void generateAirports(){
+        aeroportosList.addAll(Arrays.asList(
+           new Airport("GIG", "Aeroporto Internacional Tom Jobin", "Rio de Janeiro"),
+           new Airport("CWB", "Aeroporto Internacional Afonso Pena", "Curitiba"),
+           new Airport("GRU", "Aeroporto Internacional Governador André Franco Montoro", "São Paulo")
+        ));
+
+    }
+
+    //3
     public void generateAircrafts(){
         avioesList.addAll(Arrays.asList(
                 new Airplane("AAA-BR","A1","Embraer"),
@@ -64,17 +79,51 @@ public class Mock {
         ));
     }
 
-    //3
-    public void generateAirports(){
-        aeroportosList.addAll(Arrays.asList(
-           new Airport("GIG", "Aeroporto Internacional Tom Jobin", "Rio de Janeiro")
+    //4
+    public void generateFlights(){
+        Airplane aviao = avioesList.get(getRandomInt(0,avioesList));
+        int aviaoCode = aviao.getAirplaneCode();
+        String today = "01/01/19";
+
+        String code1 = aeroportosList.get(0).getAirportCode();  // GIG
+        String code2 = aeroportosList.get(1).getAirportCode();  // CWB
+        String code3 = aeroportosList.get(2).getAirportCode();  // GRU
+
+        //voo - aviao1
+        flightList.addAll(Arrays.asList(
+           new Flight(today,"04:00",today,"04:00",code1,code2, aviao),
+           new Flight(today,"07:00",today,"08:00",code2,code1, aviao),
+
+           new Flight(today,"14:00",today,"16:00",code1,code3, aviao),
+           new Flight(today,"14:00",today,"16:00",code3,code1, aviao),
+
+           new Flight(today,"14:00",today,"16:00",code2,code3, aviao),
+           new Flight(today,"14:00",today,"16:00",code3,code2, aviao)
+        ));
+
+        aviao = avioesList.get(getRandomInt(0,avioesList));
+        while (aviaoCode == aviao.getAirplaneCode()){
+            aviao = avioesList.get(getRandomInt(0,avioesList));
+        }
+
+        flightList.addAll(Arrays.asList(
+                new Flight(today,"04:00",today,"04:00",code2,code3, aviao),
+                new Flight(today,"07:00",today,"08:00",code3,code2, aviao),
+
+                new Flight(today,"14:00",today,"16:00",code2,code1, aviao),
+                new Flight(today,"14:00",today,"16:00",code1,code2, aviao),
+
+                new Flight(today,"14:00",today,"16:00",code3,code1, aviao),
+                new Flight(today,"14:00",today,"16:00",code1,code3, aviao)
         ));
 
     }
 
-    //4
-    public void generateFlights(){
-
+    private int getRandomInt(int min, List<?> list){
+        //Random rd = new Random();
+        int max = list.size()-1;
+        int numb = (int) (Math.random() * (min - max));
+        return numb;
     }
 
 

@@ -23,6 +23,6 @@ public class Main {
             2. Precisa de Aeroportos (que precisa existir cidades)
          */
 
-        System.out.println("Tudo OK!");
+        System.out.println("\n------------\nTudo OK!\n------------");
     }
 }

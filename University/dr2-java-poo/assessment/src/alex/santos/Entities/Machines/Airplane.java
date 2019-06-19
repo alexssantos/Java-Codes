@@ -40,6 +40,14 @@ public class Airplane extends AbstractAircraft implements IAircraft {
         this.companyName = companyName;
     }
 
+
+    // METHODS
+    public int getAirplaneCode(){
+        int code = (getPrefix()+getModel()+getCompanyName()).hashCode();
+        return code;
+    }
+
+    // OVERRIDE
     @Override
     public String toString() {
         return this.getPrefix()

@@ -16,16 +16,14 @@ public class Flight {
     private String takeOffDateStr;
     private String takeOffTimeStr;
 
-    private int airportOrigin;
-    private int airportDestiny;
+    private String airportOrigin;
+    private String airportDestiny;
     private IAircraft aircraft;
 
-    public Flight() {
-    }
 
     public Flight(
             String takeOffDate, String takeOffTime, String arriveDate, String arriveTime,
-            int airportOriginCode, int airportDestinyCode, IAircraft aircraft)
+            String airportOriginCode, String airportDestinyCode, IAircraft aircraft)
     {
         this.takeOffDateStr = takeOffDate;
         this.takeOffTimeStr = takeOffTime;
@@ -82,19 +80,19 @@ public class Flight {
         this.takeOffTimeStr = takeOffTimeStr;
     }
 
-    public int getAirportOrigin() {
+    public String getAirportOrigin() {
         return airportOrigin;
     }
 
-    public void setAirportOrigin(int airportOrigin) {
+    public void setAirportOrigin(String airportOrigin) {
         this.airportOrigin = airportOrigin;
     }
 
-    public int getAirportDestiny() {
+    public String getAirportDestiny() {
         return airportDestiny;
     }
 
-    public void setAirportDestiny(int airportDestiny) {
+    public void setAirportDestiny(String airportDestiny) {
         this.airportDestiny = airportDestiny;
     }
 
