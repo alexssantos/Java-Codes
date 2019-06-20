@@ -2,11 +2,15 @@ package alex.santos.Entities;
 
 import alex.santos.Entities.Interfaces.IAircraft;
 
+import java.awt.*;
 import java.util.Date;
 
-public class Flight {
+public class Flight implements Comparable<Flight> {
+
+    private final String EMPTY_COMPANY ="NO COMPANY";
 
     private final int flightNumber;
+    private String company;
     private int totalVacancy;
 
     //public Date takeOffDate;
@@ -23,23 +27,33 @@ public class Flight {
 
     public Flight(
             String takeOffDate, String takeOffTime, String arriveDate, String arriveTime,
-            String airportOriginCode, String airportDestinyCode, IAircraft aircraft)
+            String airportOriginCode, String airportDestinyCode, IAircraft aircraft, String CompanyName)
     {
-        this.takeOffDateStr = takeOffDate;
-        this.takeOffTimeStr = takeOffTime;
-        this.arriveDateStr = arriveDate;
-        this.arriveTimeStr = arriveTime;
-        this.airportOrigin = airportOriginCode;
-        this.airportDestiny = airportDestinyCode;
+        takeOffDateStr = takeOffDate;
+        takeOffTimeStr = takeOffTime;
+        arriveDateStr = arriveDate;
+        arriveTimeStr = arriveTime;
+        airportOrigin = airportOriginCode;
+        airportDestiny = airportDestinyCode;
         this.aircraft = aircraft;
         flightNumber = generateFlightNumber();
         totalVacancy = 156;     //Airbus A320
+        company = !(CompanyName.isEmpty()) ? CompanyName :EMPTY_COMPANY;
+
     }
 
     // GET SETs   /////////////////////////////////////////////////
 
     public int getFlightNumber() {
         return flightNumber;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public int getTotalVacancy() {
@@ -116,12 +130,18 @@ public class Flight {
     //Overrides ///////////////////////////////////////
     @Override
     public String toString() {
-        String retorno = "Voo:"+flightNumber
+        String retorno = "Voo:"+flightNumber+" - "+company
                         +"\nPartida | Aeroporto: "+airportOrigin+" | Data: "+takeOffDateStr+" - "+takeOffTimeStr
                         +"\nDestino | Aeroporto: "+airportDestiny+" | Data: "+arriveDateStr+" - "+arriveTimeStr
                         +"\nTotal Assentos Disponiveis: "+totalVacancy
-                        +"\nAvião: "+ aircraft.toString();
+                        +"\nAeronave: "+ aircraft.toString()
+                        +"\nTipo: "+"";
 
         return retorno;
+    }
+
+    @Override
+    public int compareTo(Flight voo) {
+        return Integer.toString(flightNumber).compareTo(Integer.toString(voo.flightNumber));
     }
 }

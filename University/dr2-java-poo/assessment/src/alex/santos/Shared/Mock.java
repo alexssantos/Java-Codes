@@ -135,6 +135,7 @@ public class Mock {
                 new Flight(today,"14:00",today,"16:00",code3,code1, aviao),
                 new Flight(today,"14:00",today,"16:00",code1,code3, aviao)
         ));
+
         int ix = Utils.prtList(voosList);
         Utils.msg("Vôos criados: "+ix);
     }
