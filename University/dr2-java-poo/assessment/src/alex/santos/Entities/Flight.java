@@ -130,7 +130,7 @@ public class Flight implements Comparable<Flight> {
     //Overrides ///////////////////////////////////////
     @Override
     public String toString() {
-        String retorno = "Voo:"+flightNumber+" - "+company
+        String retorno = "Voo: "+flightNumber+" - "+company
                         +"\nPartida | Aeroporto: "+airportOrigin+" | Data: "+takeOffDateStr+" - "+takeOffTimeStr
                         +"\nDestino | Aeroporto: "+airportDestiny+" | Data: "+arriveDateStr+" - "+arriveTimeStr
                         +"\nTotal Assentos Disponiveis: "+totalVacancy

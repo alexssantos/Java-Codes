@@ -1,6 +1,6 @@
 package alex.santos.Entities;
 
-import alex.santos.Shared.Mock;
+import alex.santos.Shared.MockAirportMng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +84,7 @@ public class Airport implements Comparable<Airport>{
     }
 
     public static String getAirportName(String code){
-        String igual = Mock.aeroportosList.stream()
+        String igual = MockAirportMng.aeroportosList.stream()
                 .filter(x -> code.equals(x.getAirportCode()))
                 .findFirst()
                 .map(x -> x.getName())

@@ -1,21 +1,35 @@
 package alex.santos.Services;
 
-import alex.santos.DataAccess.AirplaneDao;
-import alex.santos.DataAccess.AirportDao;
-import alex.santos.DataAccess.HelicopterDao;
-import java.util.List;
+import alex.santos.Entities.Airport;
+import alex.santos.Shared.MockAirportMng;
+import alex.santos.Shared.Utils;
+
+import java.lang.invoke.SerializedLambda;
+import java.util.stream.Stream;
 
 public class AirportMngService {
 
+
+    private Airport x;
 
     public AirportMngService() {
         startEntities();
     }
 
     private void startEntities(){
-        //List<String> aeroportos = aeroportosDao.getAll();
+        MockAirportMng dados = new MockAirportMng();
 
-        System.out.println("startEntities");
+        String galeaoCode = "GIG";
+        Airport galeao = MockAirportMng.aeroportosList.stream()
+                .filter(x -> x.getAirportCode().equals(galeaoCode))
+                .map(x -> (Airport)x);
+
+        if (galeao == null){
+            Utils.msgERRO("Aeroporto Galeão NÂO criado.");
+        }
+        else {
+            Utils.msg("Aeroporto Galeão já Criado.");
+        }
 
     }
 }
