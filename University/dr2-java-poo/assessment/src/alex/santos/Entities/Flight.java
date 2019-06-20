@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Flight {
 
-    private final int flightNumber = this.generateFlightNumber();
+    private final int flightNumber;
     private int totalVacancy;
 
     //public Date takeOffDate;
@@ -32,6 +32,8 @@ public class Flight {
         this.airportOrigin = airportOriginCode;
         this.airportDestiny = airportDestinyCode;
         this.aircraft = aircraft;
+        flightNumber = generateFlightNumber();
+        totalVacancy = 156;     //Airbus A320
     }
 
     // GET SETs   /////////////////////////////////////////////////
@@ -107,8 +109,19 @@ public class Flight {
 
     // METODOS ///////////////////////////////////////
     private int generateFlightNumber(){
-        return 1;
+        return (aircraft.toString()+takeOffDateStr+takeOffTimeStr+arriveDateStr+arriveTimeStr).hashCode();
     }
 
 
+    //Overrides ///////////////////////////////////////
+    @Override
+    public String toString() {
+        String retorno = "Voo:"+flightNumber
+                        +"\nPartida | Aeroporto: "+airportOrigin+" | Data: "+takeOffDateStr+" - "+takeOffTimeStr
+                        +"\nDestino | Aeroporto: "+airportDestiny+" | Data: "+arriveDateStr+" - "+arriveTimeStr
+                        +"\nTotal Assentos Disponiveis: "+totalVacancy
+                        +"\nAvião: "+ aircraft.toString();
+
+        return retorno;
+    }
 }

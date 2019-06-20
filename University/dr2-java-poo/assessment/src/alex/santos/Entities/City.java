@@ -74,4 +74,8 @@ public class City implements Comparable<City>{
         return filds.compareTo(otherFilds);
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
