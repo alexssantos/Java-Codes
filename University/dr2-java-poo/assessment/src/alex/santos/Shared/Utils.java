@@ -27,7 +27,7 @@ public class Utils<T> {
         return ix;
     }
 
-    public static <T extends Comparable<T>> boolean checkRepeatedToAdd(List<T> list, T item)
+    public static <T extends Comparable<T>> boolean checkRepeated(List<T> list, T item)
     {
         for (T i: list) {
             if (i.compareTo(item)==0)
@@ -42,7 +42,7 @@ public class Utils<T> {
         return true;
     }
 
-    public static <T extends Comparable<T>> List<T> checkRepeateds(List<T> target, List<T> source)
+    public static <T extends Comparable<T>> List<T> checkRepeaters(List<? super T> target, List<T> source)
     {
         List<T> list = new ArrayList<>();
         for (T item: source) {

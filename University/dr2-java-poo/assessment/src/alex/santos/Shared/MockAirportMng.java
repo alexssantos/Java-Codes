@@ -7,6 +7,7 @@ import alex.santos.Entities.Machines.Airplane;
 import alex.santos.Entities.Machines.HelicopterAirTaxi;
 import alex.santos.Entities.Machines.HelicopterCostGuard;
 import alex.santos.Entities.Machines.HelicopterRescue;
+import jdk.jshell.execution.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,8 +43,8 @@ public class MockAirportMng {
             new City("Curitiba", 750000),
             new City("São Paula", 800000)
         ));
-        Utils.checkRepeateds(cidadesList, newCidades);
-
+        newCidades = Utils.checkRepeaters(cidadesList, newCidades);
+        cidadesList.addAll(newCidades);
 
         int ix = Utils.prtList(cidadesList);
         Utils.msg("Cidades criadas: "+ix);
@@ -53,11 +54,15 @@ public class MockAirportMng {
     public void generateAirports(){
         Utils.msg("\nCriando Aeroportos!");
 
-        aeroportosList.addAll(Arrays.asList(
+        List<Airport> aeroportos = new ArrayList<>();
+        aeroportos.addAll(Arrays.asList(
            new Airport("GIG", "Aeroporto Internacional Tom Jobin", "Rio de Janeiro"),
            new Airport("CWB", "Aeroporto Internacional Afonso Pena", "Curitiba"),
            new Airport("GRU", "Aeroporto Internacional Governador André Franco Montoro", "São Paulo")
         ));
+        //earoportos = Utils.checkRepeateds(cidadesList, earoportos);  TODO: Erro de Type Safity - por isso uso Generics
+        aeroportos = Utils.checkRepeaters(aeroportosList, aeroportos);
+        aeroportosList.addAll(aeroportos);
 
         int ix = Utils.prtList(aeroportosList);
         Utils.msg("Aeroportos criados: "+ix);
@@ -66,7 +71,7 @@ public class MockAirportMng {
     //3
     public void generateAircrafts(){
         Utils.msg("\nCriando Aviões!");
-
+        
         avioesList.addAll(Arrays.asList(
                 new Airplane("AAA-BR","A1","Embraer"),
                 new Airplane("AAA-BR","A2","Embraer"),
@@ -114,7 +119,8 @@ public class MockAirportMng {
 
         Utils.msg("\nCriando Vôos!");
         //voo - aviao1
-        voosList.addAll(Arrays.asList(
+        List<Flight> voos = new ArrayList<>();
+        voos.addAll(Arrays.asList(
            new Flight(today,"04:00",today,"04:00",code1,code2, aviao,"Azul"),
            new Flight(today,"07:00",today,"08:00",code2,code1, aviao,"Azul"),
 
@@ -124,13 +130,15 @@ public class MockAirportMng {
            new Flight(today,"14:00",today,"16:00",code2,code3, aviao,"Azul"),
            new Flight(today,"14:00",today,"16:00",code3,code2, aviao,"Azul")
         ));
+        voos = Utils.checkRepeaters(voosList, voos);
+        voosList.addAll(voos);
 
         aviao = avioesList.get(getRandomInt(0,avioesList));
         while (aviaoCode == aviao.getAirplaneCode()){
             aviao = avioesList.get(getRandomInt(0,avioesList));
         }
 
-        voosList.addAll(Arrays.asList(
+        voos.addAll(Arrays.asList(
                 new Flight(today,"04:00",today,"04:00",code2,code3, aviao,"LATAM"),
                 new Flight(today,"07:00",today,"08:00",code3,code2, aviao,"LATAM"),
 
@@ -140,20 +148,23 @@ public class MockAirportMng {
                 new Flight(today,"14:00",today,"16:00",code3,code1, aviao,"LATAM"),
                 new Flight(today,"14:00",today,"16:00",code1,code3, aviao,"LATAM")
         ));
+        voos = Utils.checkRepeaters(voosList, voos);
+        voosList.addAll(voos);
+
 
         // TESTE - voo REPEDITO   ------------------
 
         Flight test = new Flight(today,"04:00",today,"04:00",code2,code3, aviao,"LATAM");
         String Id = Integer.toString(test.getFlightNumber());
-        Utils.checkRepeatedToAdd(voosList,test);
+        Utils.checkRepeated(voosList,test);
 
         test = new Flight(today,"04:00",today,"04:00",code2,code3, aviao,"GOL");
         Id = Integer.toString(test.getFlightNumber());
-        Utils.checkRepeatedToAdd(voosList,test);
+        Utils.checkRepeated(voosList,test);
 
         test = new Flight(today,"11:11",today,"22:22",code2,code3, aviao,"AIRFRANCE");
         Id = Integer.toString(test.getFlightNumber());
-        Utils.checkRepeatedToAdd(voosList,test);
+        Utils.checkRepeated(voosList,test);
         //test
 
         int ix = Utils.prtList(voosList);
@@ -173,7 +184,7 @@ public class MockAirportMng {
         }
 
         T clone = list.get(getRandomInt(0,list));
-        Utils.checkRepeatedToAdd(list, clone);
+        Utils.checkRepeated(list, clone);
     }
 
 }
