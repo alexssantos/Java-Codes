@@ -1,8 +1,14 @@
 package alex.santos.Services;
 
 import alex.santos.Entities.Airport;
+import alex.santos.Entities.Flight;
 import alex.santos.Shared.MockAirportMng;
 import alex.santos.Shared.Utils;
+
+import java.lang.reflect.Type;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class AirportMngService {

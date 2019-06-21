@@ -1,9 +1,12 @@
 package alex.santos.Entities;
 
 import alex.santos.Entities.Interfaces.IAircraft;
+import alex.santos.Shared.MockAirportMng;
 
 import java.awt.*;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Flight implements Comparable<Flight> {
 
@@ -126,6 +129,25 @@ public class Flight implements Comparable<Flight> {
         return (aircraft.toString()+takeOffDateStr+takeOffTimeStr+arriveDateStr+arriveTimeStr).hashCode();
     }
 
+    public String getFlightInfosByCode(int FlightCode){
+        if ( MockAirportMng.voosList.isEmpty()){
+            return null;
+        }
+
+        java.util.List<Flight> voo = MockAirportMng.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
+        String infos = !voo.isEmpty() ? voo.get(0).toString() : null;
+        return infos;
+    }
+
+    public Flight getFlightByCode(int FlightCode){
+        if ( MockAirportMng.voosList.isEmpty()){
+            return null;
+        }
+
+        List<Flight> voo = MockAirportMng.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
+        Flight retorno = !voo.isEmpty() ? voo.get(0) : null;
+        return retorno;
+    }
 
     //Overrides ///////////////////////////////////////
     @Override
