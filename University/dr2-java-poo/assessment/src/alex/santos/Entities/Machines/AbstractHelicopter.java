@@ -9,10 +9,6 @@ public abstract class AbstractHelicopter extends AbstractAircraft {
 
 
     // CONSTRUTORES
-    protected AbstractHelicopter(String prefix, String model, String manufacturer) {
-        super(prefix, model, manufacturer);
-    }
-
     public AbstractHelicopter(String prefix, String model, String manufacturer, HelicopterTypeEnum typeHelicopter) {
         super(prefix, model, manufacturer);
         this.typeHelicopter = typeHelicopter;

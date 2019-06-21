@@ -2,28 +2,26 @@ package alex.santos.Entities.Machines;
 
 import alex.santos.Entities.Interfaces.IAircraft;
 
-public class Airplane extends AbstractAircraft implements IAircraft {
+public class Airplane extends AbstractAircraft implements IAircraft{
 
     private int seatAmount;
     private String companyName;
 
 
     // CONSTRUCTORS
-        // Empty
     public Airplane(String prefix, String model, String manufacturer) {
         super(prefix, model, manufacturer);
         this.seatAmount = 0;
-        this.companyName = "EMPTY_COMPANY";
+        this.companyName = "NO COMPANY";
     }
 
-        // Full
     public Airplane(String prefix, String model, String manufacturer, int seatAmount, String companyName) {
         super(prefix, model, manufacturer);
         this.seatAmount = seatAmount;
         this.companyName = companyName;
     }
 
-    // GET SET
+    // GET SETs     --------------------------------------------------------------
     public int getSeatAmount() {
         return seatAmount;
     }
@@ -41,13 +39,13 @@ public class Airplane extends AbstractAircraft implements IAircraft {
     }
 
 
-    // METHODS
+    // METHODS      --------------------------------------------------------------
     public int getAirplaneCode(){
         int code = (getPrefix()+getModel()+getCompanyName()).hashCode();
         return code;
     }
 
-    // OVERRIDE
+    // OVERRIDE     --------------------------------------------------------------
     @Override
     public String toString() {
         return this.getPrefix()
@@ -62,5 +60,4 @@ public class Airplane extends AbstractAircraft implements IAircraft {
         //++ more atribults
         //++ more atribults
     }
-
 }

@@ -4,32 +4,33 @@ import alex.santos.Entities.Airport;
 import alex.santos.Shared.MockAirportMng;
 import alex.santos.Shared.Utils;
 
-import java.lang.invoke.SerializedLambda;
-import java.util.stream.Stream;
 
 public class AirportMngService {
 
-
-    private Airport x;
+    private MockAirportMng dados;
 
     public AirportMngService() {
         startEntities();
     }
 
     private void startEntities(){
-        MockAirportMng dados = new MockAirportMng();
+        dados = new MockAirportMng();
 
         String galeaoCode = "GIG";
-        Airport galeao = MockAirportMng.aeroportosList.stream()
-                .filter(x -> x.getAirportCode().equals(galeaoCode))
-                .map(x -> (Airport)x);
+        Airport galeao = null;
+        for (Airport i: MockAirportMng.aeroportosList) {
+            if ( i.getAirportCode().equals(galeaoCode)){
+                galeao = i;
+                break;
+            }
+        }
 
         if (galeao == null){
             Utils.msgERRO("Aeroporto Galeão NÂO criado.");
         }
         else {
-            Utils.msg("Aeroporto Galeão já Criado.");
+            Utils.msg("Aeroporto Galeão Criado."+galeaoCode.toString());
+            galeao.setFlightsList(MockAirportMng.voosList);
         }
-
     }
 }

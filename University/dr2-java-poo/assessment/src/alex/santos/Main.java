@@ -1,23 +1,13 @@
 package alex.santos;
 
 import alex.santos.Services.AirportMngService;
+import alex.santos.Shared.Utils;
 
 public class Main {
 
     public static void main(String[] args) {
-        AirportMngService anatel = new AirportMngService();
+        AirportMngService anac = new AirportMngService();
 
-
-        /*TODO: Entities
-        -> AEROPORTOS:
-            1. precisa de Cidade
-        -> VOO:
-            1. precisa de Aeronave
-            2. Precisa de Aeroportos (que precisa existir cidades)
-         */
-
-
-
-        System.out.println("\n------------\nTudo OK!\n------------");
+        Utils.msg("------------\nTudo OK!\n------------");
     }
 }

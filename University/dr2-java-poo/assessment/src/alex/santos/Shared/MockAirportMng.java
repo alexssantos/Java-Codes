@@ -71,7 +71,7 @@ public class MockAirportMng {
     //3
     public void generateAircrafts(){
         Utils.msg("\nCriando Aviões!");
-        
+
         avioesList.addAll(Arrays.asList(
                 new Airplane("AAA-BR","A1","Embraer"),
                 new Airplane("AAA-BR","A2","Embraer"),
