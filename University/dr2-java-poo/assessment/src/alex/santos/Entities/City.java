@@ -1,6 +1,6 @@
 package alex.santos.Entities;
 
-import alex.santos.Shared.MockAirportMng;
+import alex.santos.Shared.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,10 +69,10 @@ public class City implements Comparable<City>{
     }
 
     public static boolean existis(String name){
-        if (MockAirportMng.cidadesList.isEmpty()){
+        if (Mock.cidadesList.isEmpty()){
             return false;
         }
-        for (City item: MockAirportMng.cidadesList) {
+        for (City item: Mock.cidadesList) {
             if (item.Name == name){
                 return true;
             }

@@ -1,6 +1,6 @@
 package alex.santos.Entities;
 
-import alex.santos.Shared.MockAirportMng;
+import alex.santos.Shared.Mock;
 import alex.santos.Shared.Utils;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Airport implements Comparable<Airport>{
 
-    public final int AIRPLANES_MAX =
+    public final int AIRPLANES_MAX = 100;
     private String AirportCode;
     private String Name;
     private String CityName;
@@ -161,7 +161,7 @@ public class Airport implements Comparable<Airport>{
 
     public static String getAirportNameByCode(String code){
         String name;
-        for (Airport item : MockAirportMng.aeroportosList) {
+        for (Airport item : Mock.aeroportosList) {
             if (code.equals(item.getAirportCode()))
             {
                 name = item.toString();
@@ -194,11 +194,11 @@ public class Airport implements Comparable<Airport>{
     }
 
     public static Airport getAirportByCode(String code){
-        if (MockAirportMng.aeroportosList.isEmpty()){
+        if (Mock.aeroportosList.isEmpty()){
             Utils.msgERRO("Lista de Aeroportos está vazia.");
             return null;
         }
-        for (Airport item: MockAirportMng.aeroportosList) {
+        for (Airport item: Mock.aeroportosList) {
             if ( item.getAirportCode().equals(code)){
                 Utils.msg("Aeroporto encontrado:\n - "+item.toString());
                 return item;

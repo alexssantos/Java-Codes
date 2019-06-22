@@ -1,11 +1,8 @@
 package alex.santos.Entities;
 
 import alex.santos.Entities.Interfaces.IAircraft;
-import alex.santos.Shared.MockAirportMng;
+import alex.santos.Shared.Mock;
 
-import java.awt.*;
-import java.util.Date;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Flight implements Comparable<Flight> {
@@ -130,21 +127,21 @@ public class Flight implements Comparable<Flight> {
     }
 
     public String getFlightInfosByCode(int FlightCode){
-        if ( MockAirportMng.voosList.isEmpty()){
+        if ( Mock.voosList.isEmpty()){
             return null;
         }
 
-        java.util.List<Flight> voo = MockAirportMng.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
+        java.util.List<Flight> voo = Mock.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
         String infos = !voo.isEmpty() ? voo.get(0).toString() : null;
         return infos;
     }
 
     public Flight getFlightByCode(int FlightCode){
-        if ( MockAirportMng.voosList.isEmpty()){
+        if ( Mock.voosList.isEmpty()){
             return null;
         }
 
-        for (Flight voo : MockAirportMng.voosList)
+        for (Flight voo : Mock.voosList)
         {
             if (this.compareTo(voo) == 0){
                 return voo;
@@ -155,11 +152,11 @@ public class Flight implements Comparable<Flight> {
 
     /*  STREAM
     public Fly getFlightByCode(int FlightCode){
-        if ( MockAirportMng.voosList.isEmpty()){
+        if ( Mock.voosList.isEmpty()){
             return null;
         }
 
-        List<Fly> voo = MockAirportMng.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
+        List<Fly> voo = Mock.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
         Fly retorno = !voo.isEmpty() ? voo.get(0) : null;
         return retorno;
     }

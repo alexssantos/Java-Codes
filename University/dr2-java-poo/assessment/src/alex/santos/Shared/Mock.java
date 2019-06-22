@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MockAirportMng {
+public class Mock {
 
 
     //Listas
@@ -25,7 +25,7 @@ public class MockAirportMng {
     public static List<HelicopterCostGuard> heliCostGuardList = new ArrayList<>();
     public static List<HelicopterRescue> heliRescueList= new ArrayList<>();
 
-    public MockAirportMng() {
+    public Mock() {
         generateCities();
         generateAirports();
         generateAircrafts();
@@ -113,22 +113,22 @@ public class MockAirportMng {
         int aviaoCode = aviao.getAirplaneCode();
         String today = "01/01/19";
 
-        String code1 = aeroportosList.get(0).getAirportCode();  // GIG
-        String code2 = aeroportosList.get(1).getAirportCode();  // CWB
-        String code3 = aeroportosList.get(2).getAirportCode();  // GRU
+        String GIG = aeroportosList.get(0).getAirportCode();  // GIG
+        String CWB = aeroportosList.get(1).getAirportCode();  // CWB
+        String CRU = aeroportosList.get(2).getAirportCode();  // GRU
 
         Utils.msg("\nCriando Vôos!");
         //voo - aviao1
         List<Flight> voos = new ArrayList<>();
         voos.addAll(Arrays.asList(
-           new Flight(today,"04:00",today,"04:00",code1,code2, aviao,"Azul"),
-           new Flight(today,"07:00",today,"08:00",code2,code1, aviao,"Azul"),
+           new Flight(today,"04:00",today,"04:00",GIG,CWB, aviao,"Azul"),
+           new Flight(today,"07:00",today,"08:00",CWB,GIG, aviao,"Azul"),
 
-           new Flight(today,"14:00",today,"16:00",code1,code3, aviao,"Azul"),
-           new Flight(today,"14:00",today,"16:00",code3,code1, aviao,"Azul"),
+           new Flight(today,"14:00",today,"16:00",GIG,CRU, aviao,"Azul"),
+           new Flight(today,"14:00",today,"16:00",CRU,GIG, aviao,"Azul"),
 
-           new Flight(today,"14:00",today,"16:00",code2,code3, aviao,"Azul"),
-           new Flight(today,"14:00",today,"16:00",code3,code2, aviao,"Azul")
+           new Flight(today,"14:00",today,"16:00",CWB,CRU, aviao,"Azul"),
+           new Flight(today,"14:00",today,"16:00",CRU,CWB, aviao,"Azul")
         ));
         voos = Utils.checkRepeaters(voosList, voos);
         voosList.addAll(voos);
@@ -139,14 +139,14 @@ public class MockAirportMng {
         }
 
         voos.addAll(Arrays.asList(
-                new Flight(today,"04:00",today,"04:00",code2,code3, aviao,"LATAM"),
-                new Flight(today,"07:00",today,"08:00",code3,code2, aviao,"LATAM"),
+                new Flight(today,"04:00",today,"04:00",CWB,CRU, aviao,"LATAM"),
+                new Flight(today,"07:00",today,"08:00",CRU,CWB, aviao,"LATAM"),
 
-                new Flight(today,"14:00",today,"16:00",code2,code1, aviao,"LATAM"),
-                new Flight(today,"14:00",today,"16:00",code1,code2, aviao,"LATAM"),
+                new Flight(today,"14:00",today,"16:00",CWB,GIG, aviao,"LATAM"),
+                new Flight(today,"14:00",today,"16:00",GIG,CWB, aviao,"LATAM"),
 
-                new Flight(today,"14:00",today,"16:00",code3,code1, aviao,"LATAM"),
-                new Flight(today,"14:00",today,"16:00",code1,code3, aviao,"LATAM")
+                new Flight(today,"14:00",today,"16:00",CRU,GIG, aviao,"LATAM"),
+                new Flight(today,"14:00",today,"16:00",GIG,CRU, aviao,"LATAM")
         ));
         voos = Utils.checkRepeaters(voosList, voos);
         voosList.addAll(voos);
@@ -154,15 +154,15 @@ public class MockAirportMng {
 
         // TESTE - voo REPEDITO   ------------------
 
-        Flight test = new Flight(today,"04:00",today,"04:00",code2,code3, aviao,"LATAM");
+        Flight test = new Flight(today,"04:00",today,"04:00",CWB,CRU, aviao,"LATAM");
         String Id = Integer.toString(test.getFlightNumber());
         Utils.checkRepeated(voosList,test);
 
-        test = new Flight(today,"04:00",today,"04:00",code2,code3, aviao,"GOL");
+        test = new Flight(today,"04:00",today,"04:00",CWB,CRU, aviao,"GOL");
         Id = Integer.toString(test.getFlightNumber());
         Utils.checkRepeated(voosList,test);
 
-        test = new Flight(today,"11:11",today,"22:22",code2,code3, aviao,"AIRFRANCE");
+        test = new Flight(today,"11:11",today,"22:22",CWB,CRU, aviao,"AIRFRANCE");
         Id = Integer.toString(test.getFlightNumber());
         Utils.checkRepeated(voosList,test);
         //test
@@ -183,7 +183,7 @@ public class MockAirportMng {
             return;
         }
 
-        T clone = list.get(getRandomInt(0,list));
+        T clone = list.get(getRandomInt(0,list));   //pega aleatorio
         Utils.checkRepeated(list, clone);
     }
 

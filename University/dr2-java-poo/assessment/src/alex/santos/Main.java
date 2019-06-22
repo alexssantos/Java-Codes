@@ -1,13 +1,13 @@
 package alex.santos;
 
 import alex.santos.Entities.Airport;
-import alex.santos.Shared.MockAirportMng;
+import alex.santos.Shared.Mock;
 import alex.santos.Shared.Utils;
 
 public class Main {
 
     public static void main(String[] args) {
-        MockAirportMng dados = new MockAirportMng();
+        Mock dados = new Mock();
 
         //Pegando Aeroporto
         String galeaoCode = "GIG";
