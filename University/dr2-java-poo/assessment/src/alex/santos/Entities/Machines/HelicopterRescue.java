@@ -12,7 +12,7 @@ public class HelicopterRescue extends AbstractHelicopter implements IHelicopter 
     }
 
     @Override
-    public void Flight() {
+    public void Fly() {
 
     }
 

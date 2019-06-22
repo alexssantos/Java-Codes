@@ -5,7 +5,6 @@ import static alex.santos.Shared.SharedEnums.*;
 
 public class HelicopterAirTaxi extends AbstractHelicopter implements IHelicopter {
 
-
     double TaxValue;
 
     // CONSTRUTOR
@@ -13,9 +12,18 @@ public class HelicopterAirTaxi extends AbstractHelicopter implements IHelicopter
         super(prefix, model, manufacturer,  HelicopterTypeEnum.AirTaxi);
     }
 
+    //GET SETs          -----------------------------------------
+    public double getTaxValue() {
+        return TaxValue;
+    }
 
+    public void setTaxValue(double taxValue) {
+        TaxValue = taxValue;
+    }
+
+    // OVERRIDES        -----------------------------------------
     @Override
-    public void Flight() {
+    public void Fly() {
 
     }
 

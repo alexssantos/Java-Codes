@@ -13,7 +13,7 @@ public class HelicopterCostGuard extends AbstractHelicopter implements IHelicopt
     }
 
     @Override
-    public void Flight() {
+    public void Fly() {
 
     }
 
