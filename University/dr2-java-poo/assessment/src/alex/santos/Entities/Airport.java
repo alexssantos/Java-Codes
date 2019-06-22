@@ -17,8 +17,8 @@ public class Airport implements Comparable<Airport>{
     private List<Flight> FlightsList; //voos ToGO ou ToCome.
     private List<City> DestinyCitiesList;
 
-    private List<String> AirportsToGo;      //airport Codes
-    private List<String> AirportsToCome;    //airport Codes
+    private List<String> AirportsDestiny;      //airport Codes
+    private List<String> AirportsToReceive;    //airport Codes
 
 
     // constructor
@@ -32,8 +32,8 @@ public class Airport implements Comparable<Airport>{
 
         FlightsList = new ArrayList<>();
         DestinyCitiesList = new ArrayList<>();
-        AirportsToCome = new ArrayList<>();
-        AirportsToGo = new ArrayList<>();
+        AirportsToReceive = new ArrayList<>();
+        AirportsDestiny = new ArrayList<>();
     }
 
     // GET SETs     ---------------------------------------------------------
@@ -69,17 +69,17 @@ public class Airport implements Comparable<Airport>{
         FlightsList = flightsList;
     }
 
-    public List<String> getAirportsToGo() {
-        return AirportsToGo;
+    public List<String> getAirportsDestiny() {
+        return AirportsDestiny;
     }
 
     //NO: setAirportsToGo(List<String> airportsToGo) {}
 
-    public List<String> getAirportsToCome() {
-        return AirportsToCome;
+    public List<String> getAirportsToReceive() {
+        return AirportsToReceive;
     }
 
-    //NO: -setAirportsToCome(List<String> airportsToCome) {}
+    //NO: setAirportsToCome(List<String> airportsToCome) {}
 
 
 
@@ -94,23 +94,27 @@ public class Airport implements Comparable<Airport>{
         this.internalStatus = !(this.internalStatus);
     }
 
-    public boolean addAirportToGo(String codeNew){
-        if (getAirportByCode(codeNew) == null){
+    public boolean addAirportDestiny(String codeNew){
+        Airport destiny = getAirportByCode(codeNew);
+        if (destiny == null){
             Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
             return false;
         }
-        AirportsToGo.add(codeNew);
-        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de avioes para ir.");
+        AirportsDestiny.add(codeNew);
+        destiny.AirportsToReceive.add(this.AirportCode);
+        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de voos partindo de "+ AirportCode);
         return true;
     }
 
-    public boolean addAirportToCome(String codeNew){
-        if (getAirportByCode(codeNew) == null){
+    public boolean addAirportToReceive(String codeNew){
+        Airport base = getAirportByCode(codeNew);
+        if (base == null){
             Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
             return false;
         }
-        AirportsToCome.add(codeNew);
-        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de avioes para receber.");
+        AirportsToReceive.add(codeNew);
+        base.AirportsDestiny.add(this.AirportCode);
+        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de voos com destino à "+AirportCode);
         return true;
     }
 
@@ -149,12 +153,12 @@ public class Airport implements Comparable<Airport>{
 
     public static Airport getAirportByCode(String code){
         if (MockAirportMng.aeroportosList.isEmpty()){
-            Utils.msgERRO("Lista de Aeroportos vazia.");
+            Utils.msgERRO("Lista de Aeroportos está vazia.");
             return null;
         }
         for (Airport item: MockAirportMng.aeroportosList) {
             if ( item.getAirportCode().equals(code)){
-                Utils.msg("Aeroporto criado:\n"+item.toString());
+                Utils.msg("Aeroporto encontrado:\n - "+item.toString());
                 return item;
             }
         }
