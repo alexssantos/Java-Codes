@@ -1,20 +1,15 @@
 package alex.santos.Entities;
 
-import alex.santos.Entities.Interfaces.IAircraft;
 import alex.santos.Shared.MockAirportMng;
 import alex.santos.Shared.Utils;
 
-
-import java.time.Clock;
-import java.time.Instant;
-import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 public class Airport implements Comparable<Airport>{
 
+    public final int AIRPLANES_MAX =
     private String AirportCode;
     private String Name;
     private String CityName;
@@ -164,6 +159,18 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
+    public static String getAirportNameByCode(String code){
+        String name;
+        for (Airport item : MockAirportMng.aeroportosList) {
+            if (code.equals(item.getAirportCode()))
+            {
+                name = item.toString();
+                return name;
+            }
+        }
+        return null;
+    }
+
     public boolean addNewFlight(){
 
         //1. Verificar aeroportoDestiny com AeroportosToGo do aeroporto
@@ -202,17 +209,6 @@ public class Airport implements Comparable<Airport>{
         return null;
     }
 
-    public static String getAirportNameByCode(String code){
-        String name;
-        for (Airport item : MockAirportMng.aeroportosList) {
-            if (code.equals(item.getAirportCode()))
-            {
-                name = item.toString();
-                return name;
-            }
-        }
-        return null;
-    }
 
 
     // METHODS OVERRIDES ---------------------------------------------------------
