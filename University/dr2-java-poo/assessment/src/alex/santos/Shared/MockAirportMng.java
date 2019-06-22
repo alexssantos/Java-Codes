@@ -41,7 +41,7 @@ public class MockAirportMng {
         newCidades.addAll(Arrays.asList(
             new City("Rio de Janeiro",1500000),
             new City("Curitiba", 750000),
-            new City("São Paula", 800000)
+            new City("São Paulo", 800000)
         ));
         newCidades = Utils.checkRepeaters(cidadesList, newCidades);
         cidadesList.addAll(newCidades);

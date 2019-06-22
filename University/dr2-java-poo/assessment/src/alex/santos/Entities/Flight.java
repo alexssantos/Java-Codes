@@ -40,7 +40,7 @@ public class Flight implements Comparable<Flight> {
         airportDestiny = airportDestinyCode;
         this.aircraft = aircraft;
         flightNumber = generateFlightNumber();
-        totalVacancy = 156;     //Airbus A320
+        totalVacancy = 156;     //based on Airbus A320
         company = !(CompanyName.isEmpty()) ? CompanyName :EMPTY_COMPANY;
 
     }
@@ -144,10 +144,26 @@ public class Flight implements Comparable<Flight> {
             return null;
         }
 
-        List<Flight> voo = MockAirportMng.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
-        Flight retorno = !voo.isEmpty() ? voo.get(0) : null;
+        for (Flight voo : MockAirportMng.voosList)
+        {
+            if (this.compareTo(voo) == 0){
+                return voo;
+            }
+        }
+        return null;
+    }
+
+    /*  STREAM
+    public Fly getFlightByCode(int FlightCode){
+        if ( MockAirportMng.voosList.isEmpty()){
+            return null;
+        }
+
+        List<Fly> voo = MockAirportMng.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
+        Fly retorno = !voo.isEmpty() ? voo.get(0) : null;
         return retorno;
     }
+    */
 
     //Overrides ///////////////////////////////////////
     @Override

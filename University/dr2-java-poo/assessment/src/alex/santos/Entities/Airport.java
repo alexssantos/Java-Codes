@@ -1,6 +1,8 @@
 package alex.santos.Entities;
 
 import alex.santos.Shared.MockAirportMng;
+import alex.santos.Shared.Utils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,21 +12,29 @@ public class Airport implements Comparable<Airport>{
 
     private String AirportCode;
     private String Name;
-    private String City;
+    private String CityName;
     private boolean internalStatus;
-    private List<Flight> FlightsList;
+    private List<Flight> FlightsList; //voos ToGO ou ToCome.
     private List<City> DestinyCitiesList;
+
+    private List<String> AirportsToGo;      //airport Codes
+    private List<String> AirportsToCome;    //airport Codes
 
 
     // constructor
-    public Airport(String airportCode, String name, String city) {
+    public Airport(String airportCode, String name, String cityName) {
         AirportCode = airportCode;
         Name = name;
-        City = city;
+        if(!City.existis(cityName)){
+            throw new IllegalArgumentException("Cidade não Existe. Não pode criar um aeroporto sem cidade.");
+        }
+        this.CityName = cityName;
+
         FlightsList = new ArrayList<>();
         DestinyCitiesList = new ArrayList<>();
+        AirportsToCome = new ArrayList<>();
+        AirportsToGo = new ArrayList<>();
     }
-
 
     // GET SETs     ---------------------------------------------------------
     public String getAirportCode() {
@@ -43,12 +53,12 @@ public class Airport implements Comparable<Airport>{
         Name = name;
     }
 
-    public String getCity() {
-        return City;
+    public String getCityName() {
+        return CityName;
     }
 
-    public void setCity(String city) {
-        City = city;
+    public void setCityName(String cityName) {
+        CityName = cityName;
     }
 
     public List<Flight> getFlightsList() {
@@ -58,6 +68,19 @@ public class Airport implements Comparable<Airport>{
     public void setFlightsList(List<Flight> flightsList) {
         FlightsList = flightsList;
     }
+
+    public List<String> getAirportsToGo() {
+        return AirportsToGo;
+    }
+
+    //NO: setAirportsToGo(List<String> airportsToGo) {}
+
+    public List<String> getAirportsToCome() {
+        return AirportsToCome;
+    }
+
+    //NO: -setAirportsToCome(List<String> airportsToCome) {}
+
 
 
     // METHODS      ---------------------------------------------------------
@@ -71,9 +94,28 @@ public class Airport implements Comparable<Airport>{
         this.internalStatus = !(this.internalStatus);
     }
 
+    public boolean addAirportToGo(String codeNew){
+        if (getAirportByCode(codeNew) == null){
+            Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
+            return false;
+        }
+        AirportsToGo.add(codeNew);
+        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de avioes para ir.");
+        return true;
+    }
+
+    public boolean addAirportToCome(String codeNew){
+        if (getAirportByCode(codeNew) == null){
+            Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
+            return false;
+        }
+        AirportsToCome.add(codeNew);
+        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de avioes para receber.");
+        return true;
+    }
+
     //TODO: metodo - aeronave in aeronaveList (prefix)
     public boolean hasAircraft(){
-
         return true;
     }
 
@@ -83,14 +125,54 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
-    public static String getAirportName(String code){
-        String igual = MockAirportMng.aeroportosList.stream()
-                .filter(x -> code.equals(x.getAirportCode()))
-                .findFirst()
-                .map(x -> x.getName())
-                .toString();
+    public boolean addNewFlight(){
 
-        return igual;
+        //1. Verificar aeroportoDestiny com AeroportosToGo do aeroporto
+        //2. Verificar aeroportoArrive com AeroportosToCome do aeroporto
+
+
+
+
+        return true;
+    }
+
+    public boolean validateNewFlight(){
+
+
+
+
+
+
+
+        return true;
+    }
+
+    public static Airport getAirportByCode(String code){
+        if (MockAirportMng.aeroportosList.isEmpty()){
+            Utils.msgERRO("Lista de Aeroportos vazia.");
+            return null;
+        }
+        for (Airport item: MockAirportMng.aeroportosList) {
+            if ( item.getAirportCode().equals(code)){
+                Utils.msg("Aeroporto criado:\n"+item.toString());
+                return item;
+            }
+        }
+        String msg = String.format("NÃO encontrado Aeroporto: "+code);
+        Utils.msgERRO(msg);
+        return null;
+    }
+
+    public static String getAirportNameByCode(String code){
+        String name;
+        for (Airport item : MockAirportMng.aeroportosList) {
+            if (code.equals(item.getAirportCode()))
+            {
+                name = item.toString();
+                return name;
+            }
+        }
+        return null;
     }
 
     public boolean equals(Airport other){
@@ -104,7 +186,7 @@ public class Airport implements Comparable<Airport>{
     // METHODS OVERRIDES ---------------------------------------------------------
     @Override
     public String toString() {
-        return AirportCode + " : " + Name + ", " + City;
+        return AirportCode + " : " + Name + ", " + CityName;
     }
 
     @Override

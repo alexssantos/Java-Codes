@@ -1,12 +1,23 @@
 package alex.santos;
 
-import alex.santos.Services.AirportMngService;
+import alex.santos.Entities.Airport;
+import alex.santos.Shared.MockAirportMng;
 import alex.santos.Shared.Utils;
 
 public class Main {
 
     public static void main(String[] args) {
-        AirportMngService anac = new AirportMngService();
+        MockAirportMng dados = new MockAirportMng();
+
+        //Pegando Aeroporto
+        String galeaoCode = "GIG";
+        Airport galeao = Airport.getAirportByCode(galeaoCode);
+
+
+        Utils.msg("---getAirportNameByCode---");
+        String name = Airport.getAirportNameByCode("GIG");
+        Utils.msg(name);
+
 
         Utils.msg("------------\nTudo OK!\n------------");
     }
