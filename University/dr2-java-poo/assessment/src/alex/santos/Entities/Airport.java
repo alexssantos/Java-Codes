@@ -1,10 +1,15 @@
 package alex.santos.Entities;
 
+import alex.santos.Entities.Interfaces.IAircraft;
 import alex.santos.Shared.MockAirportMng;
 import alex.santos.Shared.Utils;
 
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -13,7 +18,7 @@ public class Airport implements Comparable<Airport>{
     private String AirportCode;
     private String Name;
     private String CityName;
-    private boolean internalStatus;
+    private boolean internationalStatus;
     private List<Flight> FlightsList; //voos ToGO ou ToCome.
     private List<City> DestinyCitiesList;
 
@@ -86,12 +91,12 @@ public class Airport implements Comparable<Airport>{
     // METHODS      ---------------------------------------------------------
     public boolean isInternational()
     {
-        return internalStatus;
+        return internationalStatus;
     }
 
-    public void switchInternalStatus()
+    public void switchInternationalStatus()
     {
-        this.internalStatus = !(this.internalStatus);
+        this.internationalStatus = !(this.internationalStatus);
     }
 
     public boolean addAirportDestiny(String codeNew){
@@ -118,9 +123,39 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
-    //TODO: metodo - aeronave in aeronaveList (prefix)
-    public boolean hasAircraft(){
-        return true;
+    public boolean equals(Airport other){
+        if (compareTo(other) == 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasAircraft(String prefix)
+    {
+        //Instant now = new Instant.now();
+
+        // nao partiram
+        for (Flight item: FlightsList) {
+            if (item.getAirportOrigin() == AirportCode
+                && item.getAircraft().getPrefix().equals(prefix)
+                //&& x.getTakeOffTimeStr() > now
+
+            ){
+                return true;
+            }
+        }
+
+        //ja chegaram
+        for (Flight item: FlightsList) {
+            if (item.getAirportDestiny() == AirportCode
+                && item.getAircraft().getPrefix().equals(prefix)
+                //&& x.getArriveTimeStr() < now
+            ){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     //TODO:
@@ -177,13 +212,6 @@ public class Airport implements Comparable<Airport>{
             }
         }
         return null;
-    }
-
-    public boolean equals(Airport other){
-        if (compareTo(other) == 0){
-            return true;
-        }
-        return false;
     }
 
 
