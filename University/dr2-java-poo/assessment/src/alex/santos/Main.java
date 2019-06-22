@@ -19,6 +19,15 @@ public class Main {
         Utils.msg(name);
 
 
+
+        //Adicionar aeroportos entre si.
+        Airport GIG = Airport.getAirportByCode("GIG");
+        GIG.addAirportDestiny("CWB");
+        Utils.msg(GIG.getAirportsDestiny().toString());
+
+        Airport CWB = Airport.getAirportByCode("CWB");
+        Utils.msg(CWB.getAirportsToReceive().toString());
+
         Utils.msg("------------\nTudo OK!\n------------");
     }
 }
