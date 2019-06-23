@@ -2,6 +2,7 @@ package alex.santos.Shared;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -72,6 +73,16 @@ public class Utils<T> {
         Date dateOut = SDF.parse(day+" "+ time);
         return dateOut;
     }
+
+    public static Date dateAddHours(Date date, int hours) throws ParseException {
+        if (hours > 0){
+            return Date.from(date.toInstant().minus(2, ChronoUnit.HOURS));
+        }
+        else{
+            return Date.from(date.toInstant().plus(2, ChronoUnit.HOURS));
+        }
+    }
+
 
 
 }

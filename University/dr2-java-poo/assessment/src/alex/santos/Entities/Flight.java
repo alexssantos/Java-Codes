@@ -68,6 +68,18 @@ public class Flight implements Comparable<Flight> {
         return takeOffDate;
     }
 
+    public String getTakeOffDateSrt() {
+        return Utils.printDate(takeOffDate);
+    }
+
+    public String getTakeOffDaySrt() {
+        return Utils.printDate(takeOffDate).split(" ")[0];
+    }
+
+    public String getTakeOffTimeSrt() {
+        return Utils.printDate(takeOffDate).split(" ")[1];
+    }
+
     public void setTakeOffDate(Date takeOffDate) {
         this.takeOffDate = takeOffDate;
     }

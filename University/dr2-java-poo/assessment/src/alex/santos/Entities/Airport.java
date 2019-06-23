@@ -3,6 +3,8 @@ package alex.santos.Entities;
 import alex.santos.Shared.Mock;
 import alex.santos.Shared.Utils;
 
+import java.text.ParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -179,13 +181,49 @@ public class Airport implements Comparable<Airport>{
         return null;
     }
 
-    public boolean addNewFlight(){
+    public static  boolean addNewFlight(Flight newVoo){
+        //presumindo ficar 2h +- em cada aeroporto ate voar noavmente.
+        Airport origin = Airport.getAirportByCode(newVoo.getAirportOrigin());
+        Airport destiny = Airport.getAirportByCode(newVoo.getAirportDestiny());
 
-        //1. Verificar aeroportoDestiny com AeroportosToGo do aeroporto
-        //2. Verificar aeroportoArrive com AeroportosToCome do aeroporto
+        boolean hasPlaces = origin != null && destiny != null;
+        if (!hasPlaces) return false;
 
 
+        Date startOrigin = new Date();
+        Date endDestiny = new Date();
+        try {
+            startOrigin = Utils.dateAddHours(newVoo.getTakeOffDate(), -2);
+            endDestiny = Utils.dateAddHours(newVoo.getArriveDate(), 2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        };
 
+        boolean canOrigin = origin.canAddFlight(startOrigin, newVoo.getTakeOffDate());
+        boolean canDestiny = origin.canAddFlight(newVoo.getArriveDate(), endDestiny);
+
+        if (canOrigin && canDestiny){
+            origin.FlightsList.add(newVoo);
+            destiny.FlightsList.add(newVoo);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean canAddFlight(Date start, Date end){
+        //verificar quantos avios no patio no hoario se nao ultrapassa o maximo.
+        int count = 0;
+        for (Flight voo: FlightsList) {
+            boolean naoFoi = voo.takeOffDate.compareTo(end) < 0
+                                && (!voo.getAirportDestiny().equals(getAirportCode()));
+            boolean jachegou = voo.arriveDate.compareTo(start) > 0
+                                && (voo.getAirportDestiny().equals(getAirportCode()));
+
+            if (naoFoi || jachegou){
+                count++;
+            }
+        }
+        if (count>=AIRPLANES_MAX) return false;
 
         return true;
     }
