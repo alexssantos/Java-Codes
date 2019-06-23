@@ -9,8 +9,11 @@ import alex.santos.Entities.Machines.HelicopterCostGuard;
 import alex.santos.Entities.Machines.HelicopterRescue;
 import jdk.jshell.execution.Util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Mock {
@@ -25,11 +28,17 @@ public class Mock {
     public static List<HelicopterCostGuard> heliCostGuardList = new ArrayList<>();
     public static List<HelicopterRescue> heliRescueList= new ArrayList<>();
 
-    public Mock() {
+    public Mock(){
         generateCities();
         generateAirports();
         generateAircrafts();
-        generateFlights();
+
+        try {
+            generateFlights();  // possiveis erros de Datas.
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -108,67 +117,90 @@ public class Mock {
     }
 
     //4
-    public void generateFlights(){
+    public void generateFlights() throws ParseException {
+
+        String today = Utils.printDate(new Date()).split(" ")[0];   // ex.: "23/06/19"
+
         Airplane aviao = avioesList.get(getRandomInt(0,avioesList));
         int aviaoCode = aviao.getAirplaneCode();
-        String today = "01/01/19";
+
 
         String GIG = aeroportosList.get(0).getAirportCode();  // GIG
         String CWB = aeroportosList.get(1).getAirportCode();  // CWB
         String CRU = aeroportosList.get(2).getAirportCode();  // GRU
 
         Utils.msg("\nCriando Vôos!");
+
+        /* title: HORARIOS DE VOOS
+         * "04:00" -> "06:00" IDA
+         * "08:00" -> "10:00" VOLTA
+         *
+         * "12:00" -> "14:00" IDA
+         * "15:00" -> "17:00" VOLTA
+         *
+         * "18:00" -> "20:00" IDA
+         * "21:00" -> "23:00" VOLTA
+         * */
+
         //voo - aviao1
         List<Flight> voos = new ArrayList<>();
         voos.addAll(Arrays.asList(
-           new Flight(today,"04:00",today,"04:00",GIG,CWB, aviao,"Azul"),
-           new Flight(today,"07:00",today,"08:00",CWB,GIG, aviao,"Azul"),
+           new Flight(Utils.createDate(today, "04:00"),Utils.createDate(today, "06:00"),GIG,CWB, aviao,"Azul"),
+           new Flight(Utils.createDate(today, "08:00"),Utils.createDate(today, "10:00"),CWB,GIG, aviao,"Azul"),
 
-           new Flight(today,"14:00",today,"16:00",GIG,CRU, aviao,"Azul"),
-           new Flight(today,"14:00",today,"16:00",CRU,GIG, aviao,"Azul"),
+           new Flight(Utils.createDate(today, "12:00"),Utils.createDate(today, "14:00"),GIG,CRU, aviao,"Azul"),
+           new Flight(Utils.createDate(today, "15:00"),Utils.createDate(today, "17:00"),CRU,GIG, aviao,"Azul"),
 
-           new Flight(today,"14:00",today,"16:00",CWB,CRU, aviao,"Azul"),
-           new Flight(today,"14:00",today,"16:00",CRU,CWB, aviao,"Azul")
+           new Flight(Utils.createDate(today, "18:00"),Utils.createDate(today, "20:00"),CWB,CRU, aviao,"Azul"),
+           new Flight(Utils.createDate(today, "21:00"),Utils.createDate(today, "23:00"),CRU,CWB, aviao,"Azul")
         ));
         voos = Utils.checkRepeaters(voosList, voos);
         voosList.addAll(voos);
+
+        int ix = Utils.prtList(voosList);
+        Utils.msg("Vôos criados: "+ix);
+
+        Utils.msg("-----------------------   MUDANDO AVIAO DE VOOS   -----------------------");
 
         aviao = avioesList.get(getRandomInt(0,avioesList));
         while (aviaoCode == aviao.getAirplaneCode()){
             aviao = avioesList.get(getRandomInt(0,avioesList));
         }
 
-        voos.addAll(Arrays.asList(
-                new Flight(today,"04:00",today,"04:00",CWB,CRU, aviao,"LATAM"),
-                new Flight(today,"07:00",today,"08:00",CRU,CWB, aviao,"LATAM"),
+        //aviao 2
+        List<Flight> voos2 = new ArrayList<>();
+        voos2.addAll(Arrays.asList(
+                new Flight(Utils.createDate(today, "04:00"),Utils.createDate(today, "06:00"),CWB,CRU, aviao,"LATAM"),
+                new Flight(Utils.createDate(today, "08:00"),Utils.createDate(today, "10:00"),CRU,CWB, aviao,"LATAM"),
 
-                new Flight(today,"14:00",today,"16:00",CWB,GIG, aviao,"LATAM"),
-                new Flight(today,"14:00",today,"16:00",GIG,CWB, aviao,"LATAM"),
+                new Flight(Utils.createDate(today, "12:00"),Utils.createDate(today, "14:00"),CWB,GIG, aviao,"LATAM"),
+                new Flight(Utils.createDate(today, "15:00"),Utils.createDate(today, "17:00"),GIG,CWB, aviao,"LATAM"),
 
-                new Flight(today,"14:00",today,"16:00",CRU,GIG, aviao,"LATAM"),
-                new Flight(today,"14:00",today,"16:00",GIG,CRU, aviao,"LATAM")
+                new Flight(Utils.createDate(today, "18:00"),Utils.createDate(today, "20:00"),CRU,GIG, aviao,"LATAM"),
+                new Flight(Utils.createDate(today, "21:00"),Utils.createDate(today, "23:00"),GIG,CRU, aviao,"LATAM")
         ));
-        voos = Utils.checkRepeaters(voosList, voos);
-        voosList.addAll(voos);
 
 
-        // TESTE - voo REPEDITO   ------------------
+        voos2 = Utils.checkRepeaters(voosList, voos2);
+        voosList.addAll(voos2);
 
-        Flight test = new Flight(today,"04:00",today,"04:00",CWB,CRU, aviao,"LATAM");
+        ix = Utils.prtList(voosList);
+        Utils.msg("Total Vôos criados: "+ix+"   ---------------------");
+
+
+        Utils.msg("// TESTE: voo REPEDITO   ------------------");
+        Flight test = new Flight(Utils.createDate(today, "04:00"),Utils.createDate(today, "06:00"),CWB,CRU, aviao,"LATAM");
         String Id = Integer.toString(test.getFlightNumber());
         Utils.checkRepeated(voosList,test);
 
-        test = new Flight(today,"04:00",today,"04:00",CWB,CRU, aviao,"GOL");
+        test = new Flight(Utils.createDate(today, "04:00"),Utils.createDate(today, "06:00"),CWB,CRU, aviao,"GOL");
         Id = Integer.toString(test.getFlightNumber());
         Utils.checkRepeated(voosList,test);
 
-        test = new Flight(today,"11:11",today,"22:22",CWB,CRU, aviao,"AIRFRANCE");
+        test = new Flight(Utils.createDate(today, "11:11"),Utils.createDate(today, "22:22"),CWB,CRU, aviao,"AIR FRANCE");
         Id = Integer.toString(test.getFlightNumber());
         Utils.checkRepeated(voosList,test);
         //test
-
-        int ix = Utils.prtList(voosList);
-        Utils.msg("Vôos criados: "+ix);
     }
 
     private int getRandomInt(int min, List<?> list){

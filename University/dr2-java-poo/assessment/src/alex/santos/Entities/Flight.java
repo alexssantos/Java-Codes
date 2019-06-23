@@ -2,7 +2,9 @@ package alex.santos.Entities;
 
 import alex.santos.Entities.Interfaces.IAircraft;
 import alex.santos.Shared.Mock;
+import alex.santos.Shared.Utils;
 
+import java.util.Date;
 import java.util.stream.Collectors;
 
 public class Flight implements Comparable<Flight> {
@@ -13,12 +15,12 @@ public class Flight implements Comparable<Flight> {
     private String company;
     private int totalVacancy;
 
-    //public Date takeOffDate;
-    //public Date arriveDate;
-    private String arriveTimeStr;
+    public Date takeOffDate;
+    public Date arriveDate;
+    /*private String arriveTimeStr;
     private String arriveDateStr;
     private String takeOffDateStr;
-    private String takeOffTimeStr;
+    private String takeOffTimeStr;*/
 
     private String airportOrigin;
     private String airportDestiny;
@@ -26,13 +28,11 @@ public class Flight implements Comparable<Flight> {
 
 
     public Flight(
-            String takeOffDate, String takeOffTime, String arriveDate, String arriveTime,
+            Date takeOffDateTime, Date arriveDateTime,
             String airportOriginCode, String airportDestinyCode, IAircraft aircraft, String CompanyName)
     {
-        takeOffDateStr = takeOffDate;
-        takeOffTimeStr = takeOffTime;
-        arriveDateStr = arriveDate;
-        arriveTimeStr = arriveTime;
+        takeOffDate = takeOffDateTime;
+        arriveDate = arriveDateTime;
         airportOrigin = airportOriginCode;
         airportDestiny = airportDestinyCode;
         this.aircraft = aircraft;
@@ -64,7 +64,24 @@ public class Flight implements Comparable<Flight> {
         this.totalVacancy = totalVacancy;
     }
 
-    public String getArriveTimeStr() {
+    public Date getTakeOffDate() {
+        return takeOffDate;
+    }
+
+    public void setTakeOffDate(Date takeOffDate) {
+        this.takeOffDate = takeOffDate;
+    }
+
+    public Date getArriveDate() {
+        return arriveDate;
+    }
+
+    public void setArriveDate(Date arriveDate) {
+        this.arriveDate = arriveDate;
+    }
+
+    // OLD DATE
+    /*public String getArriveTimeStr() {
         return arriveTimeStr;
     }
 
@@ -94,7 +111,7 @@ public class Flight implements Comparable<Flight> {
 
     public void setTakeOffTimeStr(String takeOffTimeStr) {
         this.takeOffTimeStr = takeOffTimeStr;
-    }
+    }*/
 
     public String getAirportOrigin() {
         return airportOrigin;
@@ -123,7 +140,7 @@ public class Flight implements Comparable<Flight> {
 
     // METODOS ///////////////////////////////////////
     private int generateFlightNumber(){
-        return (aircraft.toString()+takeOffDateStr+takeOffTimeStr+arriveDateStr+arriveTimeStr).hashCode();
+        return (aircraft.toString()+getTakeOffDate()+getArriveDate()).hashCode();
     }
 
     public String getFlightInfosByCode(int FlightCode){
@@ -166,8 +183,8 @@ public class Flight implements Comparable<Flight> {
     @Override
     public String toString() {
         String retorno = "Voo: "+flightNumber+" - "+company
-                        +"\nPartida | Aeroporto: "+airportOrigin+" | Data: "+takeOffDateStr+" - "+takeOffTimeStr
-                        +"\nDestino | Aeroporto: "+airportDestiny+" | Data: "+arriveDateStr+" - "+arriveTimeStr
+                        +"\nPartida | Aeroporto: "+airportOrigin+" | Data: "+ Utils.printDate(takeOffDate)
+                        +"\nDestino | Aeroporto: "+airportDestiny+" | Data: "+ Utils.printDate(arriveDate)
                         +"\nTotal Assentos Disponiveis: "+totalVacancy
                         +"\nAeronave: "+ aircraft.toString()
                         +"\nTipo: "+"";

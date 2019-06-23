@@ -1,9 +1,14 @@
 package alex.santos.Shared;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Utils<T> {
+
+    public static SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyy HH:mm");
 
     public static void msg(String msg){
         System.out.println("\n"+msg+"\n");
@@ -56,6 +61,16 @@ public class Utils<T> {
             }
         }
         return list;
+    }
+
+    public static String printDate(Date date){
+        String dateOut = SDF.format(date);
+        return dateOut;
+    }
+
+    public static Date createDate(String day, String time) throws ParseException {
+        Date dateOut = SDF.parse(day+" "+ time);
+        return dateOut;
     }
 
 
