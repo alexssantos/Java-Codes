@@ -4,6 +4,7 @@ import alex.santos.Shared.Mock;
 import alex.santos.Shared.Utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -153,9 +154,16 @@ public class Airport implements Comparable<Airport>{
         return false;
     }
 
-    //TODO:
     public boolean hasRoute(Airport other){
+        if (FlightsList.isEmpty()) return false;
 
+        Date now = new Date();
+        for (Flight item: FlightsList) {
+            if (item.getAirportDestiny().equals(other.AirportCode)
+                && item.getTakeOffDate().compareTo(now) < 0){
+                return true;
+            }
+        }
         return true;
     }
 
