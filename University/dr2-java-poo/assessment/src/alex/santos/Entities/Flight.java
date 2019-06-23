@@ -153,14 +153,14 @@ public class Flight implements Comparable<Flight> {
         return infos;
     }
 
-    public Flight getFlightByCode(int FlightCode){
+    public static Flight getFlightByCode(int FlightCode){
         if ( Mock.voosList.isEmpty()){
             return null;
         }
 
         for (Flight voo : Mock.voosList)
         {
-            if (this.compareTo(voo) == 0){
+            if (voo.getFlightNumber() == FlightCode){
                 return voo;
             }
         }
