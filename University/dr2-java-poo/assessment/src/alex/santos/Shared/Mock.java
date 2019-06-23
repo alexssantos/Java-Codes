@@ -218,43 +218,4 @@ public class Mock {
         T clone = list.get(getRandomInt(0,list));   //pega aleatorio
         Utils.checkRepeated(list, clone);
     }
-
-    public static boolean addFlight(Flight voo){
-        boolean isRepeaded = Utils.checkRepeated(voosList, voo);
-
-        if (isRepeaded) return false;
-
-        voosList.add(voo);
-        return true;
-    }
-
-    public static boolean removeFlight(int codeVoo){
-        //return voosList.removeIf(x -> x.getFlightNumber() == codeVoo);        LAMBDA
-        if (Flight.getFlightByCode(codeVoo) == null){
-            return false;
-        }
-
-        for (int i=0; i< voosList.size(); i++){
-            if (voosList.get(i).getFlightNumber() == codeVoo){
-                voosList.remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean updateFlight(Flight vooNew){
-        int codeVoo = vooNew.getFlightNumber();
-        if (Flight.getFlightByCode(codeVoo) == null){
-            return false;
-        }
-
-        for (int i=0; i< voosList.size(); i++){
-            if (voosList.get(i).getFlightNumber() == codeVoo){
-                voosList.set(i,vooNew);
-                return true;
-            }
-        }
-        return false;
-    }
 }

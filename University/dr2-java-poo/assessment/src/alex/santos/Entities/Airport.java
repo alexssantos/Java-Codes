@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Airport implements Comparable<Airport>{
@@ -85,8 +86,8 @@ public class Airport implements Comparable<Airport>{
     //NO: setAirportsToCome(List<String> airportsToCome) {}
 
 
-
     // METHODS      ---------------------------------------------------------
+
     public boolean isInternational()
     {
         return internationalStatus;
@@ -97,7 +98,7 @@ public class Airport implements Comparable<Airport>{
         this.internationalStatus = !(this.internationalStatus);
     }
 
-    public boolean addAirportDestiny(String codeNew){
+    public boolean addAirportDestinyList(String codeNew){
         Airport destiny = getAirportByCode(codeNew);
         if (destiny == null){
             Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
@@ -109,7 +110,7 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
-    public boolean addAirportToReceive(String codeNew){
+    public boolean addAirportToReceiveList(String codeNew){
         Airport base = getAirportByCode(codeNew);
         if (base == null){
             Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
@@ -169,47 +170,6 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
-    public static String getAirportNameByCode(String code){
-        String name;
-        for (Airport item : Mock.aeroportosList) {
-            if (code.equals(item.getAirportCode()))
-            {
-                name = item.toString();
-                return name;
-            }
-        }
-        return null;
-    }
-
-    public static  boolean addNewFlight(Flight newVoo){
-        //presumindo ficar 2h +- em cada aeroporto ate voar noavmente.
-        Airport origin = Airport.getAirportByCode(newVoo.getAirportOrigin());
-        Airport destiny = Airport.getAirportByCode(newVoo.getAirportDestiny());
-
-        boolean hasPlaces = origin != null && destiny != null;
-        if (!hasPlaces) return false;
-
-
-        Date startOrigin = new Date();
-        Date endDestiny = new Date();
-        try {
-            startOrigin = Utils.dateAddHours(newVoo.getTakeOffDate(), -2);
-            endDestiny = Utils.dateAddHours(newVoo.getArriveDate(), 2);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        };
-
-        boolean canOrigin = origin.canAddFlight(startOrigin, newVoo.getTakeOffDate());
-        boolean canDestiny = origin.canAddFlight(newVoo.getArriveDate(), endDestiny);
-
-        if (canOrigin && canDestiny){
-            origin.FlightsList.add(newVoo);
-            destiny.FlightsList.add(newVoo);
-            return true;
-        }
-        return false;
-    }
-
     private boolean canAddFlight(Date start, Date end){
         //verificar quantos avios no patio no hoario se nao ultrapassa o maximo.
         int count = 0;
@@ -228,15 +188,70 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
-    public boolean validateNewFlight(){
+    public boolean addFlight(Flight voo){
+        boolean isRepeaded = Utils.checkRepeated(this.FlightsList, voo);
 
+        if (isRepeaded) return false;
 
-
-
-
-
-
+        this.FlightsList.add(voo);
         return true;
+    }
+
+    public boolean removeFlight(int codeVoo){
+        //return voosList.removeIf(x -> x.getFlightNumber() == codeVoo);        LAMBDA
+        if (Flight.getFlightByCode(codeVoo) == null){
+            return false;
+        }
+
+        for (int i=0; i< this.FlightsList.size(); i++){
+            if (this.FlightsList.get(i).getFlightNumber() == codeVoo){
+                this.FlightsList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean updateFlight(Flight vooNew){
+        int codeVoo = vooNew.getFlightNumber();
+        if (Flight.getFlightByCode(codeVoo) == null){
+            return false;
+        }
+
+        for (int i=0; i< this.FlightsList.size(); i++){
+            if (this.FlightsList.get(i).getFlightNumber() == codeVoo){
+                this.FlightsList.set(i,vooNew);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getAmountFlightsByCities(City origin, City destiny){
+        int ix =0;
+        for (Flight voo: FlightsList) {
+            String cityOrigin = Objects.requireNonNull(Airport.getAirportByCode(voo.getAirportOrigin())).CityName;
+            String cityDestiny = Objects.requireNonNull(Airport.getAirportByCode(voo.getAirportDestiny())).CityName;
+
+            if (origin.getName().equals(cityOrigin)
+                && destiny.getName().equals(cityDestiny)){
+                ix++;
+            }
+        }
+        return ix;
+    }
+    // STATIC METHODS   -------------------------------------------------
+
+    public static String getAirportNameByCode(String code){
+        String name;
+        for (Airport item : Mock.aeroportosList) {
+            if (code.equals(item.getAirportCode()))
+            {
+                name = item.toString();
+                return name;
+            }
+        }
+        return null;
     }
 
     public static Airport getAirportByCode(String code){
@@ -255,7 +270,34 @@ public class Airport implements Comparable<Airport>{
         return null;
     }
 
+    public static  boolean addNewFlight(Flight newVoo){
+        //presumindo ficar 2h +- em cada aeroporto ate voar novamente.
+        Airport origin = Airport.getAirportByCode(newVoo.getAirportOrigin());
+        Airport destiny = Airport.getAirportByCode(newVoo.getAirportDestiny());
 
+        boolean hasPlaces = origin != null && destiny != null;
+        if (!hasPlaces) return false;
+
+
+        Date startOrigin = new Date();
+        Date endDestiny = new Date();
+        try {
+            startOrigin = Utils.dateAddHours(newVoo.getTakeOffDate(), -2);
+            endDestiny = Utils.dateAddHours(newVoo.getArriveDate(), 2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        };
+
+        boolean canOrigin = origin.canAddFlight(startOrigin, newVoo.getTakeOffDate());
+        boolean canDestiny = destiny.canAddFlight(newVoo.getArriveDate(), endDestiny);
+
+        if (canOrigin && canDestiny){
+            origin.FlightsList.add(newVoo);
+            destiny.FlightsList.add(newVoo);
+            return true;
+        }
+        return false;
+    }
 
     // METHODS OVERRIDES ---------------------------------------------------------
     @Override

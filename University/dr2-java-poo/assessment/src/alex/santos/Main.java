@@ -22,7 +22,7 @@ public class Main {
 
         //Adicionar aeroportos entre si.
         Airport GIG = Airport.getAirportByCode("GIG");
-        GIG.addAirportDestiny("CWB");
+        GIG.addAirportDestinyList("CWB");
         Utils.msg(GIG.getAirportsDestiny().toString());
 
         Airport CWB = Airport.getAirportByCode("CWB");
