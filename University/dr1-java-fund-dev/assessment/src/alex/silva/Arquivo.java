@@ -53,11 +53,10 @@ public class Arquivo
 
                 long numero = Long.parseLong(campos[0]);
                 String nome = campos[1];
-                Cliente.ClientePlanoTipo plano = (Cliente.ClientePlanoTipo.PosPago.toString() == campos[2]) ? Cliente.ClientePlanoTipo.PosPago : Cliente.ClientePlanoTipo.PrePago;
-                String[] creditos = campos[3].split(":");
-                int creditosMinuto = Integer.parseInt((Integer.parseInt(creditos[0])/60)+creditos[1]);
+                Cliente.ClientePlanoTipo plano = (Cliente.ClientePlanoTipo.PosPago.toString().equals(campos[2])) ? Cliente.ClientePlanoTipo.PosPago : Cliente.ClientePlanoTipo.PrePago;
+                int creditos = Integer.parseInt(campos[3]);
 
-                Cliente cliente = new Cliente(numero,nome,plano,creditosMinuto);
+                Cliente cliente = new Cliente(numero,nome,plano,creditos);
                 clientes.add(cliente);
             }
         }

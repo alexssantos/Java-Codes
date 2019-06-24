@@ -11,15 +11,16 @@ public class Main {
         //Pegar o arquivo de Clientes
         final int FIM = 0;
         final String NOME = "clientes_db.txt";
-        ArrayList<Cliente> clientes = new ArrayList<>();
+        ArrayList<Cliente> clientesLista = new ArrayList<>();
         Arquivo arquivo = new Arquivo(NOME);
         int opcao;
         Scanner entrada;
         Formatter saida;
 
+        // LÊ O ARQUIVO
         entrada = arquivo.abreArquivo();
         if (entrada != null) {
-            arquivo.leArquivo(entrada, clientes);
+            arquivo.leArquivo(entrada, clientesLista);
             arquivo.fechaArquivo(entrada);
         }
 
@@ -36,28 +37,58 @@ public class Main {
         while (opcao != FIM) {
             limpaTela();
             switch (opcao) {
-                case 1: incluir(clientes);
+                case 1: incluir(clientesLista);
                     break;
-                case 2: alterar(clientes);
+                case 2: alterar(clientesLista);
                     break;
-                case 3: excluir(clientes);
+                case 3: excluir(clientesLista);
                     break;
-                case 4: listar(clientes);   //RELATORIO
+                case 4: listar(clientesLista);   //RELATORIO
                     break;
             }
             opcao = menu();
         }
         saida = arquivo.abreArquivoGravar();
         if (saida != null) {
-            arquivo.gravaArquivo(saida, clientes);
+            arquivo.gravaArquivo(saida, clientesLista);
             arquivo.fechaArquivo(saida);
         }
+    }
 
+    public static int menu() {
+        limpaTela();
+        int opcao;
+        Scanner entrada = new Scanner(System.in);
 
+        do {
+            System.out.println("[1] - Incluir Cliente");
+            System.out.println("[2] - Alterar Cliente");
+            System.out.println("[3] - Excluir Cliente");
+            System.out.println("[4] - Relatório de Ligações");
+            System.out.println("[0] - Sair");
+            opcao = leNumero("Entre com uma opção: ");
+            if ((opcao < 0) || (opcao > 4)) {
+                System.out.println("Erro: opcao inválida");
+            }
+        } while ((opcao < 0) || (opcao > 4));
+        return opcao;
     }
 
 
     // CRUD
+    public static void incluir(ArrayList<Cliente> clientesLista)
+    {
+        String nome;
+        int telefone;
+
+        nome = leNome();
+        telefone = leNumero("Entre com o Telefone (ex.: 2222-5555): ");
+        //validaTelefone()
+
+
+        //turma.add(new Cliente(nome, n1, n2));
+    }
+
     public static void excluir(ArrayList<Cliente> clientes)
     {
         if (clientes.isEmpty()) {
@@ -87,7 +118,7 @@ public class Main {
             System.out.println("Erro: nome não encontrado");
             return;
         }
-        int n1 = leNumero("Entre com a nota: ");
+        int n1 = leNumero("Entre com o Telefone (ex.: 2222-5555): ");
         int n2 = leNumero("Entre com a nota: ");
         //turma.get(pos).setN1(n1);
         //turma.get(pos).setN2(n2);
@@ -104,17 +135,6 @@ public class Main {
             }
         }
         return pos;
-    }
-
-    public static void incluir(ArrayList<Cliente> turma)
-    {
-        String nome;
-        int n1, n2;
-
-        nome = leNome();
-        n1 = leNumero("Entre com a nota: ");
-        n2 = leNumero("Entre com a nota: ");
-        //turma.add(new Cliente(nome, n1, n2));
     }
 
     public static void listar(ArrayList<Cliente> clientes) {
@@ -143,25 +163,8 @@ public class Main {
 
         System.out.print("Entre com o nome: ");
         nome = entrada.nextLine();
+        entrada.close();
         return nome;
-    }
-
-    public static int menu() {
-        int opcao;
-        Scanner entrada = new Scanner(System.in);
-
-        do {
-            System.out.println("[1] - Incluir");
-            System.out.println("[2] - Alterar");
-            System.out.println("[3] - Excluir");
-            System.out.println("[4] - Listar");
-            System.out.println("[0] - Sair");
-            opcao = leNumero("Entre com uma opção: ");
-            if ((opcao < 0) || (opcao > 4)) {
-                System.out.println("Erro: opcao inválida");
-            }
-        } while ((opcao < 0) || (opcao > 4));
-        return opcao;
     }
 
     public static int leNumero(String msg) {
