@@ -9,6 +9,13 @@ public class Cliente
     public ClientePlanoTipo PlanoCliente;
     public int Creditos;
 
+    public Cliente(long numeroCelular, String nomeCliente, ClientePlanoTipo planoCliente, int creditos) {
+        NumeroCelular = numeroCelular;
+        NomeCliente = nomeCliente;
+        PlanoCliente = planoCliente;
+        Creditos = creditos;
+    }
+
     public long getNumeroCelular() {
         return NumeroCelular;
     }
@@ -42,14 +49,7 @@ public class Cliente
         Creditos = creditos;
     }
 
-    public Cliente(long numeroCelular, String nomeCliente, ClientePlanoTipo planoCliente, int creditos) {
-        NumeroCelular = numeroCelular;
-        NomeCliente = nomeCliente;
-        PlanoCliente = planoCliente;
-        Creditos = creditos;
-    }
-
-    public enum ClientePlanoTipo{
+    public enum ClientePlanoTipo{   //TODO: salvar como 1 ou 2 no arquivo.
         PrePago,
         PosPago
     }
