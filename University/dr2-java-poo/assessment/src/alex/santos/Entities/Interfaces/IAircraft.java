@@ -1,8 +1,9 @@
 package alex.santos.Entities.Interfaces;
 
 public interface IAircraft {
+    //USO: um voo pode ser feito por qlq aeronave.
 
-    // TODO: rubrica!
+    
     public String getPrefix();
 
     public void setPrefix(String prefix);

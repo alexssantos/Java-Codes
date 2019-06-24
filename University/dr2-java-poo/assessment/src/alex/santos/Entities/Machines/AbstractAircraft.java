@@ -4,7 +4,7 @@ package alex.santos.Entities.Machines;
 
 import alex.santos.Entities.Interfaces.IAircraft;
 
-public abstract class AbstractAircraft implements IAircraft {
+public abstract class AbstractAircraft implements IAircraft, Comparable<AbstractAircraft> {
 
     String sep = " | ";
     private String prefix;
@@ -41,5 +41,12 @@ public abstract class AbstractAircraft implements IAircraft {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    @Override
+    public int compareTo(AbstractAircraft o) {
+        String code = Integer.toString((getPrefix() + getModel() + getManufacturer()).hashCode());
+        String code2 = Integer.toString((o.getPrefix() + o.getModel() + o.getManufacturer()).hashCode());
+        return code.compareTo(code2);
     }
 }

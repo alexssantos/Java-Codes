@@ -1,30 +1,44 @@
 package alex.santos.Entities;
 
 import alex.santos.Shared.Mock;
+import alex.santos.Shared.Utils;
 
+import java.text.ParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Airport implements Comparable<Airport>{
 
+    public final int AIRPLANES_MAX = 100;
     private String AirportCode;
     private String Name;
-    private String City;
-    private boolean internalStatus;
-    private List<Flight> FlightsList;
+    private String CityName;
+    private boolean internationalStatus;
+    private List<Flight> FlightsList; //voos ToGO ou ToCome.
     private List<City> DestinyCitiesList;
+
+    private List<String> AirportsDestiny;      //airport Codes
+    private List<String> AirportsToReceive;    //airport Codes
 
 
     // constructor
-    public Airport(String airportCode, String name, String city) {
+    public Airport(String airportCode, String name, String cityName) {
         AirportCode = airportCode;
         Name = name;
-        City = city;
+        if(!City.existis(cityName)){
+            throw new IllegalArgumentException("Cidade não Existe. Não pode criar um aeroporto sem cidade.");
+        }
+        this.CityName = cityName;
+
         FlightsList = new ArrayList<>();
         DestinyCitiesList = new ArrayList<>();
+        AirportsToReceive = new ArrayList<>();
+        AirportsDestiny = new ArrayList<>();
     }
-
 
     // GET SETs     ---------------------------------------------------------
     public String getAirportCode() {
@@ -43,12 +57,12 @@ public class Airport implements Comparable<Airport>{
         Name = name;
     }
 
-    public String getCity() {
-        return City;
+    public String getCityName() {
+        return CityName;
     }
 
-    public void setCity(String city) {
-        City = city;
+    public void setCityName(String cityName) {
+        CityName = cityName;
     }
 
     public List<Flight> getFlightsList() {
@@ -59,38 +73,53 @@ public class Airport implements Comparable<Airport>{
         FlightsList = flightsList;
     }
 
+    public List<String> getAirportsDestiny() {
+        return AirportsDestiny;
+    }
+
+    //NO: setAirportsToGo(List<String> airportsToGo) {}
+
+    public List<String> getAirportsToReceive() {
+        return AirportsToReceive;
+    }
+
+    //NO: setAirportsToCome(List<String> airportsToCome) {}
+
 
     // METHODS      ---------------------------------------------------------
+
     public boolean isInternational()
     {
-        return internalStatus;
+        return internationalStatus;
     }
 
-    public void switchInternalStatus()
+    public void switchInternationalStatus()
     {
-        this.internalStatus = !(this.internalStatus);
+        this.internationalStatus = !(this.internationalStatus);
     }
 
-    //TODO: metodo - aeronave in aeronaveList (prefix)
-    public boolean hasAircraft(){
-
+    public boolean addAirportDestinyList(String codeNew){
+        Airport destiny = getAirportByCode(codeNew);
+        if (destiny == null){
+            Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
+            return false;
+        }
+        AirportsDestiny.add(codeNew);
+        destiny.AirportsToReceive.add(this.AirportCode);
+        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de voos partindo de "+ AirportCode);
         return true;
     }
 
-    //TODO:
-    public boolean hasRoute(Airport other){
-
+    public boolean addAirportToReceiveList(String codeNew){
+        Airport base = getAirportByCode(codeNew);
+        if (base == null){
+            Utils.msgERRO("Aeroporto de codigo: "+codeNew+", não existe!");
+            return false;
+        }
+        AirportsToReceive.add(codeNew);
+        base.AirportsDestiny.add(this.AirportCode);
+        Utils.msg("Aeorporto - codigo: "+codeNew+" - Agora faz parte da lista de voos com destino à "+AirportCode);
         return true;
-    }
-
-    public static String getAirportName(String code){
-        String igual = Mock.aeroportosList.stream()
-                .filter(x -> code.equals(x.getAirportCode()))
-                .findFirst()
-                .map(x -> x.getName())
-                .toString();
-
-        return igual;
     }
 
     public boolean equals(Airport other){
@@ -100,11 +129,180 @@ public class Airport implements Comparable<Airport>{
         return false;
     }
 
+    public boolean hasAircraft(String prefix)
+    {
+        //Instant now = new Instant.now();
+
+        // nao partiram
+        for (Flight item: FlightsList) {
+            if (item.getAirportOrigin() == AirportCode
+                && item.getAircraft().getPrefix().equals(prefix)
+                //&& x.getTakeOffTimeStr() > now
+
+            ){
+                return true;
+            }
+        }
+
+        //ja chegaram
+        for (Flight item: FlightsList) {
+            if (item.getAirportDestiny() == AirportCode
+                && item.getAircraft().getPrefix().equals(prefix)
+                //&& x.getArriveTimeStr() < now
+            ){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean hasRoute(Airport other){
+        if (FlightsList.isEmpty()) return false;
+
+        Date now = new Date();
+        for (Flight item: FlightsList) {
+            if (item.getAirportDestiny().equals(other.AirportCode)
+                && item.getTakeOffDate().compareTo(now) < 0){
+                return true;
+            }
+        }
+        return true;
+    }
+
+    private boolean canAddFlight(Date start, Date end){
+        //verificar quantos avios no patio no hoario se nao ultrapassa o maximo.
+        int count = 0;
+        for (Flight voo: FlightsList) {
+            boolean naoFoi = voo.takeOffDate.compareTo(end) < 0
+                                && (!voo.getAirportDestiny().equals(getAirportCode()));
+            boolean jachegou = voo.arriveDate.compareTo(start) > 0
+                                && (voo.getAirportDestiny().equals(getAirportCode()));
+
+            if (naoFoi || jachegou){
+                count++;
+            }
+        }
+        if (count>=AIRPLANES_MAX) return false;
+
+        return true;
+    }
+
+    public boolean addFlight(Flight voo){
+        boolean isRepeaded = Utils.checkRepeated(this.FlightsList, voo);
+
+        if (isRepeaded) return false;
+
+        this.FlightsList.add(voo);
+        return true;
+    }
+
+    public boolean removeFlight(int codeVoo){
+        //return voosList.removeIf(x -> x.getFlightNumber() == codeVoo);        LAMBDA
+        if (Flight.getFlightByCode(codeVoo) == null){
+            return false;
+        }
+
+        for (int i=0; i< this.FlightsList.size(); i++){
+            if (this.FlightsList.get(i).getFlightNumber() == codeVoo){
+                this.FlightsList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean updateFlight(Flight vooNew){
+        int codeVoo = vooNew.getFlightNumber();
+        if (Flight.getFlightByCode(codeVoo) == null){
+            return false;
+        }
+
+        for (int i=0; i< this.FlightsList.size(); i++){
+            if (this.FlightsList.get(i).getFlightNumber() == codeVoo){
+                this.FlightsList.set(i,vooNew);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getAmountFlightsByCities(City origin, City destiny){
+        int ix =0;
+        for (Flight voo: FlightsList) {
+            String cityOrigin = Objects.requireNonNull(Airport.getAirportByCode(voo.getAirportOrigin())).CityName;
+            String cityDestiny = Objects.requireNonNull(Airport.getAirportByCode(voo.getAirportDestiny())).CityName;
+
+            if (origin.getName().equals(cityOrigin)
+                && destiny.getName().equals(cityDestiny)){
+                ix++;
+            }
+        }
+        return ix;
+    }
+    // STATIC METHODS   -------------------------------------------------
+
+    public static String getAirportNameByCode(String code){
+        String name;
+        for (Airport item : Mock.aeroportosList) {
+            if (code.equals(item.getAirportCode()))
+            {
+                name = item.toString();
+                return name;
+            }
+        }
+        return null;
+    }
+
+    public static Airport getAirportByCode(String code){
+        if (Mock.aeroportosList.isEmpty()){
+            Utils.msgERRO("Lista de Aeroportos está vazia.");
+            return null;
+        }
+        for (Airport item: Mock.aeroportosList) {
+            if ( item.getAirportCode().equals(code)){
+                Utils.msg("Aeroporto encontrado:\n - "+item.toString());
+                return item;
+            }
+        }
+        String msg = String.format("NÃO encontrado Aeroporto: "+code);
+        Utils.msgERRO(msg);
+        return null;
+    }
+
+    public static  boolean addNewFlight(Flight newVoo){
+        //presumindo ficar 2h +- em cada aeroporto ate voar novamente.
+        Airport origin = Airport.getAirportByCode(newVoo.getAirportOrigin());
+        Airport destiny = Airport.getAirportByCode(newVoo.getAirportDestiny());
+
+        boolean hasPlaces = origin != null && destiny != null;
+        if (!hasPlaces) return false;
+
+
+        Date startOrigin = new Date();
+        Date endDestiny = new Date();
+        try {
+            startOrigin = Utils.dateAddHours(newVoo.getTakeOffDate(), -2);
+            endDestiny = Utils.dateAddHours(newVoo.getArriveDate(), 2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        };
+
+        boolean canOrigin = origin.canAddFlight(startOrigin, newVoo.getTakeOffDate());
+        boolean canDestiny = destiny.canAddFlight(newVoo.getArriveDate(), endDestiny);
+
+        if (canOrigin && canDestiny){
+            origin.FlightsList.add(newVoo);
+            destiny.FlightsList.add(newVoo);
+            return true;
+        }
+        return false;
+    }
 
     // METHODS OVERRIDES ---------------------------------------------------------
     @Override
     public String toString() {
-        return AirportCode + " : " + Name + ", " + City;
+        return AirportCode + " : " + Name + ", " + CityName;
     }
 
     @Override

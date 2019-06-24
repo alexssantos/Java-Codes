@@ -1,28 +1,33 @@
 package alex.santos;
 
-import alex.santos.DataAccess.AirplaneDao;
-import alex.santos.DataAccess.HelicopterDao;
+import alex.santos.Entities.Airport;
 import alex.santos.Shared.Mock;
-import alex.santos.Entities.Machines.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import alex.santos.Shared.Utils;
 
 public class Main {
 
     public static void main(String[] args) {
         Mock dados = new Mock();
 
+        //Pegando Aeroporto
+        String galeaoCode = "GIG";
+        Airport galeao = Airport.getAirportByCode(galeaoCode);
 
-        /*TODO: Entities
-        -> AEROPORTOS:
-            1. precisa de Cidade
 
-        -> VOO:
-            1. precisa de Aeronave
-            2. Precisa de Aeroportos (que precisa existir cidades)
-         */
+        Utils.msg("---getAirportNameByCode---");
+        String name = Airport.getAirportNameByCode("GIG");
+        Utils.msg(name);
 
-        System.out.println("\n------------\nTudo OK!\n------------");
+
+
+        //Adicionar aeroportos entre si.
+        Airport GIG = Airport.getAirportByCode("GIG");
+        GIG.addAirportDestinyList("CWB");
+        Utils.msg(GIG.getAirportsDestiny().toString());
+
+        Airport CWB = Airport.getAirportByCode("CWB");
+        Utils.msg(CWB.getAirportsToReceive().toString());
+
+        Utils.msg("------------\nTudo OK!\n------------");
     }
 }
