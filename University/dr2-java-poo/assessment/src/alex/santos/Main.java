@@ -101,7 +101,9 @@ public class Main {
 
 
         // pelas cidades pegar qtdd de voos
-        int i = galeao.getAmountFlightsByCities(new City("Rio de Janeiro",0),new City( "São Paulo",0));
+        City rj = new City("Rio de Janeiro",0);
+        City sp = new City( "São Paulo",0);
+        int i = galeao.getAmountFlightsByCities(rj,sp);
         System.out.println("Quantidade: "+i);
 
 
@@ -110,6 +112,7 @@ public class Main {
 
 
         //Adicionar aeroportos entre si.
+        System.out.println("// Adicionar aeroportos entre si    -----------------");
         Airport GIG = Airport.getAirportByCode("GIG");
         GIG.addAirportDestinyList("CWB");
         Utils.msg(GIG.getAirportsDestiny().toString());
@@ -117,6 +120,6 @@ public class Main {
         Airport CWB = Airport.getAirportByCode("CWB");
         Utils.msg(CWB.getAirportsToReceive().toString());
 
-        Utils.msg("------------\nTudo OK!\n------------");
+        Utils.msg("------------------------------------------------\nTudo OK!\n------------------------------------------------");
     }
 }

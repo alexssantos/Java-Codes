@@ -7,10 +7,8 @@ import alex.santos.Entities.Machines.Airplane;
 import alex.santos.Entities.Machines.HelicopterAirTaxi;
 import alex.santos.Entities.Machines.HelicopterCostGuard;
 import alex.santos.Entities.Machines.HelicopterRescue;
-import jdk.jshell.execution.Util;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -29,6 +27,8 @@ public class Mock {
     public static List<HelicopterRescue> heliRescueList= new ArrayList<>();
 
     public Mock(){
+        Utils.msg("// START (Mock Generate)  ------------------");
+
         generateCities();
         generateAirports();
         generateAircrafts();
@@ -39,6 +39,8 @@ public class Mock {
         catch (ParseException e){
             e.printStackTrace();
         }
+
+        Utils.msg("// END (Mock Generate)  ------------------");
     }
 
     // GENERATE     -----------------------------------
@@ -161,7 +163,7 @@ public class Mock {
         int ix = Utils.prtList(voosList);
         Utils.msg("Vôos criados: "+ix);
 
-        Utils.msg("-----------------------   MUDANDO AVIAO DE VOOS   -----------------------");
+        Utils.msg("-----------------------   OUTRO AVIAO p/ CRIAR VOOS   -----------------------");
 
         aviao = avioesList.get(getRandomInt(0,avioesList));
         while (aviaoCode == aviao.getAirplaneCode()){
