@@ -155,16 +155,6 @@ public class Flight implements Comparable<Flight> {
         return (aircraft.toString()+getTakeOffDate()+getArriveDate()).hashCode();
     }
 
-    public String getFlightInfosByCode(int FlightCode){
-        if ( Mock.voosList.isEmpty()){
-            return null;
-        }
-
-        java.util.List<Flight> voo = Mock.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
-        String infos = !voo.isEmpty() ? voo.get(0).toString() : null;
-        return infos;
-    }
-
     public static Flight getFlightByCode(int FlightCode){
         if ( Mock.voosList.isEmpty()){
             return null;
@@ -190,6 +180,16 @@ public class Flight implements Comparable<Flight> {
         return retorno;
     }
     */
+
+    public static String getFlightInfosByCode(int FlightCode){
+        if ( Mock.voosList.isEmpty()){
+            return null;
+        }
+
+        java.util.List<Flight> voo = Mock.voosList.stream().filter(x -> FlightCode == x.getFlightNumber()).collect(Collectors.toList());
+        String infos = !voo.isEmpty() ? voo.get(0).toString() : null;
+        return infos;
+    }
 
     //Overrides ///////////////////////////////////////
     @Override

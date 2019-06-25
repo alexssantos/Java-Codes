@@ -41,8 +41,9 @@ public class Mock {
         }
     }
 
+    // GENERATE     -----------------------------------
 
-    //1
+    //1 cidades
     public void generateCities(){
         Utils.msg("\nCriando Cidades!");
 
@@ -59,16 +60,16 @@ public class Mock {
         Utils.msg("Cidades criadas: "+ix);
     }
 
-    //2
+    //2 aeroportos
     public void generateAirports(){
         Utils.msg("\nCriando Aeroportos!");
 
-        List<Airport> aeroportos = new ArrayList<>();
-        aeroportos.addAll(Arrays.asList(
-           new Airport("GIG", "Aeroporto Internacional Tom Jobin", "Rio de Janeiro"),
-           new Airport("CWB", "Aeroporto Internacional Afonso Pena", "Curitiba"),
-           new Airport("GRU", "Aeroporto Internacional Governador André Franco Montoro", "São Paulo")
+        List<Airport> aeroportos = new ArrayList<>(Arrays.asList(
+                new Airport("GIG", "Aeroporto Internacional Tom Jobin", "Rio de Janeiro"),
+                new Airport("CWB", "Aeroporto Internacional Afonso Pena", "Curitiba"),
+                new Airport("GRU", "Aeroporto Internacional Governador André Franco Montoro", "São Paulo")
         ));
+
         //earoportos = Utils.checkRepeateds(cidadesList, earoportos);  TODO: Erro de Type Safity - por isso uso Generics
         aeroportos = Utils.checkRepeaters(aeroportosList, aeroportos);
         aeroportosList.addAll(aeroportos);
@@ -77,7 +78,7 @@ public class Mock {
         Utils.msg("Aeroportos criados: "+ix);
     }
 
-    //3
+    //3 aeronaves
     public void generateAircrafts(){
         Utils.msg("\nCriando Aviões!");
 
@@ -116,7 +117,7 @@ public class Mock {
         Utils.msg("Helicopteros criados: "+ix);
     }
 
-    //4
+    //4 voos
     public void generateFlights() throws ParseException {
 
         String today = Utils.printDate(new Date()).split(" ")[0];   // ex.: "23/06/19"
@@ -203,12 +204,13 @@ public class Mock {
         //test
     }
 
+
+    // METHODS      ------------------------------------
     private int getRandomInt(int min, List<?> list){
         int max = list.size()-1;
         int numb = (int) (Math.random() * (max - min));
         return numb;
     }
-
 
     private <T extends Comparable<T>> void testAddRepeated(List<T> list){
         if (list.isEmpty()){

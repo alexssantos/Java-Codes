@@ -4,7 +4,6 @@ import alex.santos.Shared.Mock;
 import alex.santos.Shared.Utils;
 
 import java.text.ParseException;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -199,7 +198,7 @@ public class Airport implements Comparable<Airport>{
 
     public boolean removeFlight(int codeVoo){
         //return voosList.removeIf(x -> x.getFlightNumber() == codeVoo);        LAMBDA
-        if (Flight.getFlightByCode(codeVoo) == null){
+        if (getFlightByCode(codeVoo) == null){
             return false;
         }
 
@@ -212,9 +211,8 @@ public class Airport implements Comparable<Airport>{
         return false;
     }
 
-    public boolean updateFlight(Flight vooNew){
-        int codeVoo = vooNew.getFlightNumber();
-        if (Flight.getFlightByCode(codeVoo) == null){
+    public boolean updateFlight(Flight vooNew, int codeVoo){
+        if (getFlightByCode(codeVoo) == null){
             return false;
         }
 
@@ -225,6 +223,20 @@ public class Airport implements Comparable<Airport>{
             }
         }
         return false;
+    }
+
+    public Flight getFlightByCode(int FlightCode){
+        if (FlightsList.isEmpty()){
+            return null;
+        }
+
+        for (Flight voo : FlightsList)
+        {
+            if (voo.getFlightNumber() == FlightCode){
+                return voo;
+            }
+        }
+        return null;
     }
 
     public int getAmountFlightsByCities(City origin, City destiny){
