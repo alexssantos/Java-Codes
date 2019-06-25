@@ -1,5 +1,7 @@
 package alex.santos.Entities;
 
+import alex.santos.Entities.Interfaces.IAircraft;
+import alex.santos.Entities.Machines.Airplane;
 import alex.santos.Shared.Mock;
 import alex.santos.Shared.Utils;
 
@@ -19,9 +21,9 @@ public class Airport implements Comparable<Airport>{
     private boolean internationalStatus;
     private List<Flight> FlightsList; //voos ToGO ou ToCome.
     private List<City> DestinyCitiesList;
-
     private List<String> AirportsDestiny;      //airport Codes
     private List<String> AirportsToReceive;    //airport Codes
+    private List<Airplane> AirplanesStay;       //avioes no chão.
 
 
     // constructor
@@ -37,6 +39,7 @@ public class Airport implements Comparable<Airport>{
         DestinyCitiesList = new ArrayList<>();
         AirportsToReceive = new ArrayList<>();
         AirportsDestiny = new ArrayList<>();
+        AirplanesStay = new ArrayList<>();
     }
 
     // GET SETs     ---------------------------------------------------------
@@ -84,6 +87,21 @@ public class Airport implements Comparable<Airport>{
 
     //NO: setAirportsToCome(List<String> airportsToCome) {}
 
+    public List<City> getDestinyCitiesList() {
+        return DestinyCitiesList;
+    }
+
+    // NO: public void setDestinyCitiesList(List<City> destinyCitiesList)
+
+    public void addDestinyCity(City other){
+        if (!DestinyCitiesList.contains(other)){
+            DestinyCitiesList.add(other);
+        }
+    }
+
+    private void setAirplanesStay(List<Airplane> airplanesStay) {
+        AirplanesStay = airplanesStay;
+    }
 
     // METHODS      ---------------------------------------------------------
 
@@ -201,6 +219,11 @@ public class Airport implements Comparable<Airport>{
         if (isRepeaded) return false;
 
         this.FlightsList.add(voo);
+        IAircraft aviao = voo.getAircraft();
+
+        Airplane novo = (Airplane) aviao;
+        this.AirplanesStay.add(novo);
+
         return true;
     }
 
@@ -211,7 +234,10 @@ public class Airport implements Comparable<Airport>{
         }
 
         for (int i=0; i< this.FlightsList.size(); i++){
-            if (this.FlightsList.get(i).getFlightNumber() == codeVoo){
+            Flight voo = this.FlightsList.get(i);
+            if (voo.getFlightNumber() == codeVoo){
+                Airplane aviao = (Airplane) voo.getAircraft();
+                this.AirplanesStay.removeIf(x -> x.equals(aviao));
                 this.FlightsList.remove(i);
                 return true;
             }
@@ -260,6 +286,11 @@ public class Airport implements Comparable<Airport>{
         }
         return ix;
     }
+
+    public List<Airplane> getAirplanesStay() {
+        return AirplanesStay;
+    }
+
     // STATIC METHODS   -------------------------------------------------
 
     public static String getAirportNameByCode(String code){

@@ -17,10 +17,6 @@ public class Flight implements Comparable<Flight> {
 
     public Date takeOffDate;
     public Date arriveDate;
-    /*private String arriveTimeStr;
-    private String arriveDateStr;
-    private String takeOffDateStr;
-    private String takeOffTimeStr;*/
 
     private String airportOrigin;
     private String airportDestiny;
