@@ -169,19 +169,27 @@ public class Airport implements Comparable<Airport>{
         return true;
     }
 
-    private boolean canAddFlight(Date start, Date end){
+
+    public int aircraftsAmount(Date start, Date end){
         //verificar quantos avios no patio no hoario se nao ultrapassa o maximo.
         int count = 0;
         for (Flight voo: FlightsList) {
-            boolean naoFoi = voo.takeOffDate.compareTo(end) < 0
-                                && (!voo.getAirportDestiny().equals(getAirportCode()));
-            boolean jachegou = voo.arriveDate.compareTo(start) > 0
-                                && (voo.getAirportDestiny().equals(getAirportCode()));
+            boolean naoFoi = voo.takeOffDate.compareTo(end) <= 0
+                    && (!voo.getAirportDestiny().equals(getAirportCode()));
+            boolean jachegou = voo.arriveDate.compareTo(start) >= 0
+                    && (voo.getAirportDestiny().equals(getAirportCode()));
 
             if (naoFoi || jachegou){
                 count++;
             }
         }
+        return count;
+    }
+
+    private boolean canAddFlight(Date start, Date end){
+        //verificar quantos avios no patio no hoario se nao ultrapassa o maximo.
+
+        int count = aircraftsAmount(start,end);
         if (count>=AIRPLANES_MAX) return false;
 
         return true;
