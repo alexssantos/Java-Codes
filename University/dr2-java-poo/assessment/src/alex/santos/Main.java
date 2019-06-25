@@ -1,6 +1,7 @@
 package alex.santos;
 
 import alex.santos.Entities.Airport;
+import alex.santos.Entities.City;
 import alex.santos.Entities.Flight;
 import alex.santos.Entities.Machines.Airplane;
 import alex.santos.Shared.Mock;
@@ -93,12 +94,21 @@ public class Main {
 
 
 
+        // aeroporto pelo codigo
+        System.out.println("\n// aeroporto pelo codigo  - getAirportNameByCode()");
+        String nome = Airport.getAirportNameByCode("GIG");
+        System.out.println((nome));
+
+
+        // pelas cidades pegar qtdd de voos
+        int i = galeao.getAmountFlightsByCities(new City("Rio de Janeiro",0),new City( "São Paulo",0));
+        System.out.println("Quantidade: "+i);
 
 
 
 
 
-        
+
         //Adicionar aeroportos entre si.
         Airport GIG = Airport.getAirportByCode("GIG");
         GIG.addAirportDestinyList("CWB");
