@@ -2,6 +2,7 @@ package alex.silva;
 
 import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,19 +11,28 @@ public class Main {
     {
         //Pegar o arquivo de Clientes
         final int FIM = 0;
-        final String NOME = "clientes_db.txt";
-        ArrayList<Cliente> clientesLista = new ArrayList<>();
-        Arquivo arquivo = new Arquivo(NOME);
-        int opcao;
-        Scanner entrada;
-        Formatter saida;
+        final String CLIENTES = "clientes_db.txt";
+        final String LIGACOES = "ligacoes_db.txt";
+        List<Cliente> clientesLista = new ArrayList<>();
+        List<Ligacao> ligacoesLista = new ArrayList<>();
+
 
         // LÊ O ARQUIVO
+        Arquivo arquivo = new Arquivo(CLIENTES);
+        Scanner entrada = arquivo.abreArquivo();
+        if (entrada != null) {
+            arquivo.pegaCliente(entrada, clientesLista);
+            arquivo.fechaLeitor(entrada);
+        }
+
+        arquivo = new Arquivo(LIGACOES);
         entrada = arquivo.abreArquivo();
         if (entrada != null) {
-            arquivo.leArquivo(entrada, clientesLista);
-            arquivo.fechaArquivo(entrada);
+            arquivo.pegaLigacoes(entrada, ligacoesLista);
+            arquivo.fechaLeitor(entrada);
         }
+
+
 
         /*MENUS:
         * 1. inclusão de cliente,
@@ -33,7 +43,7 @@ public class Main {
         */
 
         //MENU
-        opcao = menu();
+        int opcao = menu();
         while (opcao != FIM) {
             limpaTela();
             switch (opcao) {
@@ -48,10 +58,11 @@ public class Main {
             }
             opcao = menu();
         }
-        saida = arquivo.abreArquivoGravar();
+
+        Formatter saida = arquivo.abreArquivoGravar();
         if (saida != null) {
-            arquivo.gravaArquivo(saida, clientesLista);
-            arquivo.fechaArquivo(saida);
+            arquivo.gravaClientes(saida, clientesLista);
+            arquivo.fechaGravador(saida);
         }
     }
 
@@ -76,7 +87,7 @@ public class Main {
 
 
     // CRUD
-    public static void incluir(ArrayList<Cliente> clientesLista)
+    public static void incluir(List<Cliente> clientesLista)
     {
         String nome;
         int telefone;
@@ -89,7 +100,7 @@ public class Main {
         //turma.add(new Cliente(nome, n1, n2));
     }
 
-    public static void excluir(ArrayList<Cliente> clientes)
+    public static void excluir(List<Cliente> clientes)
     {
         if (clientes.isEmpty()) {
             System.out.println("Turma vazia");
@@ -105,7 +116,7 @@ public class Main {
         clientes.remove(pos);
     }
 
-    public static void alterar(ArrayList<Cliente> clientes)
+    public static void alterar(List<Cliente> clientes)
     {
         if (clientes.isEmpty()) {
             System.out.println("Turma vazia");
@@ -124,7 +135,7 @@ public class Main {
         //turma.get(pos).setN2(n2);
     }
 
-    public static int pesquisaNome(ArrayList<Cliente> clientes, String nome) {
+    public static int pesquisaNome(List<Cliente> clientes, String nome) {
         int pos = -1;
 
         nome = nome.toLowerCase();
@@ -137,7 +148,7 @@ public class Main {
         return pos;
     }
 
-    public static void listar(ArrayList<Cliente> clientes) {
+    public static void listar(List<Cliente> clientes) {
 
         if (clientes.isEmpty()) {
             System.out.println("Não há clientes!");

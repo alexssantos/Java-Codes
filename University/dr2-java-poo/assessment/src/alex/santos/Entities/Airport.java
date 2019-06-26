@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class Airport implements Comparable<Airport>{
 
-    public final int AIRPLANES_MAX = 100;
+    private final int AIRPLANES_MAX = 100;
     private String AirportCode;
     private String Name;
     private String CityName;

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -40,7 +41,7 @@ public class Arquivo
         return saida;
     }
 
-    public void leArquivo(Scanner entrada, ArrayList<Cliente> clientes) {
+    public void pegaCliente(Scanner entrada, List<Cliente> clientes) {
 
         String linha;
         String[] campos;
@@ -48,8 +49,7 @@ public class Arquivo
             while (entrada.hasNext())
             {
                 linha = entrada.nextLine();
-
-                campos = linha.split(SEPARADOR);
+                campos = linha.split(SEPARADOR);    //ex.: 88889999 | Alex | PrePago | 20
 
                 long numero = Long.parseLong(campos[0]);
                 String nome = campos[1];
@@ -61,11 +61,33 @@ public class Arquivo
             }
         }
         catch (Exception e) {
-            System.out.println("Erro: na leitura do arquivo");
+            System.out.println("Erro: na leitura do arquivo: "+nomeArq);
         }
     }
 
-    public void gravaArquivo(Formatter saida, ArrayList<Cliente> clientes) {
+    public void pegaLigacoes(Scanner entrada, List<Ligacao> ligacaos){
+        String linha;
+        String[] campos;
+        try {
+            while (entrada.hasNext())
+            {
+                linha = entrada.nextLine();
+                campos = linha.split(SEPARADOR);    // ex.: 12345678 | 10:10 | 10:20
+
+                long numero = Long.parseLong(campos[0]);
+                String inicio = campos[1];
+                String fim = campos[2];
+
+                Ligacao ligacao = new Ligacao(numero,inicio,fim);
+                ligacaos.add(ligacao);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Erro: na leitura do arquivo: "+nomeArq);
+        }
+    }
+
+    public void gravaClientes(Formatter saida, List<Cliente> clientes) {
 
         for (Cliente cliente : clientes) {
             try {
@@ -77,19 +99,36 @@ public class Arquivo
                         cliente.getCreditos());
             }
             catch (Exception e) {
-                System.out.println("Erro: gravacao do arquivo");
+                System.out.println("Erro: gravacao do arquivo: "+nomeArq);
             }
         }
     }
 
-    public void fechaArquivo(Scanner entrada) {
+    public void gravaLigacoes(Formatter saida, List<Ligacao> ligacoes) {
+
+        for (Ligacao ligacao : ligacoes) {
+            try {
+
+                saida.format("%d | %s | %s\n",
+                    ligacao.getNumero(),
+                    ligacao.getInicio(),
+                    ligacao.getFim()
+                );
+            }
+            catch (Exception e) {
+                System.out.println("Erro: gravacao do arquivo: "+nomeArq);
+            }
+        }
+    }
+
+    public void fechaLeitor(Scanner entrada) {
 
         if (entrada != null) {
             entrada.close();
         }
     }
 
-    public void fechaArquivo(Formatter saida) {
+    public void fechaGravador(Formatter saida) {
 
         if (saida != null) {
             saida.close();
