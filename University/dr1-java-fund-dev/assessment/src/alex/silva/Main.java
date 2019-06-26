@@ -8,13 +8,15 @@ import java.util.regex.Pattern;
 
 public class Main {
 
+    public static  List<Cliente> clientesLista;
+
     public static void main(String[] args)
     {
         //Pegar o arquivo de Clientes
         final int FIM = 0;
         final String CLIENTES = "clientes_db.txt";
         final String LIGACOES = "ligacoes_db.txt";
-        List<Cliente> clientesLista = new ArrayList<>();
+        clientesLista = new ArrayList<>();
         List<Ligacao> ligacoesLista = new ArrayList<>();
 
 
@@ -228,6 +230,12 @@ public class Main {
         return pos;
     }
 
+
+    //METODOS Submenu
+
+
+
+    //MOTODOS Auxiliares.
     public static void listar(List<Cliente> clientes) {
 
         if (clientes.isEmpty()) {
@@ -325,6 +333,7 @@ public class Main {
 
                 if (ok){
                     num = Integer.parseInt(numero);
+                    //ok = testaNumeroRepetido(num);
                 }
             }
             catch (Exception e) {
@@ -337,10 +346,17 @@ public class Main {
     }
 
     public static boolean validaTelefone(String numero){
-        String regex = "^9[0-9]{7}$";  // 1° = 9 // 2° = 1-9
+        String regex = "^[2-9][0-9]{7}$";  // 1° = 2-9
         boolean validacao = Pattern.compile(regex).matcher(numero).matches();
         return validacao;
     }
+
+    /*public static boolean testaNumeroRepetido(long numero){
+        for (:
+             ) {
+
+        }
+    }*/
 
     public static void terminouEscolha(){
         System.out.print("\nprecione alguma tecla...\n");
