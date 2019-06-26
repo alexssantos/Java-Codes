@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static  List<Cliente> clientesLista;
+    public static  List<Ligacao> ligacoesLista;
 
     public static void main(String[] args)
     {
@@ -19,7 +20,7 @@ public class Main {
         final String CLIENTES = "clientes_db.txt";
         final String LIGACOES = "ligacoes_db.txt";
         clientesLista = new ArrayList<>();
-        List<Ligacao> ligacoesLista = new ArrayList<>();
+        ligacoesLista = new ArrayList<>();
 
 
         // LÊ O ARQUIVO
@@ -36,8 +37,6 @@ public class Main {
             arquivo.pegaLigacoes(entrada, ligacoesLista);
             arquivo.fechaLeitor(entrada);
         }
-
-
 
         /*MENUS:
         * 1. inclusão de cliente,
@@ -61,7 +60,7 @@ public class Main {
                     excluir(clientesLista);
                     break;
                 case 4:
-                    subMenu(clientesLista);   //RELATORIO
+                    subMenu(clientesLista);
                     break;
                 case 5:
                     //fazerLigacao();
@@ -88,7 +87,7 @@ public class Main {
             System.out.println("[1] - Incluir Cliente");
             System.out.println("[2] - Alterar Cliente");
             System.out.println("[3] - Excluir Cliente");
-            System.out.println("[4] - Relatório gerenciais");
+            System.out.println("[4] - Relatórios gerenciais");
             System.out.println("[5] - Fazer Ligação");
             System.out.println("[6] - Gerar boleto do cliente");
             System.out.println("[0] - Sair");
@@ -100,7 +99,7 @@ public class Main {
         return opcao;
     }
 
-    //SUBMENU   -------------------------------------------------
+    //  -------- SUBMENU
 
     public static void subMenu(List<Cliente> clientesLista){
         final int RETORNO = 0;
@@ -108,20 +107,15 @@ public class Main {
         while (opcao != RETORNO) {
             switch (opcao) {
                 case 1:
-                    System.out.println("//listar(clientesLista);\n");
                     listar(clientesLista);
                     break;
                 case 2:
-                    //clientesSaldoPositivos(clientesLista);
-                    System.out.println("//clientesSaldoPositivos(clientesLista);\n");
                     clientesSaldoPositivos(clientesLista);
                     break;
                 case 3:
-                    System.out.println("//clientesAcimaDe(clientesLista);\n");
                     clientesAcimaDe(clientesLista);
                     break;
                 case 4:
-                    System.out.println("//clienteMarioCredito(clientesLista);\n");
                     clienteMaiorCredito(clientesLista);
                     break;
             }
@@ -146,9 +140,9 @@ public class Main {
         } while ((opcao < 0) || (opcao > 4));
         return opcao;
     }
-    //end SUBMENU
 
-    // METODOS menu -----------------------------------------------------
+    //  -------- METODOS menu
+
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
@@ -231,8 +225,7 @@ public class Main {
         return pos;
     }
 
-
-    //METODOS Submenu
+    //  -------- METODOS Submenu
 
     public static void clientesSaldoPositivos(List<Cliente> clientesLista){
         List<Cliente> saldoPositivo = new ArrayList<>();
@@ -276,7 +269,8 @@ public class Main {
         System.out.println(clientesLista.get(pos)+"\n");
     }
 
-    //MOTODOS Auxiliares.
+    //  -------- MOTODOS Auxiliares
+
     public static void listar(List<Cliente> clientes) {
 
         if (clientes.isEmpty()) {

@@ -2,6 +2,13 @@ package alex.silva;
 
 public class Ligacao {
 
+    //private long protocolo
+    //private Cliente ligador;
+    //private Cliente recebedor;
+    //Date inicio;
+    //Date fim;
+    //int duracaoMin;   //diferença em minutos entre o inicio e fim
+
     private long numero;
     private String inicio;
     private String fim;
@@ -14,7 +21,6 @@ public class Ligacao {
     }
 
     //GET SETs
-
     public long getNumero() {
         return numero;
     }
