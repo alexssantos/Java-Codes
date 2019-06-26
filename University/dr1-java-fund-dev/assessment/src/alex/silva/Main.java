@@ -1,5 +1,7 @@
 package alex.silva;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
@@ -86,7 +88,7 @@ public class Main {
             System.out.println("[1] - Incluir Cliente");
             System.out.println("[2] - Alterar Cliente");
             System.out.println("[3] - Excluir Cliente");
-            System.out.println("[4] - Relatório de Ligações");
+            System.out.println("[4] - Relatório gerenciais");
             System.out.println("[5] - Fazer Ligação");
             System.out.println("[6] - Gerar boleto do cliente");
             System.out.println("[0] - Sair");
@@ -106,12 +108,13 @@ public class Main {
         while (opcao != RETORNO) {
             switch (opcao) {
                 case 1:
-                    //listarTodos(clientesLista);
-                    System.out.println("//listarTodos(clientesLista);\n");
+                    System.out.println("//listar(clientesLista);\n");
+                    listar(clientesLista);
                     break;
                 case 2:
                     //clientesSaldoPositivos(clientesLista);
                     System.out.println("//clientesSaldoPositivos(clientesLista);\n");
+                    clientesSaldoPositivos(clientesLista);
                     break;
                 case 3:
                     System.out.println("//clientesAcimaDe(clientesLista);\n");
@@ -146,7 +149,6 @@ public class Main {
     //end SUBMENU
 
     // METODOS  -----------------------------------------------------
-
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
@@ -177,10 +179,9 @@ public class Main {
         boolean removido = clientes.removeIf(x -> x.getNumeroCelular() == numero);
 
         if (!removido) {
-            System.out.println("ERRO: nome não encontrado");
+            System.out.println("ERRO: Nenhum cliente encontrado");
             return;
         }
-        System.out.println("SUCESSO: cliente removido");
     }
 
     public static void alterar(List<Cliente> clientes)
@@ -233,7 +234,16 @@ public class Main {
 
     //METODOS Submenu
 
+    public static void clientesSaldoPositivos(List<Cliente> clientesLista){
+        List<Cliente> saldoPositivo = new ArrayList<>();
 
+        for (Cliente cliente: clientesLista) {
+            if (cliente.getCreditos() >= 0){
+                saldoPositivo.add(cliente);
+            }
+        }
+        listar(saldoPositivo);
+    }
 
     //MOTODOS Auxiliares.
     public static void listar(List<Cliente> clientes) {
@@ -333,7 +343,7 @@ public class Main {
 
                 if (ok){
                     num = Integer.parseInt(numero);
-                    boolean repetido = testaNumeroRepetido(num);
+                    boolean repetido = testaTelefoneRepetido(num);
                     if (!repetido) ok = true;
                     else{
                         ok = false;
@@ -356,7 +366,7 @@ public class Main {
         return validacao;
     }
 
-    public static boolean testaNumeroRepetido(long numero){
+    public static boolean testaTelefoneRepetido(long numero){
         for (Cliente cliente: clientesLista) {
             if (cliente.getNumeroCelular() == numero){
                 return true;
