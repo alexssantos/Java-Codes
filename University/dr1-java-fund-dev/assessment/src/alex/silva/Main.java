@@ -118,11 +118,11 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("//clientesAcimaDe(clientesLista);\n");
-                    //clientesAcimaDe(clientesLista);
+                    clientesAcimaDe(clientesLista);
                     break;
                 case 4:
                     System.out.println("//clienteMarioCredito(clientesLista);\n");
-                    //clienteMarioCredito(clientesLista);
+                    clienteMaiorCredito(clientesLista);
                     break;
             }
             opcao = subMenuRelatorio();
@@ -135,7 +135,7 @@ public class Main {
 
         do {
             System.out.println("[1] - Listar Todos clientes");
-            System.out.println("[2] - Listar semsaldo negativo");
+            System.out.println("[2] - Listar sem saldo negativo");
             System.out.println("[3] - Listar clientes acima de um valor");
             System.out.println("[4] - Cliente com maior número de crédito");
             System.out.println("[0] - Voltar");
@@ -148,7 +148,7 @@ public class Main {
     }
     //end SUBMENU
 
-    // METODOS  -----------------------------------------------------
+    // METODOS menu -----------------------------------------------------
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
@@ -243,6 +243,37 @@ public class Main {
             }
         }
         listar(saldoPositivo);
+    }
+
+    public static void clientesAcimaDe(List<Cliente> clientesLista){
+        List<Cliente> saldoPositivo = new ArrayList<>();
+        long numero = leNumero("Clientes com créditos acima de:");
+
+        for (Cliente cliente: clientesLista) {
+            if (cliente.getCreditos() >= numero){
+                saldoPositivo.add(cliente);
+            }
+        }
+        listar(saldoPositivo);
+    }
+
+    public static void clienteMaiorCredito(List<Cliente> clientesLista){
+        long maior=0;
+        int pos=-1;
+
+        for (int i=0; i<clientesLista.size();i++){
+            int cretido = clientesLista.get(i).getCreditos();
+            if ( cretido > maior){
+                maior = cretido;
+                pos = i;
+            }
+        }
+
+        if (pos == -1){
+            System.out.println("Não encontrado cliente com maior crédito.");
+            return;
+        }
+        System.out.println(clientesLista.get(pos)+"\n");
     }
 
     //MOTODOS Auxiliares.
