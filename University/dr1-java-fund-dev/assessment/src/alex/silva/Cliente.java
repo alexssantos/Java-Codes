@@ -1,8 +1,9 @@
 package alex.silva;
 
 import java.time.Duration;
+import java.util.stream.Collectors;
 
-public class Cliente
+public class Cliente implements Comparable<Cliente>
 {
     public long NumeroCelular;
     public String NomeCliente;
@@ -47,6 +48,33 @@ public class Cliente
 
     public void setCreditos(int creditos) {
         Creditos = creditos;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "numero: "+getNumeroCelular()
+                +" | nome: "+getNomeCliente()
+                +" | plano: "+getPlanoCliente()
+                +" | creditos: "+getCreditos()
+        );
+    }
+
+    public String salvarCliente(){
+        return getNumeroCelular()+" | "
+                +getNomeCliente()+" | "
+                +getPlanoCliente()+" | "
+                +getCreditos();
+    }
+
+    @Override
+    public int compareTo(Cliente other) {
+        if (getNumeroCelular() > other.getNumeroCelular())
+            return 1;
+        if (getNumeroCelular() < other.getNumeroCelular())
+            return -1;
+        else
+            return 0;
     }
 
     public enum ClientePlanoTipo{   //TODO: salvar como 1 ou 2 no arquivo.
