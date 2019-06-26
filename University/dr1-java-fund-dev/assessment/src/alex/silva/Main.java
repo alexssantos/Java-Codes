@@ -47,13 +47,23 @@ public class Main {
         int opcao = menu();
         while (opcao != FIM) {
             switch (opcao) {
-                case 1: incluir(clientesLista);
+                case 1:
+                    incluir(clientesLista);
                     break;
-                case 2: alterar(clientesLista);
+                case 2:
+                    alterar(clientesLista);
                     break;
-                case 3: excluir(clientesLista);
+                case 3:
+                    excluir(clientesLista);
                     break;
-                case 4: listar(clientesLista);   //RELATORIO
+                case 4:
+                    subMenu(clientesLista);   //RELATORIO
+                    break;
+                case 5:
+                    //fazerLigacao();
+                    break;
+                case 6:
+                    //gerarBoletoCliente(clientesLista);   //RELATORIO
                     break;
             }
             opcao = menu();
@@ -75,7 +85,55 @@ public class Main {
             System.out.println("[2] - Alterar Cliente");
             System.out.println("[3] - Excluir Cliente");
             System.out.println("[4] - Relatório de Ligações");
+            System.out.println("[5] - Fazer Ligação");
+            System.out.println("[6] - Gerar boleto do cliente");
             System.out.println("[0] - Sair");
+            opcao = leNumero("Entre com uma opção: ");
+            if ((opcao < 0) || (opcao > 6)) {
+                System.out.println("Erro: opcao inválida");
+            }
+        } while ((opcao < 0) || (opcao > 6));
+        return opcao;
+    }
+
+    //SUBMENU   -------------------------------------------------
+
+    public static void subMenu(List<Cliente> clientesLista){
+        final int RETORNO = 0;
+        int opcao = subMenuRelatorio();
+        while (opcao != RETORNO) {
+            switch (opcao) {
+                case 1:
+                    //listarTodos(clientesLista);
+                    System.out.println("//listarTodos(clientesLista);\n");
+                    break;
+                case 2:
+                    //clientesSaldoPositivos(clientesLista);
+                    System.out.println("//clientesSaldoPositivos(clientesLista);\n");
+                    break;
+                case 3:
+                    System.out.println("//clientesAcimaDe(clientesLista);\n");
+                    //clientesAcimaDe(clientesLista);
+                    break;
+                case 4:
+                    System.out.println("//clienteMarioCredito(clientesLista);\n");
+                    //clienteMarioCredito(clientesLista);
+                    break;
+            }
+            opcao = subMenuRelatorio();
+        }
+    }
+
+    public static int subMenuRelatorio(){
+        int opcao;
+        Scanner entrada = new Scanner(System.in);
+
+        do {
+            System.out.println("[1] - Listar Todos clientes");
+            System.out.println("[2] - Listar semsaldo negativo");
+            System.out.println("[3] - Listar clientes acima de um valor");
+            System.out.println("[4] - Cliente com maior número de crédito");
+            System.out.println("[0] - Voltar");
             opcao = leNumero("Entre com uma opção: ");
             if ((opcao < 0) || (opcao > 4)) {
                 System.out.println("Erro: opcao inválida");
@@ -83,9 +141,10 @@ public class Main {
         } while ((opcao < 0) || (opcao > 4));
         return opcao;
     }
+    //end SUBMENU
 
+    // METODOS  -----------------------------------------------------
 
-    // CRUD
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
@@ -181,9 +240,6 @@ public class Main {
         }
         System.out.println("---------------");
     }
-
-
-    // METODOS
 
     public static String leNome() {
         String nome;
@@ -281,7 +337,7 @@ public class Main {
     }
 
     public static boolean validaTelefone(String numero){
-        String regex = "^9[1-9][0-9]{7}$";  // 1° = 9 // 2° = 1-9
+        String regex = "^9[0-9]{7}$";  // 1° = 9 // 2° = 1-9
         boolean validacao = Pattern.compile(regex).matcher(numero).matches();
         return validacao;
     }
