@@ -47,7 +47,6 @@ public class Main {
         //MENU
         int opcao = menu();
         while (opcao != FIM) {
-            limpaTela();
             switch (opcao) {
                 case 1: incluir(clientesLista);
                     break;
@@ -69,7 +68,6 @@ public class Main {
     }
 
     public static int menu() {
-        //limpaTela();
         int opcao;
         Scanner entrada = new Scanner(System.in);
 
@@ -92,14 +90,22 @@ public class Main {
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
-        int telefone = leTelefone("Entre com o Telefone (ex.: 988885555): ");
-        if (telefone == 0){
+        long telefone = leTelefone("Entre com o Telefone (ex.: 988885555): ");
+        if (telefone == 0)
             return;
-        }
 
+        Cliente.ClientePlanoTipo plano = pegaPlano();
+        if (plano == null)
+            return;
 
+        int creditos = leNumero("Quantidade de Creditos (ex: 7):");
+        if (creditos == 0)
+            return;
 
-        //turma.add(new Cliente(nome, n1, n2));
+        Cliente cliente = new Cliente(telefone,nome,plano,creditos);
+        clientesLista.add(cliente);
+
+        terminouEscolha();
     }
 
     public static void excluir(List<Cliente> clientes)
@@ -165,10 +171,6 @@ public class Main {
 
 
     // METODOS
-    public static void limpaTela(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
 
     public static String leNome() {
         String nome;
@@ -204,8 +206,33 @@ public class Main {
         return num;
     }
 
-    public static int leTelefone(String msg) {
-        int num = 0;
+    public static Cliente.ClientePlanoTipo pegaPlano(){
+        boolean ok = false;
+        Scanner in = new Scanner(System.in);
+        int tentativas = 3;
+
+        do {
+            System.out.print("[1] PosPage / [2] PrePago: ");
+            String plano = in.nextLine();
+
+            if (plano.equals("1")){
+                return Cliente.ClientePlanoTipo.PosPago;
+            }
+            if (plano.equals("2")){
+                return Cliente.ClientePlanoTipo.PrePago;
+            }
+
+            tentativas--;
+            if (tentativas == 0) {
+                ok = true;
+            };
+
+        } while (!ok);
+        return null;
+    }
+
+    public static long leTelefone(String msg) {
+        long num = 0;
         boolean ok = false;
         Scanner in = new Scanner(System.in);
         int tentativas = 3;
@@ -244,5 +271,11 @@ public class Main {
         String regex = "^9[1-9][0-9]{7}$";  // 1° = 9 // 2° = 1-9
         boolean validacao = Pattern.compile(regex).matcher(numero).matches();
         return validacao;
+    }
+
+    public static void terminouEscolha(){
+        System.out.print("\nprecione alguma tecla...\n");
+        Scanner in = new Scanner(System.in);
+        in.nextLine();
     }
 }
