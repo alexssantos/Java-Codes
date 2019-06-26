@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -67,7 +69,7 @@ public class Main {
     }
 
     public static int menu() {
-        limpaTela();
+        //limpaTela();
         int opcao;
         Scanner entrada = new Scanner(System.in);
 
@@ -89,12 +91,9 @@ public class Main {
     // CRUD
     public static void incluir(List<Cliente> clientesLista)
     {
-        String nome;
-        int telefone;
+        String nome = leNome();
+        int telefone = leTelefone("Entre com o Telefone (ex.: 988885555): ");
 
-        nome = leNome();
-        telefone = leNumero("Entre com o Telefone (ex.: 2222-5555): ");
-        //validaTelefone()
 
 
         //turma.add(new Cliente(nome, n1, n2));
@@ -174,7 +173,6 @@ public class Main {
 
         System.out.print("Entre com o nome: ");
         nome = entrada.nextLine();
-        entrada.close();
         return nome;
     }
 
@@ -182,16 +180,57 @@ public class Main {
         int num = 0;
         boolean ok = false;
         Scanner entrada = new Scanner(System.in);
+        int tentativas = 3;
 
         do {
             try {
+                if (tentativas == 0) {
+                    break;
+                };
                 System.out.print(msg);
                 num = entrada.nextInt();
                 ok = true;
+
             }
             catch (Exception e) {
                 System.out.println("Erro: número inválido");
                 entrada.nextLine();
+                tentativas--;
+            }
+        } while (!ok);
+        return num;
+    }
+
+    public static int leTelefone(String msg) {
+        int num = 0;
+        boolean ok = false;
+        Scanner in = new Scanner(System.in);
+        int tentativas = 3;
+
+        String regex = "^9[1-9][0-9]{7}$";  // 1° = 9 // 2° = 1-9
+        do {
+            try
+            {
+                if (tentativas == 0) {
+                    break;
+                };
+                tentativas--;
+
+                System.out.print(msg);
+                String numero="";
+                if (in.hasNextLine()){
+                    numero = in.nextLine();
+                }
+
+                ok = Pattern.compile(regex).matcher(numero).matches();
+                if (ok){
+                    num = Integer.parseInt(numero);
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Erro: número inválido");
+                in.nextLine();
+                tentativas--;
             }
         } while (!ok);
         return num;
