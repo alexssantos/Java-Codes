@@ -93,6 +93,9 @@ public class Main {
     {
         String nome = leNome();
         int telefone = leTelefone("Entre com o Telefone (ex.: 988885555): ");
+        if (telefone == 0){
+            return;
+        }
 
 
 
@@ -207,11 +210,11 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int tentativas = 3;
 
-        String regex = "^9[1-9][0-9]{7}$";  // 1° = 9 // 2° = 1-9
         do {
             try
             {
                 if (tentativas == 0) {
+                    System.out.println("Tentativas encerradas. Inicie novamente.\n");
                     break;
                 };
                 tentativas--;
@@ -222,7 +225,8 @@ public class Main {
                     numero = in.nextLine();
                 }
 
-                ok = Pattern.compile(regex).matcher(numero).matches();
+                ok = validaTelefone(numero);
+
                 if (ok){
                     num = Integer.parseInt(numero);
                 }
@@ -234,5 +238,11 @@ public class Main {
             }
         } while (!ok);
         return num;
+    }
+
+    public static boolean validaTelefone(String numero){
+        String regex = "^9[1-9][0-9]{7}$";  // 1° = 9 // 2° = 1-9
+        boolean validacao = Pattern.compile(regex).matcher(numero).matches();
+        return validacao;
     }
 }
