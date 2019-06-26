@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -90,7 +89,7 @@ public class Main {
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
-        long telefone = leTelefone("Entre com o Telefone (ex.: 988885555): ");
+        long telefone = leTelefone();
         if (telefone == 0)
             return;
 
@@ -110,45 +109,59 @@ public class Main {
 
     public static void excluir(List<Cliente> clientes)
     {
-        if (clientes.isEmpty()) {
-            System.out.println("Turma vazia");
-            return;
-        }
         listar(clientes);
-        String nome = leNome();
-        int pos = pesquisaNome(clientes, nome);
-        if (pos == -1) {
-            System.out.println("Erro: nome não encontrado");
+        long numero = leTelefone();
+        if (numero == 0) return;
+
+        boolean removido = clientes.removeIf(x -> x.getNumeroCelular() == numero);
+
+        if (!removido) {
+            System.out.println("ERRO: nome não encontrado");
             return;
         }
-        clientes.remove(pos);
+        System.out.println("SUCESSO: cliente removido");
     }
 
     public static void alterar(List<Cliente> clientes)
     {
         if (clientes.isEmpty()) {
-            System.out.println("Turma vazia");
+            System.out.println("Não há clientes cadastrados");
             return;
         }
 
-        String nome = leNome();
-        int pos = pesquisaNome(clientes, nome);
+        long telefone = leTelefone();
+        if (telefone == 0) return;
+
+        clientes.stream().filter(x -> (x.getNumeroCelular() == telefone));
+        int pos = pesquisaCliente(clientes, telefone);
         if (pos == -1) {
             System.out.println("Erro: nome não encontrado");
             return;
         }
-        int n1 = leNumero("Entre com o Telefone (ex.: 2222-5555): ");
-        int n2 = leNumero("Entre com a nota: ");
-        //turma.get(pos).setN1(n1);
-        //turma.get(pos).setN2(n2);
+
+        String nome = leNome();
+        Cliente.ClientePlanoTipo plano = pegaPlano();
+        if (plano == null)
+            return;
+
+        int creditos = leNumero("Quantidade de Creditos (ex: 7):");
+        if (creditos == 0)
+            return;
+
+        Cliente cliente = clientes.get(pos);
+        cliente.setCreditos(creditos);
+        cliente.setNomeCliente(nome);
+        cliente.setPlanoCliente(plano);
+
+        clientes.set(pos,cliente);
+        System.out.println("SUCESSO: Cliente atualizado: \n"+cliente.toString());
     }
 
-    public static int pesquisaNome(List<Cliente> clientes, String nome) {
+    public static int pesquisaCliente(List<Cliente> clientes, long telefone) {
         int pos = -1;
 
-        nome = nome.toLowerCase();
         for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getNomeCliente().toLowerCase().equals(nome)) {
+            if (clientes.get(i).getNumeroCelular() == telefone) {
                 pos = i;
                 break;
             }
@@ -231,7 +244,7 @@ public class Main {
         return null;
     }
 
-    public static long leTelefone(String msg) {
+    public static long leTelefone() {
         long num = 0;
         boolean ok = false;
         Scanner in = new Scanner(System.in);
@@ -246,7 +259,7 @@ public class Main {
                 };
                 tentativas--;
 
-                System.out.print(msg);
+                System.out.print("Entre com o Telefone (ex.: 988885555): ");
                 String numero="";
                 if (in.hasNextLine()){
                     numero = in.nextLine();
