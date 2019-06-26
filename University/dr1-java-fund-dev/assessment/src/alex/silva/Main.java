@@ -323,7 +323,7 @@ public class Main {
                 };
                 tentativas--;
 
-                System.out.print("Entre com o Telefone (ex.: 988885555): ");
+                System.out.print("Entre com o Telefone de 8 numeros (ex.: 88885555): ");
                 String numero="";
                 if (in.hasNextLine()){
                     numero = in.nextLine();
@@ -333,7 +333,12 @@ public class Main {
 
                 if (ok){
                     num = Integer.parseInt(numero);
-                    //ok = testaNumeroRepetido(num);
+                    boolean repetido = testaNumeroRepetido(num);
+                    if (!repetido) ok = true;
+                    else{
+                        ok = false;
+                        System.out.println("Número já Existe");
+                    }
                 }
             }
             catch (Exception e) {
@@ -351,12 +356,14 @@ public class Main {
         return validacao;
     }
 
-    /*public static boolean testaNumeroRepetido(long numero){
-        for (:
-             ) {
-
+    public static boolean testaNumeroRepetido(long numero){
+        for (Cliente cliente: clientesLista) {
+            if (cliente.getNumeroCelular() == numero){
+                return true;
+            }
         }
-    }*/
+        return false;
+    }
 
     public static void terminouEscolha(){
         System.out.print("\nprecione alguma tecla...\n");
