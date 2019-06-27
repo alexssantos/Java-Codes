@@ -8,7 +8,7 @@ public class Cliente implements Comparable<Cliente>
     public long NumeroCelular;
     public String NomeCliente;
     public ClientePlanoTipo PlanoCliente;
-    public int Creditos;
+    public long Creditos;
 
     public Cliente(long numeroCelular, String nomeCliente, ClientePlanoTipo planoCliente, int creditos) {
         NumeroCelular = numeroCelular;
@@ -42,11 +42,11 @@ public class Cliente implements Comparable<Cliente>
     }
 
     //TODO: trabalhar com itpo data e retornar string pra salvar no arquivo.
-    public int getCreditos() {
+    public long getCreditos() {
         return Creditos;
     }
 
-    public void setCreditos(int creditos) {
+    public void setCreditos(long creditos) {
         Creditos = creditos;
     }
 

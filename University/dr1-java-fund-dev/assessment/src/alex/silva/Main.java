@@ -1,11 +1,10 @@
 package alex.silva;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.List;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -63,7 +62,7 @@ public class Main {
                     subMenu(clientesLista);
                     break;
                 case 5:
-                    //fazerLigacao();
+                    fazerLigacao();
                     break;
                 case 6:
                     //gerarBoletoCliente(clientesLista);   //RELATORIO
@@ -146,7 +145,7 @@ public class Main {
     public static void incluir(List<Cliente> clientesLista)
     {
         String nome = leNome();
-        long telefone = leTelefone();
+        long telefone = leTelefone(true);
         if (telefone == 0)
             return;
 
@@ -167,7 +166,7 @@ public class Main {
     public static void excluir(List<Cliente> clientes)
     {
         listar(clientes);
-        long numero = leTelefone();
+        long numero = leTelefone(false);
         if (numero == 0) return;
 
         boolean removido = clientes.removeIf(x -> x.getNumeroCelular() == numero);
@@ -175,6 +174,8 @@ public class Main {
         if (!removido) {
             System.out.println("ERRO: Nenhum cliente encontrado");
             return;
+        }else{
+            System.out.println("SUCESSO: cliente removido");
         }
     }
 
@@ -185,10 +186,9 @@ public class Main {
             return;
         }
 
-        long telefone = leTelefone();
+        long telefone = leTelefone(false);
         if (telefone == 0) return;
 
-        clientes.stream().filter(x -> (x.getNumeroCelular() == telefone));
         int pos = pesquisaCliente(clientes, telefone);
         if (pos == -1) {
             System.out.println("Erro: nome não encontrado");
@@ -225,6 +225,41 @@ public class Main {
         return pos;
     }
 
+    public static void fazerLigacao(){
+        long tell = leTelefone(false);
+        if (tell == 0) return;
+
+        Cliente ligador = pegaCliete(tell);
+        if (ligador == null){
+            System.out.println("Cliente não existe.");
+            return;
+        }
+
+        long tell2 = leTelefone(false);
+        if (tell2 == 0) return;
+
+        Cliente recebedor = pegaCliete(tell);
+        if (recebedor == null){
+            System.out.println("Cliente não existe.");
+            return;
+        }
+
+        Date inicio = pegaDataHora("Dia (dd/MM/yy): ");
+        Date fim = pegaDataHora("Dia (dd/MM/yy): ");
+
+        if (inicio == null || fim == null) {
+            return;
+        }
+
+        Ligacao ligacao = new Ligacao(ligador.NumeroCelular, recebedor.NumeroCelular,inicio,fim);
+        ligacoesLista.add(ligacao);
+        long creditos = ligador.getCreditos() - ligacao.getDuracaoMin();
+        ligador.setCreditos(creditos);
+
+        System.out.println("Ligação: "+ligacao.toString());
+        System.out.println("Ligador: "+ligador.toString());
+    }
+
     //  -------- METODOS Submenu
 
     public static void clientesSaldoPositivos(List<Cliente> clientesLista){
@@ -255,7 +290,7 @@ public class Main {
         int pos=-1;
 
         for (int i=0; i<clientesLista.size();i++){
-            int cretido = clientesLista.get(i).getCreditos();
+            long cretido = clientesLista.get(i).getCreditos();
             if ( cretido > maior){
                 maior = cretido;
                 pos = i;
@@ -343,7 +378,7 @@ public class Main {
         return null;
     }
 
-    public static long leTelefone() {
+    public static long leTelefone(boolean validacao) {
         long num = 0;
         boolean ok = false;
         Scanner in = new Scanner(System.in);
@@ -368,8 +403,11 @@ public class Main {
 
                 if (ok){
                     num = Integer.parseInt(numero);
+                }
+                if (validacao){
                     boolean repetido = testaTelefoneRepetido(num);
-                    if (!repetido) ok = true;
+                    if (!repetido)
+                        ok = true;
                     else{
                         ok = false;
                         System.out.println("Número já Existe");
@@ -385,6 +423,56 @@ public class Main {
         return num;
     }
 
+    public static Date pegaDataHora(String msg){
+        Date data = new Date(Date.UTC(0,0,0,0,0,0));
+        boolean ok = false;
+        Scanner entrada = new Scanner(System.in);
+        int tentativas = 3;
+
+        do {
+            try
+            {
+                if (tentativas == 0) {
+                    System.out.println("Tentativas encerradas. Inicie novamente.\n");
+                    break;
+                };
+
+                System.out.print(msg);
+                String diaStr = entrada.nextLine();
+                System.out.print("horario (HH:mm): ");
+                String horaStr = entrada.nextLine();
+                data = criarDataHora(diaStr, horaStr);
+                if (data != null) ok = true;
+                else {
+                    System.out.println("ERRO: Formato Data Hora não bate com o padrão. \n");
+                }
+            }
+            catch (ParseException e){
+                System.out.println("Erro: Data no padrão errado");
+                ok = false;
+            }
+            entrada.nextLine();
+            tentativas--;
+        } while (!ok);
+        return data;
+    }
+
+    public static Date criarDataHora(String Dia, String hora) throws ParseException {
+
+        String regexDia = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}$";  // dd/MM/yy
+        boolean diaOk = Pattern.compile(regexDia).matcher(Dia).matches();
+
+        String regexHora = "^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$";
+        boolean horaOk = Pattern.compile(regexHora).matcher(hora).matches();        //HH:mm
+
+        if (diaOk && horaOk){
+            SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            Date dateOut = SDF.parse(Dia+" "+hora);
+            return dateOut;
+        }
+        return null;
+    }
+
     public static boolean validaTelefone(String numero){
         String regex = "^[2-9][0-9]{7}$";  // 1° = 2-9
         boolean validacao = Pattern.compile(regex).matcher(numero).matches();
@@ -398,6 +486,15 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static Cliente pegaCliete(long numero){
+        for (Cliente cliente: clientesLista) {
+            if (cliente.getNumeroCelular() == numero){
+                return cliente;
+            }
+        }
+        return null;
     }
 
     public static void terminouEscolha(){

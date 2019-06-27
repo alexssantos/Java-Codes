@@ -78,7 +78,7 @@ public class Arquivo
                 String inicio = campos[1];
                 String fim = campos[2];
 
-                Ligacao ligacao = new Ligacao(numero,inicio,fim);
+                Ligacao ligacao = new Ligacao(numero, ,inicio,fim);
                 ligacaos.add(ligacao);
             }
         }
@@ -108,11 +108,11 @@ public class Arquivo
 
         for (Ligacao ligacao : ligacoes) {
             try {
-
                 saida.format("%d | %s | %s\n",
-                    ligacao.getNumero(),
+                    ligacao.getDuracaoMin(),
                     ligacao.getInicio(),
                     ligacao.getFim()
+                    
                 );
             }
             catch (Exception e) {
