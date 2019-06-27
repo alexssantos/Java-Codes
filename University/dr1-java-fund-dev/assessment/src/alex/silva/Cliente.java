@@ -57,6 +57,7 @@ public class Cliente implements Comparable<Cliente>
                 +" | nome: "+getNomeCliente()
                 +" | plano: "+getPlanoCliente()
                 +" | creditos: "+getCreditos()
+                +"\n"
         );
     }
 

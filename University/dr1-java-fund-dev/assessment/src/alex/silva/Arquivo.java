@@ -2,10 +2,7 @@ package alex.silva;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Arquivo
@@ -72,13 +69,18 @@ public class Arquivo
             while (entrada.hasNext())
             {
                 linha = entrada.nextLine();
-                campos = linha.split(SEPARADOR);    // ex.: 12345678 | 10:10 | 10:20
+                campos = linha.split(SEPARADOR);    // ex.: 12345678 | 12345678 | 10/10/19 10:10 | 10/10/19 10:20 | 23
 
                 long numero = Long.parseLong(campos[0]);
-                String inicio = campos[1];
-                String fim = campos[2];
+                long numero2 = Long.parseLong(campos[1]);
 
-                Ligacao ligacao = new Ligacao(numero, ,inicio,fim);
+                String[] dataHoraInicio = campos[2].split(" ");
+                Date inicio = Main.criarDataHora(dataHoraInicio[0],dataHoraInicio[1]);
+
+                String[] dataHoraFim = campos[3].split(" ");
+                Date fim = Main.criarDataHora(dataHoraFim[0],dataHoraFim[1]);
+
+                Ligacao ligacao = new Ligacao(numero, numero2 ,inicio,fim);
                 ligacaos.add(ligacao);
             }
         }
@@ -92,14 +94,17 @@ public class Arquivo
         for (Cliente cliente : clientes) {
             try {
 
+                saida.format(cliente.salvarCliente()+"\n");
+                /*
                 saida.format("%d | %s | %s | %s\n",
                         cliente.getNumeroCelular(),
                         cliente.getNomeCliente(),
                         cliente.getPlanoCliente().toString(),
                         cliente.getCreditos());
+                        */
             }
             catch (Exception e) {
-                System.out.println("Erro: gravacao do arquivo: "+nomeArq);
+                System.out.println("Erro: gravacao no arquivo: "+nomeArq+"\n do item: "+cliente);
             }
         }
     }
@@ -108,12 +113,7 @@ public class Arquivo
 
         for (Ligacao ligacao : ligacoes) {
             try {
-                saida.format("%d | %s | %s\n",
-                    ligacao.getDuracaoMin(),
-                    ligacao.getInicio(),
-                    ligacao.getFim()
-                    
-                );
+                saida.format(ligacao.salvarLigacao()+"\n");
             }
             catch (Exception e) {
                 System.out.println("Erro: gravacao do arquivo: "+nomeArq);

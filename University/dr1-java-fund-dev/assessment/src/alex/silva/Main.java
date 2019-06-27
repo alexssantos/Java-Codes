@@ -23,18 +23,20 @@ public class Main {
 
 
         // LÊ O ARQUIVO
-        Arquivo arquivo = new Arquivo(CLIENTES);
-        Scanner entrada = arquivo.abreArquivo();
+        Arquivo arquivoCliente = new Arquivo(CLIENTES);
+        Scanner entrada = arquivoCliente.abreArquivo();
         if (entrada != null) {
-            arquivo.pegaCliente(entrada, clientesLista);
-            arquivo.fechaLeitor(entrada);
+            arquivoCliente.pegaCliente(entrada, clientesLista);
+            System.out.println("> CLIENTES ARQUIVO"+"\nQuantidade: "+clientesLista.size()+"\n"+clientesLista);
+            arquivoCliente.fechaLeitor(entrada);
         }
 
-        arquivo = new Arquivo(LIGACOES);
-        entrada = arquivo.abreArquivo();
+        Arquivo arquivoLigacoes = new Arquivo(LIGACOES);
+        entrada = arquivoLigacoes.abreArquivo();
         if (entrada != null) {
-            arquivo.pegaLigacoes(entrada, ligacoesLista);
-            arquivo.fechaLeitor(entrada);
+            arquivoLigacoes.pegaLigacoes(entrada, ligacoesLista);
+            System.out.println("> LIGAÇOES ARQUIVO"+"\nQuantidade: "+ligacoesLista.size()+ligacoesLista);
+            arquivoLigacoes.fechaLeitor(entrada);
         }
 
         /*MENUS:
@@ -71,10 +73,16 @@ public class Main {
             opcao = menu();
         }
 
-        Formatter saida = arquivo.abreArquivoGravar();
-        if (saida != null) {
-            arquivo.gravaClientes(saida, clientesLista);
-            arquivo.fechaGravador(saida);
+        Formatter gravaCliente = arquivoCliente.abreArquivoGravar();
+        if (gravaCliente != null) {
+            arquivoCliente.gravaClientes(gravaCliente, clientesLista);
+            arquivoCliente.fechaGravador(gravaCliente);
+        }
+
+        Formatter gravaLigacao = arquivoLigacoes.abreArquivoGravar();
+        if (gravaLigacao != null) {
+            arquivoLigacoes.gravaLigacoes(gravaLigacao, ligacoesLista);
+            arquivoLigacoes.fechaGravador(gravaLigacao);
         }
     }
 
@@ -244,8 +252,8 @@ public class Main {
             return;
         }
 
-        Date inicio = pegaDataHora("Dia (dd/MM/yy): ");
-        Date fim = pegaDataHora("Dia (dd/MM/yy): ");
+        Date inicio = pegaDataHora("INICIO: \nDia (dd/MM/yy): ");
+        Date fim = pegaDataHora("FIM: \nDia (dd/MM/yy): ");
 
         if (inicio == null || fim == null) {
             return;
@@ -449,9 +457,9 @@ public class Main {
             }
             catch (ParseException e){
                 System.out.println("Erro: Data no padrão errado");
+                entrada.nextLine();
                 ok = false;
             }
-            entrada.nextLine();
             tentativas--;
         } while (!ok);
         return data;
@@ -466,7 +474,7 @@ public class Main {
         boolean horaOk = Pattern.compile(regexHora).matcher(hora).matches();        //HH:mm
 
         if (diaOk && horaOk){
-            SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yy HH:mm");
             Date dateOut = SDF.parse(Dia+" "+hora);
             return dateOut;
         }

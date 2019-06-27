@@ -1,24 +1,26 @@
 package alex.silva;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Ligacao {
 
-    private long protocolo;
     private long ligador;
     private long recebedor;
     private Date inicio;
     private Date fim;
     private long duracaoMin;   //diferença em minutos entre o inicio e fim
 
+    public SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yy HH:mm");
+
     public Ligacao(long ligador, long recebedor, Date inicio, Date fim) {
         this.ligador = ligador;
         this.recebedor = recebedor;
         this.inicio = inicio;
         this.fim = fim;
-        setDuracaoMin(inicio, fim);
+        setDuracaoMin(this.inicio, this.fim);
     }
 
     // GET SET
@@ -75,6 +77,28 @@ public class Ligacao {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Ligador: "+getLigador()
+                +" | "+
+                "Recebedor: "+getRecebedor()
+                +" | "+
+                "Inicio: "+SDF.format(getInicio())
+                +" | "+
+                "Fim: "+SDF.format(getFim())
+                +" | "+
+                "Duração (min): "+getDuracaoMin()
+                +"\n";
+
+    }
+
+    public String salvarLigacao(){
+        return getLigador()
+                +" | "+
+                getRecebedor()
+                +" | "+
+                SDF.format(getInicio())
+                +" | "+
+                SDF.format(getFim())
+                +" | "+
+                getDuracaoMin();
     }
 }
