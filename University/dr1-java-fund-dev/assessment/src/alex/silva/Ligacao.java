@@ -13,7 +13,7 @@ public class Ligacao {
     private Date fim;
     private long duracaoMin;   //diferença em minutos entre o inicio e fim
 
-    public SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yy HH:mm");
+    public SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 
     public Ligacao(long ligador, long recebedor, Date inicio, Date fim) {
         this.ligador = ligador;

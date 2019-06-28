@@ -1,4 +1,5 @@
-88889999 | Alex | PrePago | -20
-22223333 | Leticia | PrePago | 0
+88889999 | Alex | PrePago | 450
 12345678 | LP | PosPago | 200
-87654321 | ML | PosPago | 1
+87654321 | ML | PosPago | 75
+22223333 | Leticia | PrePago | 0
+44445555 | Alice | PosPago | 125

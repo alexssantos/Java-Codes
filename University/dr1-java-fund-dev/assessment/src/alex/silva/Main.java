@@ -31,7 +31,7 @@ public class Main {
         Scanner entrada = arquivoCliente.abreArquivo();
         if (entrada != null) {
             arquivoCliente.pegaCliente(entrada, clientesLista);
-            System.out.println("> CLIENTES ARQUIVO"+"\nQuantidade: "+clientesLista.size()+"\n"+clientesLista);
+            System.out.println("> CLIENTES ARQUIVO"+"\nQuantidade: "+clientesLista.size()+"\n");//+clientesLista);
             arquivoCliente.fechaLeitor(entrada);
         }
 
@@ -39,7 +39,7 @@ public class Main {
         entrada = arquivoLigacoes.abreArquivo();
         if (entrada != null) {
             arquivoLigacoes.pegaLigacoes(entrada, ligacoesLista);
-            System.out.println("> LIGAÇOES ARQUIVO"+"\nQuantidade: "+ligacoesLista.size()+"\n"+ligacoesLista);
+            System.out.println("> LIGAÇOES ARQUIVO"+"\nQuantidade: "+ligacoesLista.size()+"\n");//+ligacoesLista);
             arquivoLigacoes.fechaLeitor(entrada);
         }
 
@@ -312,6 +312,7 @@ public class Main {
                 for (Ligacao item: ligacoes) {
                     System.out.println(item);
                 }
+                System.out.println("Plano: "+plano);
                 System.out.println("Total de Ligações: "+ligacoes.size());
                 System.out.println("Total debitado: C$ "+(-somaDuracao));
                 System.out.println("Creditos : C$ "+(cliente.getCreditos()-somaDuracao));
@@ -319,10 +320,10 @@ public class Main {
             }
         }
         if (plano.equals(Cliente.ClientePlanoTipo.PosPago)){
-            if (ligacoes.size() == 0){
-                LocalDate now = LocalDate.now(); //2015-11-23
-                LocalDate lastDay = now.with(TemporalAdjusters.lastDayOfMonth());
+            LocalDate now = LocalDate.now(); //2015-11-23
+            LocalDate lastDay = now.with(TemporalAdjusters.lastDayOfMonth());
 
+            if (ligacoes.size() == 0){
                 System.out.println("Nenhuma ligação Feita");
                 System.out.println("Plano: "+plano);
                 System.out.println("Plano Expira em : "+lastDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)));
@@ -333,9 +334,10 @@ public class Main {
                 for (Ligacao item: ligacoes) {
                     System.out.println(item);
                 }
+                System.out.println("Plano: "+plano);
                 System.out.println("Total de Ligações: "+ligacoes.size());
                 System.out.println("Total duração (min): "+somaDuracao);
-                System.out.println("Creditos: C$ "+(cliente.getCreditos()-somaDuracao));
+                System.out.println("Plano Expira em : "+lastDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)));
                 System.out.println("-------------------------------------");
             }
         }
@@ -546,11 +548,11 @@ public class Main {
         String regexDia = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}$";  // dd/MM/yy
         boolean diaOk = Pattern.compile(regexDia).matcher(Dia).matches();
 
-        String regexHora = "^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$";
-        boolean horaOk = Pattern.compile(regexHora).matcher(hora).matches();        //HH:mm
+        String regexHora = "^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]:[0-5][0-9]$";
+        boolean horaOk = Pattern.compile(regexHora).matcher(hora).matches();        //HH:mm:ss
 
         if (diaOk && horaOk){
-            SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yy HH:mm");
+            SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date dateOut = SDF.parse(Dia+" "+hora);
             return dateOut;
         }
