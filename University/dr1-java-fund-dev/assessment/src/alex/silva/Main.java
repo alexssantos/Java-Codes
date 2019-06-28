@@ -555,7 +555,7 @@ public class Main {
     }
 
     public static boolean validaTelefone(String numero){
-        String regex = "^[2-9][0-9]{7}$";  // 1° = 2-9
+        String regex = "^[1-9][0-9]{7}$";  // 1° = 2-9
         boolean validacao = Pattern.compile(regex).matcher(numero).matches();
         return validacao;
     }
