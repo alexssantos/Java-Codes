@@ -63,7 +63,7 @@ public class Ligacao {
     public void setDuracaoMin(Date inicio, Date fim) {
         long diff = fim.getTime() - inicio.getTime();
         long diffMinutos = TimeUnit.MILLISECONDS.toMinutes(diff);
-        this.duracaoMin = duracaoMin;
+        this.duracaoMin = diffMinutos;
     }
 
     public static Ligacao pegarPorNumero(List<Ligacao> ligacoes, long ligador){
