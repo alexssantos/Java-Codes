@@ -485,6 +485,9 @@ public class Main {
                 if (ok){
                     num = Integer.parseInt(numero);
                 }
+                else {
+                    System.out.println("Numero Invalida. padrão -> 12345678 digitos");
+                }
                 if (validacao){
                     boolean repetido = testaTelefoneRepetido(num);
                     if (!repetido)
