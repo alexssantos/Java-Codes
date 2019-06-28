@@ -2,7 +2,11 @@ package alex.silva;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -35,7 +39,7 @@ public class Main {
         entrada = arquivoLigacoes.abreArquivo();
         if (entrada != null) {
             arquivoLigacoes.pegaLigacoes(entrada, ligacoesLista);
-            System.out.println("> LIGAÇOES ARQUIVO"+"\nQuantidade: "+ligacoesLista.size()+ligacoesLista);
+            System.out.println("> LIGAÇOES ARQUIVO"+"\nQuantidade: "+ligacoesLista.size()+"\n"+ligacoesLista);
             arquivoLigacoes.fechaLeitor(entrada);
         }
 
@@ -67,7 +71,7 @@ public class Main {
                     fazerLigacao();
                     break;
                 case 6:
-                    //gerarBoletoCliente(clientesLista);   //RELATORIO
+                    gerarBoleto();   //RELATORIO
                     break;
             }
             opcao = menu();
@@ -148,7 +152,7 @@ public class Main {
         return opcao;
     }
 
-    //  -------- METODOS menu
+    //  -------- METODOS MENU
 
     public static void incluir(List<Cliente> clientesLista)
     {
@@ -259,7 +263,7 @@ public class Main {
             return;
         }
 
-        Ligacao ligacao = new Ligacao(ligador.NumeroCelular, recebedor.NumeroCelular,inicio,fim);
+        Ligacao ligacao = new Ligacao(ligador.getNumeroCelular(), recebedor.getNumeroCelular(),inicio,fim);
         ligacoesLista.add(ligacao);
         long creditos = ligador.getCreditos() - ligacao.getDuracaoMin();
         ligador.setCreditos(creditos);
@@ -268,7 +272,68 @@ public class Main {
         System.out.println("Ligador: "+ligador.toString());
     }
 
-    //  -------- METODOS Submenu
+    public static void gerarBoleto(){
+        System.out.println("GERAR BOLETO PARA CLIETE:\n");
+
+        long numero = leTelefone(false);
+        if (numero == 0){
+            return;
+        }
+
+        Cliente cliente = pegaCliete(numero);
+        Cliente.ClientePlanoTipo plano = cliente.getPlanoCliente();
+        List<Ligacao> ligacoes = new ArrayList<>();
+        int somaDuracao=0;
+
+        for (Ligacao item: ligacoesLista) {
+            if (item.getLigador() == numero){
+                ligacoes.add(item);
+                somaDuracao += item.getDuracaoMin();
+            }
+        }
+
+        if (plano.equals(Cliente.ClientePlanoTipo.PrePago)){
+            if (ligacoes.size() == 0){
+                System.out.println("Nenhuma ligação Feita");
+                System.out.println("Plano: "+plano);
+                System.out.println("Creditos: C$ "+ cliente.getCreditos());
+                return;
+            }
+            else {
+                System.out.println("-------------------------------------");
+                for (Ligacao item: ligacoes) {
+                    System.out.println(item);
+                }
+                System.out.println("Total de Ligações: "+ligacoes.size());
+                System.out.println("Total debitado: C$ "+(-somaDuracao));
+                System.out.println("Creditos : C$ "+(cliente.getCreditos()-somaDuracao));
+                System.out.println("-------------------------------------");
+            }
+        }
+        if (plano.equals(Cliente.ClientePlanoTipo.PosPago)){
+            if (ligacoes.size() == 0){
+                LocalDate now = LocalDate.now(); //2015-11-23
+                LocalDate lastDay = now.with(TemporalAdjusters.lastDayOfMonth());
+
+                System.out.println("Nenhuma ligação Feita");
+                System.out.println("Plano: "+plano);
+                System.out.println("Plano Expira em : "+lastDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)));
+                return;
+            }
+            else {
+                System.out.println("-------------------------------------");
+                for (Ligacao item: ligacoes) {
+                    System.out.println(item);
+                }
+                System.out.println("Total de Ligações: "+ligacoes.size());
+                System.out.println("Total duração (min): "+somaDuracao);
+                System.out.println("Creditos: C$ "+(cliente.getCreditos()-somaDuracao));
+                System.out.println("-------------------------------------");
+            }
+        }
+    }
+
+    //  -------- METODOS DUBMENU
 
     public static void clientesSaldoPositivos(List<Cliente> clientesLista){
         List<Cliente> saldoPositivo = new ArrayList<>();
@@ -312,7 +377,7 @@ public class Main {
         System.out.println(clientesLista.get(pos)+"\n");
     }
 
-    //  -------- MOTODOS Auxiliares
+    //  -------- MOTODOS
 
     public static void listar(List<Cliente> clientes) {
 
