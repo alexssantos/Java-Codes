@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 public class Cliente implements Comparable<Cliente>
 {
-    public long NumeroCelular;
-    public String NomeCliente;
-    public ClientePlanoTipo PlanoCliente;
-    public long Creditos;
+    private long NumeroCelular;
+    private String NomeCliente;
+    private ClientePlanoTipo PlanoCliente;
+    private long Creditos;
 
     public Cliente(long numeroCelular, String nomeCliente, ClientePlanoTipo planoCliente, int creditos) {
         NumeroCelular = numeroCelular;
