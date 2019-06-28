@@ -337,6 +337,7 @@ public class Main {
                 System.out.println("Plano: "+plano);
                 System.out.println("Total de Ligações: "+ligacoes.size());
                 System.out.println("Total duração (min): "+somaDuracao);
+                System.out.println("Creditos : C$ "+(somaDuracao+cliente.getCreditos()));
                 System.out.println("Plano Expira em : "+lastDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)));
                 System.out.println("-------------------------------------");
             }
