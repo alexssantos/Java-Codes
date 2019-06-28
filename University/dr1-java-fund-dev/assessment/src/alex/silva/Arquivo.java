@@ -95,13 +95,6 @@ public class Arquivo
             try {
 
                 saida.format(cliente.salvarCliente()+"\n");
-                /*
-                saida.format("%d | %s | %s | %s\n",
-                        cliente.getNumeroCelular(),
-                        cliente.getNomeCliente(),
-                        cliente.getPlanoCliente().toString(),
-                        cliente.getCreditos());
-                        */
             }
             catch (Exception e) {
                 System.out.println("Erro: gravacao no arquivo: "+nomeArq+"\n do item: "+cliente);
