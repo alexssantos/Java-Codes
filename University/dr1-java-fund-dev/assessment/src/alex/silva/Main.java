@@ -95,6 +95,7 @@ public class Main {
         Scanner entrada = new Scanner(System.in);
 
         do {
+            System.out.println("\n--------------------------------");
             System.out.println("[1] - Incluir Cliente");
             System.out.println("[2] - Alterar Cliente");
             System.out.println("[3] - Excluir Cliente");
@@ -102,6 +103,7 @@ public class Main {
             System.out.println("[5] - Fazer Ligação");
             System.out.println("[6] - Gerar boleto do cliente");
             System.out.println("[0] - Sair");
+            System.out.println("--------------------------------\n");
             opcao = leNumero("Entre com uma opção: ");
             if ((opcao < 0) || (opcao > 6)) {
                 System.out.println("Erro: opcao inválida");
@@ -258,8 +260,14 @@ public class Main {
 
         Date inicio = pegaDataHora("INICIO: \nDia (dd/MM/yy): ");
         Date fim = pegaDataHora("FIM: \nDia (dd/MM/yy): ");
+        if (fim == null || inicio == null){
+            System.out.println("ERRO: Data Formato invalido");
+            return;
+        }
 
-        if (inicio == null || fim == null) {
+        long duracao = fim.getTime() - inicio.getTime();
+        if (duracao < 0){
+            System.out.println("ERRO: data INICIO maior que data FIM");
             return;
         }
 
