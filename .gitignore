@@ -44,8 +44,8 @@ target/
 #*.iws
 #*.ipr
 #.idea/
-workspace.xml
-workspace*.xml
+# workspace.xml
+# workspace*.xml
 
 
 # eclipse project file
@@ -65,11 +65,3 @@ nb-configuration.xml
 
 # OS
 .DS_Store
-
-# Misc
-*.swp
-release.properties
-pom.xml.releaseBackup
-pom.xml.tag
-University/dr2-java-poo/assessment/.idea/misc.xml
-University/dr1-java-fund-dev/assessment/.idea/misc.xml
