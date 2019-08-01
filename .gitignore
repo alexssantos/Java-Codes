@@ -41,12 +41,12 @@ tomcat
 target/
 
 # IntelliJ project files [https://stackoverflow.com/a/40092361/8941680]
-#*.iml
-#*.iws
-#*.ipr
-#.idea/
-# workspace.xml
-# workspace*.xml
+*.iml
+*.iws
+*.ipr
+.idea/
+workspace.xml
+workspace*.xml
 
 
 # eclipse project file
