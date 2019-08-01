@@ -41,10 +41,10 @@ tomcat
 target/
 
 # IntelliJ project files [https://stackoverflow.com/a/40092361/8941680]
-*.iml
-*.iws
-*.ipr
-.idea/
+#*.iml
+#*.iws
+#*.ipr
+*.idea/
 workspace.xml
 workspace*.xml
 
