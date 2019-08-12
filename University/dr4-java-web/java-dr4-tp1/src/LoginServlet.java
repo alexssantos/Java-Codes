@@ -11,17 +11,26 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("doPOST");
 
-        String un = request.getParameter("user");
-        String pw = request.getParameter("password");
+        String nome = request.getParameter("name");
+        String email = request.getParameter("email");
+        String senha = request.getParameter("password");
 
-        if (un.equals("admin") && pw.equals("admin")) {
+        if (!nome.isEmpty() && !email.isEmpty() && !senha.isEmpty())
+        {
             response.sendRedirect("loginsuccess.html");
-            return;
-        } else {
-            response.sendRedirect("loginerror.html");
             return;
         }
 
+        response.sendRedirect("loginerror.html");
+        return;
+
+//        if (un.equals("admin") && pw.equals("admin")) {
+//            response.sendRedirect("loginsuccess.html");
+//            return;
+//        } else {
+//            response.sendRedirect("loginerror.html");
+//            return;
+//        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
