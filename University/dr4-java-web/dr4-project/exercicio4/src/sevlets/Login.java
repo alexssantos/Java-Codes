@@ -15,33 +15,29 @@ public class Login extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         int matricula = Integer.parseInt(request.getParameter("matricula"));
         String senha = request.getParameter("senha");
 
-        // TODO: make func Auth User
-        if (matricula == 123 && senha.equals("java"))
-        {
+        if(matricula == 123 && senha.equals("java")){
             HttpSession sessao = request.getSession();
             sessao.setAttribute("mat", matricula);
 
-            RequestDispatcher fwMain = request.getRequestDispatcher("/main");
-        }
-        else {
+            RequestDispatcher rd = request.getRequestDispatcher("/Principal");
+            rd.forward(request, response);
+        }else{
             try (PrintWriter out = response.getWriter()) {
+                /* TODO output your page here. You may use following sample code. */
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<Title> Servlet Login <Title>");
+                out.println("<title>Servlet Login</title>");
                 out.println("</head>");
                 out.println("<body>");
-
+                out.println("<h1>ERRO</h1>");
                 out.println("</body>");
                 out.println("</html>");
             }
         }
-
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
