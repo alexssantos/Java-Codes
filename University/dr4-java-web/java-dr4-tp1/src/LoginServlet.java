@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -15,24 +16,36 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("password");
 
+<<<<<<< HEAD
         if ((!nome.isEmpty())
             && !email.isEmpty()
             && !senha.isEmpty())
+=======
+        if (nome.isEmpty() || email.isEmpty() || senha.isEmpty())
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
         {
-            response.sendRedirect("loginsuccess.html");
+            response.sendRedirect("loginerror.html");
             return;
         }
 
-        response.sendRedirect("loginerror.html");
-        return;
+        // Define o tipo de dado que será enviado
+        response.setContentType( "text/html; charset=UTF-8" );
+        request.setCharacterEncoding( "UTF-8");
 
-//        if (un.equals("admin") && pw.equals("admin")) {
-//            response.sendRedirect("loginsuccess.html");
-//            return;
-//        } else {
-//            response.sendRedirect("loginerror.html");
-//            return;
-//        }
+        // Pega um stream de saída para imprimir a saída
+        PrintWriter out = response.getWriter();
+
+        // Gera a saida em formato HTML para o cliente
+        out.println("<html>");
+        out.println("<body>");
+        out.println("<h1>Cadastro com Sucesso! </h1>");
+        out.println("<h3>Usuario: "+nome+"</h3>");
+        out.println("<h3> Email: "+email+" </h3>");
+        out.println("</body>");
+        out.println("</html>");
+
+        // Fecha o stream de saida
+        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

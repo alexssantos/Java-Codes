@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h2> Index - Login</h2>
+    <div>
+        <form method="POST" action="/servlet-samples/ImprimeDados">
+            <table>
+                <tr>
+                    <td>Nome: </td>
+                    <td><input name="firstname" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input name="email" type="email"></td>
+                </tr>
+                <tr>
+                    <td>Endereço: </td>
+                    <td><input name="endereco" type="text"></td>
+                </tr>
+                <tr>
+                    <td>UF: </td>
+                    <td><select name = "uf">
+                        <option value="rj">RJ</option>
+                        <option value="sp">SP</option>
+                        <option value="mg">MG</option>
+                        <option value="es">ES</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gênero: </td>
+                    <td> <input type="radio" name="genero" value="masculino" checked> Masculino
+                        <input type="radio" name="genero" value="feminino"> Feminino
+                    </td>
+                </tr>
+                <tr>
+                    <td>Esporte: </td>
+                    <td>
+                        <input type="checkbox" name="esporte1" value="Futebol"> Futebol
+                        <input type="checkbox" name="esporte2" value="Volei"> Volei
+                    </td>
+                </tr>
+                <tr>
+                    <td> <input type="submit"> </td>
+                </tr>
+            </table>
+        </form>
+</body>
+</html>

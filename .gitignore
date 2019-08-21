@@ -1,8 +1,8 @@
 # ---------------
 #Legacy project format (.ipr/.iml/.iws files)
 #Share the project .ipr file and all the .iml module files, don't share the .iws file as it stores user specific settings
-!.ipr
-!.iml
+#!.ipr
+#!.iml
 .iws
 # ---------------
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/exercicio4/exercicio4.iml" filepath="$PROJECT_DIR$/exercicio4/exercicio4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercicio7/exercicio7.iml" filepath="$PROJECT_DIR$/exercicio7/exercicio7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../java-dr4-tp1/java-dr4-tp1.iml" filepath="$PROJECT_DIR$/../java-dr4-tp1/java-dr4-tp1.iml" />
+    </modules>
+  </component>
+</project>
