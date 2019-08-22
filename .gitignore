@@ -72,7 +72,7 @@ nb-configuration.xml
 #-----------------------------------
 # User-specific stuff
 *workspace*.xml
-!workspace.xml
+workspace.xml
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -91,6 +91,9 @@ nb-configuration.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+**/.idea/workspace.xml 
+**/.idea/tasks.xml 
+
 
 # Gradle
 .idea/**/gradle.xml
