@@ -16,7 +16,13 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("password");
 
+<<<<<<< HEAD
+        if ((!nome.isEmpty())
+            && !email.isEmpty()
+            && !senha.isEmpty())
+=======
         if (nome.isEmpty() || email.isEmpty() || senha.isEmpty())
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
         {
             response.sendRedirect("loginerror.html");
             return;

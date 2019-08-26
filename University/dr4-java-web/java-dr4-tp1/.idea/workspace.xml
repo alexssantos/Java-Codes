@@ -10,12 +10,15 @@
     <list default="true" id="e527c7db-549a-41aa-9e69-254c1dd8ded9" name="Default Changelist" comment="" />
 =======
     <list default="true" id="e527c7db-549a-41aa-9e69-254c1dd8ded9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginServlet.java" afterDir="false" />
     </list>
+<<<<<<< HEAD
+=======
 >>>>>>> 80b6b531a5b4881090bd2198c3238fd082e46c86
     <ignored path="$PROJECT_DIR$/out/" />
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +28,8 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
@@ -73,6 +78,7 @@
       </file>
     </leaf>
   </component>
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -88,6 +94,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
+<<<<<<< HEAD
+=======
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -100,6 +108,7 @@
       </list>
     </option>
   </component>
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -113,9 +122,12 @@
     <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
+  <component name="ProjectId" id="1PKK56c2OHaPWQsqbLIWquH3dl3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -150,12 +162,19 @@
       <pane id="Scope" />
     </panes>
   </component>
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -261,6 +280,28 @@
       <updated>1565549164097</updated>
       <workItem from="1565549167417" duration="3600000" />
       <workItem from="1565611983307" duration="593000" />
+<<<<<<< HEAD
+      <workItem from="1565617163547" duration="835000" />
+      <workItem from="1565822713224" duration="53000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+=======
       <workItem from="1565867158475" duration="300000" />
     </task>
     <servers />
@@ -479,5 +520,6 @@
         </settings>
       </state>
     </states>
+>>>>>>> 004d3dc86f14c59bcf6be42a3acaa475d20d83c4
   </component>
 </project>
