@@ -17,3 +17,6 @@ The following guides illustrate how to use some features concretely:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
+> HELPER LINKS USED
+- https://hellokoding.com/spring-boot-hello-world-example-with-jsp/
+- https://howtodoinjava.com/spring-boot/spring-boot-jsp-view-example/
