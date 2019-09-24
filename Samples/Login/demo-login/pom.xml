@@ -8,14 +8,14 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>java.alexssantos</groupId>
-    <artifactId>login-session</artifactId>
+    <groupId>alexssantos.infnet</groupId>
+    <artifactId>demo-login</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>login-session</name>
-    <description>Gerenciamento de Sessao</description>
+    <name>demo-login</name>
+    <description>Empty Description</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -29,10 +29,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-core</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -47,21 +44,28 @@
             <scope>runtime</scope>
         </dependency>
 
-<!--        TOMCAT Server (https://stackoverflow.com/questions/33419823/spring-boot-starter-tomcat-vs-spring-boot-starter-web)-->
+
+        <!--        TOMCAT Embed -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
 
-<!--        TOMCAT JSP -->
+        <!--    To compile JSP files -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
 
-<!--        Teste-->
+
+        <!--        TESTES-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
