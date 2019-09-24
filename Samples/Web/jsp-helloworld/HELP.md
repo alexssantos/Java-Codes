@@ -6,8 +6,9 @@
 
 1. WEB-INF funciona dentro de webapp e nao precisa estar necessariamente dentro de "resources".
 2. Precisa adicionar as duas dependencias pra JSP que é o tomcat embeded e jasper. (spring web ja tem ele mas parece que tem q deixar explicito)
-3. Erro 1: deu erro na pagina com a nao especificação dos parametros do @RequestParam.
-4. Pode dar erro na pagina por questão de rota.
+3. To usando o build por WAR. Nesse exemplo [jsp-spring-boot](https://htr3n.github.io/2018/12/jsp-spring-boot/) ele explica que usar JAR tem alguns problemas com Java WEB.  
+4. Erro 1: deu erro na pagina com a nao especificação dos parametros do @RequestParam.
+5. Pode dar erro na pagina por questão de rota.
 
 # Getting Started
 
