@@ -1,5 +1,15 @@
 # Getting Started
 
+### Erros
+
+1. taglibs no JSP com intelliJ falhando 
+ > resposta StackOverFlow [IntelliJ and JSP/JSTL cannot resolve taglib for JSTL in tomcat7](https://stackoverflow.com/a/32444393/8941680)
+ Add a Dependencia (jstl:jstl:1.2) in Module -> Dependencies -> "+"
+
+
+
+
+ ---
 ### Reference Documentation
 For further reference, please consider the following sections:
 

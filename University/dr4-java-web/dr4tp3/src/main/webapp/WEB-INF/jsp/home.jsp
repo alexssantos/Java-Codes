@@ -5,6 +5,7 @@
   Time: 1:50 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%--
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,13 +15,11 @@
 <h2>Welcome to Home</h2>
 </body>
 </html>
+--%>
 
 
-
-<%--
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -45,6 +44,7 @@
     <![endif]-->
 </head>
 <body>
+<h2>Home Working</h2>
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -63,4 +63,3 @@
 </body>
 </html>
 
---%>

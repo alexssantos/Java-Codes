@@ -5,6 +5,42 @@
   Time: 1:43 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Spring Login Form</title>
+</head>
+<body>
+<form:form action="/login" name="loginForm" method="POST">
+
+	<div align="center">
+		<table>
+			<tr>
+				<td>User Name</td>
+				<td><input type="text" name="nome" /></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="senha" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+		<div style="color: red">${error}</div>
+
+	</div>
+</form:form>
+</body>
+</html>
+
+<%-- V1
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,11 +51,8 @@
 </body>
 </html>
 
-
-<%-- START LOGIN PAGE
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
@@ -50,7 +83,7 @@
 
 <div class="container">
 
-    <form method="POST" action="${contextPath}/login" class="form-signin">
+    <form method="POST" action="/login" class="form-signin">
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
@@ -73,5 +106,4 @@
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
-
 --%>
