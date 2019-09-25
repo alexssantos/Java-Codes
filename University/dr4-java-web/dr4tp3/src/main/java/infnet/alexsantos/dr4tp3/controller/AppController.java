@@ -31,7 +31,7 @@ public class AppController {
         //TODO: Verificar SESSAO.
             // OK -> Home
             // NAO -> Login
-
+        Object obj = session.getCookie();
 
         model.addAttribute("name", name);
         return "home";
