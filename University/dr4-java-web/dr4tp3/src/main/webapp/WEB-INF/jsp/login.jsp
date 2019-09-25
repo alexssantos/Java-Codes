@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Submit" /></td>
+				<td><input type="submit" value="Login" /></td>
 			</tr>
 		</table>
 		<div style="color: red">${error}</div>

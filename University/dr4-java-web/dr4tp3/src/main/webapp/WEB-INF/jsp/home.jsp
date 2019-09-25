@@ -12,7 +12,7 @@
 	<title>Home Page</title>
 </head>
 <body>
-    <h2>Bem vindo, ${nome}</h2>
+    <h2>Bem vindo, ${name}</h2>
     <h4>${msg}</h4>
 </body>
 </html>
