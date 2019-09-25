@@ -17,7 +17,9 @@ public class HelloController {
     
     private static final String LOGIN_VIEW = "login";
     private static final String LOGOUT_VIEW = "logout";
-    
+    private static final String CADASTRO_VIEW = "cadastro";
+    private static final String HOME_VIEW = "home";
+
     
     @RequestMapping(path= "login", method = RequestMethod.GET)
     public String init(Model model) {
@@ -28,15 +30,16 @@ public class HelloController {
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String loginSubmit(Model model, @ModelAttribute("loginForm") LoginForm loginForm) {
         
-        if ((loginForm != null)
-            && (loginForm.getNome() != null)
-            && (loginForm.getSenha()!= null))
+        if ((loginForm != null) && (!loginForm.getNome().isEmpty()) && (!loginForm.getSenha().isEmpty()))
         {
-            if (loginForm.getNome().equals("chandra")
-                && loginForm.getSenha().equals("chandra123"))
+            //TODO: GET Service e validate usuario.
+            // Object = Validate() | (msg, bool)
+            if ((loginForm.getNome().equals("alex")) && (loginForm.getSenha().equals("123")))
             {
-                model.addAttribute("msg", loginForm.getNome());
-                return LOGIN_VIEW;
+                //TODO: SAVE session
+                model.addAttribute("nome", loginForm.getNome());
+                model.addAttribute("msg", "Parabens, você está logado!");
+                return HOME_VIEW;
             }
             else {
                 model.addAttribute("error", "Invalid Details");
