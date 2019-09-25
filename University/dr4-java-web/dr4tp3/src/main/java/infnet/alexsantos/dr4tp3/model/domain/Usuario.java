@@ -1,13 +1,12 @@
 package infnet.alexsantos.dr4tp3.model.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
 
 
-@Entity
+
 public class Usuario {
 
-	@Id
 	private Integer id;
 	private String nome;
 	private String email;
