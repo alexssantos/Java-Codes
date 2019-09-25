@@ -2,6 +2,9 @@ package infnet.alexsantos.dr4tp3.controller;
 
 
 import infnet.alexsantos.dr4tp3.model.LoginForm;
+import infnet.alexsantos.dr4tp3.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,22 +15,36 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
-public class HelloController {
+public class AppController {
     
-    
+    @Autowired
+    UserService userService;
+
     private static final String LOGIN_VIEW = "login";
-    private static final String LOGOUT_VIEW = "logout";
     private static final String CADASTRO_VIEW = "cadastro";
     private static final String HOME_VIEW = "home";
 
-    
+
+    @GetMapping("/")
+    public String home(Model model, Session session, String name)
+    {
+        //TODO: Verificar SESSAO.
+            // OK -> Home
+            // NAO -> Login
+
+
+        model.addAttribute("name", name);
+        return "home";
+    }
+
     @RequestMapping(path= "login", method = RequestMethod.GET)
-    public String init(Model model) {
+    public String init(Model model)
+    {
         model.addAttribute("msg", "Please Enter Your Login Details");
         return LOGIN_VIEW;      //"login.jsp";
     }
     
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    @RequestMapping(path = "login", method = RequestMethod.POST)
     public String loginSubmit(Model model, @ModelAttribute("loginForm") LoginForm loginForm) {
         
         if ((loginForm != null) && (!loginForm.getNome().isEmpty()) && (!loginForm.getSenha().isEmpty()))
@@ -52,10 +69,5 @@ public class HelloController {
         }
     }
     
-//    @GetMapping("/home")
-//    public String home(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name)
-//    {
-//        model.addAttribute("name", name);
-//        return "home";
-//    }
+
 }
