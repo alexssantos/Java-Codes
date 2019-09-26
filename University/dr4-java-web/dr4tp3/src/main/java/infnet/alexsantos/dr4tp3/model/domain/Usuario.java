@@ -1,12 +1,24 @@
 package infnet.alexsantos.dr4tp3.model.domain;
 
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "usuario")
 public class Usuario {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_usuario", updatable = false, nullable = false)
 	private Integer id;
+	
+	@Column(name = "nome")
 	private String nome;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "senha")
 	private String senha;
 
 	public Usuario() {

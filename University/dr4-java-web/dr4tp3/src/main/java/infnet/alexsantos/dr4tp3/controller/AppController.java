@@ -3,6 +3,7 @@ package infnet.alexsantos.dr4tp3.controller;
 
 import infnet.alexsantos.dr4tp3.model.CadastroForm;
 import infnet.alexsantos.dr4tp3.model.LoginForm;
+import infnet.alexsantos.dr4tp3.model.domain.Usuario;
 import infnet.alexsantos.dr4tp3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -26,10 +27,8 @@ public class AppController {
     private static final String HOME_VIEW = "home";
     
     
-    
-    
     @GetMapping("/")
-    public String home(Model model, HttpSession session, String name)
+    public String home(Model model, HttpSession session)
     {
         boolean logged = userService.ValidateUserLoged(session);
         
@@ -96,14 +95,22 @@ public class AppController {
     @RequestMapping(path = "cadastro", method = RequestMethod.POST)
     public String cadastroSubmit(Model model, @ModelAttribute("cadastroForm") CadastroForm cadastroForm, HttpSession session)
     {
-        // Validate Form
+        boolean isFormOk = userService.ValidateCadastroForm(cadastroForm);
         
-        // Save user.
+        if (!isFormOk)
+        {
+	        model.addAttribute("error", "Formulario preenchido errado.");
+	        return CADASTRO_VIEW;
+        }
         
-        
-        //TODO: GET Service e validate usuario ->  Object = Validate() | (msg, bool)
-            
-        
+        Usuario usuario = userService.saveByForm(cadastroForm);
+        if (usuario == null)
+        {
+	        model.addAttribute("error", "Usuario já existe.");
+	        return CADASTRO_VIEW;
+        }
+	
+	    model.addAttribute("msg", "Usuario "+ cadastroForm.getNome() +" cadastrado com sucesso.");
         return LOGIN_VIEW;
     }
     
