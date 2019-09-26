@@ -18,31 +18,34 @@
 	<title>Spring Login Form</title>
 </head>
 <body>
-<form:form action="/cadastro" name="cadastroForm" method="POST">
-
+	<form:form action="/cadastro" name="cadastroForm" method="POST">
+		<div align="center">
+			<table>
+				<tr>
+					<td>User Name</td>
+					<td><input type="text" name="nome" /></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="senha" /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="SALVAR " /></td>
+				</tr>
+			</table>
+			<div style="color: red">${error}</div>
+		</div>
+	</form:form>
 	<div align="center">
-		<table>
-			<tr>
-				<td>User Name</td>
-				<td><input type="text" name="nome" /></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><input type="password" name="senha" /></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Login" /></td>
-			</tr>
-		</table>
-		<div style="color: red">${error}</div>
-
+		<form action="/login" method="GET" >
+			<input type="submit" value="Go to LOGIN >>"/>
+		</form> <br>
 	</div>
-</form:form>
 </body>
 </html>
 

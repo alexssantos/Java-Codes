@@ -1,6 +1,7 @@
 package infnet.alexsantos.dr4tp3.controller;
 
 
+import infnet.alexsantos.dr4tp3.model.CadastroForm;
 import infnet.alexsantos.dr4tp3.model.LoginForm;
 import infnet.alexsantos.dr4tp3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,68 +25,76 @@ public class AppController {
     private static final String CADASTRO_VIEW = "cadastro";
     private static final String HOME_VIEW = "home";
     
-    private static final String LOGIN_SATATUS_KEY = "login_status";
-    private static final String LOGIN_SATATUS_FAILED = "FAILED";
-    private static final String LOGIN_SATATUS_OK = "OK";
-
-
+    
+    
+    
     @GetMapping("/")
     public String home(Model model, HttpSession session, String name)
     {
-        //TODO: Verificar SESSAO.
-            // OK -> Home
-            // NAO -> Login
-        String status = (session.getAttribute(LOGIN_SATATUS_KEY) != null) ? (String) session.getAttribute(LOGIN_SATATUS_KEY) : LOGIN_SATATUS_FAILED;
-        if (status.equals(LOGIN_SATATUS_OK))
+        boolean logged = userService.ValidateUserLoged(session);
+        
+        if (logged)
         {
             model.addAttribute("name", session.getAttribute("name"));
             return HOME_VIEW;
         }
-        if (status.equals(LOGIN_SATATUS_FAILED))
+        else
         {
-            return CADASTRO_VIEW;
+            return LOGIN_VIEW;
         }
-        
-        return LOGIN_VIEW;
     }
 
     @RequestMapping(path= "login", method = RequestMethod.GET)
-    public String init(Model model)
+    public String login(Model model)
     {
-        model.addAttribute("msg", "Please Enter Your Login Details");
-        return LOGIN_VIEW;      //"login.jsp";
+        return LOGIN_VIEW;
     }
     
     @RequestMapping(path = "login", method = RequestMethod.POST)
     public String loginSubmit(Model model, @ModelAttribute("loginForm") LoginForm loginForm, HttpSession session) {
         
-        if ((loginForm != null) && (!loginForm.getNome().isEmpty()) && (!loginForm.getSenha().isEmpty()))
+        if (userService.ValidadeLoginForm(loginForm))
         {
-            //TODO: GET Service e validate usuario ->  Object = Validate() | (msg, bool)
-            
-            if ((loginForm.getNome().equals("alex")) && (loginForm.getSenha().equals("123")))
+            boolean loginOk = userService.setLogin(loginForm, session);
+            if (loginOk)
             {
-                //TODO: SAVE session
-                session.setAttribute(LOGIN_SATATUS_KEY, LOGIN_SATATUS_OK);
-                session.setAttribute("name", loginForm.getNome());
-                
                 model.addAttribute("name", loginForm.getNome());
                 model.addAttribute("msg", "Parabens, você está logado!");
                 return HOME_VIEW;
             }
-            else {
-                model.addAttribute("error", "Invalid Details");
-                return LOGIN_VIEW;
-            }
         }
-        else {
-            model.addAttribute("error", "Please enter Details");
-            return LOGIN_VIEW;
+        
+        model.addAttribute("error", "login invalidos");
+        return LOGIN_VIEW;
+    }
+    
+    @RequestMapping(path= "logout", method = RequestMethod.GET)
+    public String logout(Model model, HttpSession session)
+    {
+        userService.setLogout(session);
+        model.addAttribute("msg", "Deslogado com sucesso!");
+        return LOGIN_VIEW;
+    }
+    
+    @RequestMapping(path = "cadastro", method = RequestMethod.GET)
+    public String cadastro(Model model, HttpSession session)
+    {
+        boolean logged = userService.ValidateUserLoged(session);
+    
+        if (logged)
+        {
+            model.addAttribute("name", session.getAttribute("name"));
+            return HOME_VIEW;
+        }
+        else
+        {
+            return CADASTRO_VIEW;
         }
     }
     
+    
     @RequestMapping(path = "cadastro", method = RequestMethod.POST)
-    public String cadastroSubmit(Model model, @ModelAttribute("cadastroForm") LoginForm loginForm, HttpSession session)
+    public String cadastroSubmit(Model model, @ModelAttribute("cadastroForm") CadastroForm cadastroForm, HttpSession session)
     {
         // Validate Form
         

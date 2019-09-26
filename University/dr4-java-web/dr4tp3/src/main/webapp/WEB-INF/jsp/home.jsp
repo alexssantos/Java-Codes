@@ -12,8 +12,16 @@
 	<title>Home Page</title>
 </head>
 <body>
-    <h2>Bem vindo, ${name}</h2>
-    <h4>${msg}</h4>
+    <c:if test="${msg != null}">
+        <div style="color: green">${msg}</div> <br>
+    </c:if>
+
+    <h2>Bem vindo, ${name}</h2><br>
+
+    <form action="/logout" method="GET" >
+        <input type="submit" value="LOGOUT"/>
+    </form> <br>
+
 </body>
 </html>
 

@@ -16,27 +16,34 @@
 	<title>Spring Login Form</title>
 </head>
 <body>
-<form:form action="/login" name="loginForm" method="POST">
+	<form:form action="/login" name="loginForm" method="POST">
+		<div align="center">
+			<div style="color: red">${error}</div>
+			<c:if test="${msg != null}">
+				<div style="color: red">${msg}</div> <br>
+			</c:if>
+			<table>
+				<tr>
+					<td>User Name</td>
+					<td><input type="text" name="nome" /></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="senha" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Login" /></td>
+				</tr>
+			</table>
+		</div>
+	</form:form>
 
 	<div align="center">
-		<table>
-			<tr>
-				<td>User Name</td>
-				<td><input type="text" name="nome" /></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><input type="password" name="senha" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Login" /></td>
-			</tr>
-		</table>
-		<div style="color: red">${error}</div>
-
+		<form action="/cadastro" method="GET" >
+			<input type="submit" value="Go to REGISTER >>"/>
+		</form> <br>
 	</div>
-</form:form>
 </body>
 </html>
 

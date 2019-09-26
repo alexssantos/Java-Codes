@@ -1,8 +1,5 @@
 package infnet.alexsantos.dr4tp3.model.domain;
 
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
-
 
 
 public class Usuario {
