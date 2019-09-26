@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name = "turma")
 public class Turma {
 
+    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "turma_id", updatable = false, nullable = false)
     private Integer id;

@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name = "perfil")
 public class Perfil {
 
+    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "perfil_id", updatable = false, nullable = false)
     private Integer id;
