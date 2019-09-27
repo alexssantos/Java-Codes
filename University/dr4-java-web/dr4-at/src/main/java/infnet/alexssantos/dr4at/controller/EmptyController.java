@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/2t")
 public class EmptyController {
 
     private static final String LOGIN_VIEW = "login";

@@ -1,6 +1,5 @@
 package infnet.alexssantos.dr4at.model.domain;
 
-
 import javax.persistence.*;
 
 @Entity

@@ -22,9 +22,9 @@ public class Nota {
     // RELATIONSHIPS
     // =======================
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "aluno_id", referencedColumnName = "id")
-//    private Aluno aluno;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aluno_id", referencedColumnName = "aluno_id")
+    private Aluno aluno;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "turma_id", referencedColumnName = "turma_id")
@@ -74,13 +74,13 @@ public class Nota {
         this.av2 = av2;
     }
 
-//    public Aluno getAluno() {
-//        return aluno;
-//    }
-//
-//    public void setAluno(Aluno aluno) {
-//        this.aluno = aluno;
-//    }
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
 
     public Turma getTurma() {
         return turma;
