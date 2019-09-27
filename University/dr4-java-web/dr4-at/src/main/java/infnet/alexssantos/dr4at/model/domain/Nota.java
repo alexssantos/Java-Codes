@@ -27,7 +27,7 @@ public class Nota {
 //    private Aluno aluno;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "turma_id", referencedColumnName = "id")
+    @JoinColumn(name = "turma_id", referencedColumnName = "turma_id")
     private Turma turma;
 
 

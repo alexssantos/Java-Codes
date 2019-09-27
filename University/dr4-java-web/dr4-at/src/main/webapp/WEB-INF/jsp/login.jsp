@@ -22,7 +22,7 @@
             <!-- Tabs Titles -->
 
             <!-- Icon -->
-            <div class="fadeIn first">
+            <div class="fadeIn first img-login">
                 <img src="../../resources/img/man.svg" id="icon" alt="User Icon" />
             </div>
 

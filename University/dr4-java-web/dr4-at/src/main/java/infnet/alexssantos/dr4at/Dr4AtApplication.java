@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
-@SpringBootApplication(
-	scanBasePackages={"infnet.alexssantos.dr4at.repository", "infnet.alexssantos.dr4at.service"}
-	)
+@SpringBootApplication
 public class Dr4AtApplication {
 
 	public static void main(String[] args) {

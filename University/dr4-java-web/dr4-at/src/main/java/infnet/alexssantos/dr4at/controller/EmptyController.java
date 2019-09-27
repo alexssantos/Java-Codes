@@ -5,35 +5,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")
 public class EmptyController {
-    
+
+    private static final String LOGIN_VIEW = "login";
     /*
     @Autowired
     UserService userService;
 
-    private static final String LOGIN_VIEW = "login";
     private static final String CADASTRO_VIEW = "cadastro";
     private static final String HOME_VIEW = "home";
     */
     
-    @GetMapping("/")
+    @GetMapping
     public String home(Model model, HttpSession session)
     {
-       return "login";
+       return LOGIN_VIEW;
     }
 
-    /*
-    @RequestMapping(path= "login", method = RequestMethod.GET)
+
+    @RequestMapping(path= "/login", method = RequestMethod.GET)
     public String login(Model model)
     {
         return LOGIN_VIEW;
     }
-    
+
+    /*
     @RequestMapping(path = "login", method = RequestMethod.POST)
     public String loginSubmit(Model model, @ModelAttribute("loginForm") LoginForm loginForm, HttpSession session) {
         
