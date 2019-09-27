@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "turma")
 public class Turma {
-
+    
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "turma_id", updatable = false, nullable = false)
+    @Column(name = "turma_id", nullable = false)
     private Integer id;
 
     @Column(name = "codigo")
@@ -57,7 +57,7 @@ public class Turma {
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.id= id;
     }
 
     public String getCodigo() {
