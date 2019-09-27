@@ -3,8 +3,7 @@ package infnet.alexssantos.dr4at.service;
 import infnet.alexssantos.dr4at.Utils.UtilsString;
 import infnet.alexssantos.dr4at.model.AlunoCadastroForm;
 import infnet.alexssantos.dr4at.model.domain.Aluno;
-import infnet.alexssantos.dr4at.repository.AlunoRepository;
-import infnet.alexssantos.dr4at.repository.UsuarioReposotory;
+import infnet.alexssantos.dr4at.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +13,11 @@ import java.util.Optional;
 @Service
 public class AlunoService {
 
-    @Autowired
+    //@Autowired
     AlunoRepository dao;
 
-    @Autowired
-    UsuarioReposotory usuarioRepo;
+//    @Autowired
+//    UsuarioReposotory usuarioRepo;
 
     public void save(Aluno obj)
     {
