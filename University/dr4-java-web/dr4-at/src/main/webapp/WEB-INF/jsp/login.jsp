@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="../../resources/css/login.css">
 </head>
 <body>
-
+    <div style="color: red" class="align-content-center">${error}</div>
+    <c:if test="${msg != null}">
+        <div style="color: red">${msg}</div> <br>
+    </c:if>
     <%--	LOGIN BOOTSTRAP 4--%>
     <div class="wrapper fadeInDown">
         <div id="formContent">
@@ -27,17 +30,20 @@
             </div>
 
             <!-- Login Form -->
-            <form:form action="/loginForm" name="loginForm" method="POST">
+            <form:form action="/login" name="loginForm" method="POST">
                 <input type="text" id="login" class="fadeIn second" name="nome" placeholder="login">
                 <input type="text" id="password" class="fadeIn third" name="senha" placeholder="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+                <input type="submit" class="fadeIn fourth" value="Entrar">
             </form:form>
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
+                <a class="underlineHover" href="#">Esqueceu a senha?</a>
             </div>
-
+            <div id="formFooter">
+                <a class="underlineHover" href="/register">Cadastro</a>
+            </div>
+            <div style="color:red">${error}</div>
         </div>
     </div>
 </body>

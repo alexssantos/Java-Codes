@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
 	private static final String LOGIN_VIEW = "login";
+	private static final String CADASTRO_VIEW = "cadastro";
 	private static final String HOME_VIEW = "home";
 
 
@@ -22,10 +23,10 @@ public class HomeController {
 		return LOGIN_VIEW;
 	}
 
-	@RequestMapping(path= "/loginForm", method = RequestMethod.POST)
+	@RequestMapping(path= "/login", method = RequestMethod.POST)
 	public String login(Model model, @ModelAttribute("loginForm") LoginForm loginForm)
 	{
-		return LOGIN_VIEW;
+		return HOME_VIEW;
 	}
 
 	@RequestMapping(path= "/home", method = RequestMethod.GET)
@@ -34,4 +35,17 @@ public class HomeController {
 		return HOME_VIEW;
 	}
 
+	@RequestMapping(path= "/register", method = RequestMethod.GET)
+	public String cadstro_view(Model model, HttpSession session)
+	{
+		//
+		return CADASTRO_VIEW;
+	}
+
+	@RequestMapping(path= "/register", method = RequestMethod.POST)
+	public String cadstro(Model model, HttpSession session, @ModelAttribute("registerForm") LoginForm loginForm)
+	{
+		//
+		return CADASTRO_VIEW;
+	}
 }

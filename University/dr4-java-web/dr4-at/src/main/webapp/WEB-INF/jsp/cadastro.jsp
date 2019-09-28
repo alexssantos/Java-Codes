@@ -15,9 +15,48 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="../../resources/css/login.css">
+	<link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 	<title>Cadastro</title>
 </head>
 <body>
+
+	<div style="color: red" class="align-content-center">${error}</div>
+	<c:if test="${msg != null}">
+		<div class="wrapper fadeInDown" style="color: red">${msg}</div> <br>
+	</c:if>
+	<%--	LOGIN BOOTSTRAP 4--%>
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<!-- Tabs Titles -->
+
+			<!-- Icon -->
+			<div class="fadeIn first img-login">
+				<img src="../../resources/img/man.svg" id="icon" alt="User Icon" />
+			</div>
+
+			<!-- Register Form -->
+			<form:form action="/register" name="registerForm" method="POST" cssClass="m-1">
+				<div class="m-5">
+					<input type="text" id="login1" class="fadeIn second" name="nome" placeholder="Nome">
+					<input type="text" id="login2" class="fadeIn third" name="nome" placeholder="Email">
+					<input type="text" id="login3" class="fadeIn third" name="nome" placeholder="Senha">
+				</div>
+				<input type="submit" class="fadeIn fourth" value="Cadastro">
+			</form:form>
+
+			<!-- Login -->
+			<div style="color:red">${error}</div>
+			<div id="formFooter">
+				<a class="underlineHover" href="/login">Log in</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+<%--OLD
 	<form:form action="/cadastro" name="cadastroForm" method="POST">
 		<div align="center">
 			<table>
@@ -46,38 +85,4 @@
 			<input type="submit" value="Go to LOGIN >>"/>
 		</form> <br>
 	</div>
-
-<%--	--%>
-	<div style="color: red" class="align-content-center">${error}</div>
-	<c:if test="${msg != null}">
-		<div style="color: red">${msg}</div> <br>
-	</c:if>
-	<%--	LOGIN BOOTSTRAP 4--%>
-	<div class="wrapper fadeInDown">
-		<div id="formContent">
-			<!-- Tabs Titles -->
-
-			<!-- Icon -->
-			<div class="fadeIn first img-login">
-				<img src="../../resources/img/man.svg" id="icon" alt="User Icon" />
-			</div>
-
-			<!-- Login Form -->
-			<form:form action="/loginForm" name="loginForm" method="POST">
-				<input type="text" id="login" class="fadeIn second" name="nome" placeholder="login">
-				<input type="text" id="password" class="fadeIn third" name="senha" placeholder="password">
-				<input type="submit" class="fadeIn fourth" value="Log In">
-			</form:form>
-
-			<!-- Remind Passowrd -->
-			<div id="formFooter">
-				<a class="underlineHover" href="#">Esqueceu a senha?</a>
-			</div>
-			<div style="color:red">${error}</div>
-			<div id="formFooter">
-				<a class="underlineHover" href="/home/register">Cadastro</a>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+--%>
