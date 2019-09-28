@@ -1,9 +1,9 @@
 package infnet.alexssantos.dr4at.controller;
 
+import infnet.alexssantos.dr4at.model.LoginForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,12 +19,11 @@ public class HomeController {
 	public String home(Model model, HttpSession session)
 	{
 		//
-		return login(model);
+		return LOGIN_VIEW;
 	}
 
-
-	@RequestMapping(path= "/login", method = RequestMethod.GET)
-	public String login(Model model)
+	@RequestMapping(path= "/loginForm", method = RequestMethod.POST)
+	public String login(Model model, @ModelAttribute("loginForm") LoginForm loginForm)
 	{
 		return LOGIN_VIEW;
 	}
