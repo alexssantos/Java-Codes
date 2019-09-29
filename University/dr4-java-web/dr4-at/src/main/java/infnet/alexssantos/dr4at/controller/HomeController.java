@@ -12,12 +12,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(path = "/")
-public class HomeController {
-
-	private static final String LOGIN_VIEW = "login";
-	private static final String CADASTRO_VIEW = "cadastro";
-	private static final String HOME_VIEW = "home";
-
+public class HomeController extends AbstractController{
 
 	@Autowired
     private AuthService authService;
@@ -29,12 +24,12 @@ public class HomeController {
 
         if (logged)
         {
-            model.addAttribute("name", session.getAttribute("name"));
-            return HOME_VIEW;
+            model.addAttribute(VIEW_ATTR_KEY_NAME, session.getAttribute("name"));
+            return VIEW_HOME;
         }
         else
         {
-            return LOGIN_VIEW;
+            return VIEW_LOGIN;
         }
 	}
 
@@ -43,9 +38,19 @@ public class HomeController {
 	// => LOGIN
 	// =====================
 	@RequestMapping(path= "/login", method = RequestMethod.GET)
-	public String login_view(Model model)
+	public String login_view(Model model, HttpSession session)
 	{
-		return HOME_VIEW;
+        boolean logged = authService.ValidateUserLoged(session);
+
+        if (logged)
+        {
+            model.addAttribute(VIEW_ATTR_KEY_NAME, session.getAttribute("name"));
+            return VIEW_HOME;
+        }
+        else
+        {
+            return VIEW_LOGIN;
+        }
 	}
 
 	@RequestMapping(path= "/login", method = RequestMethod.POST)
@@ -56,21 +61,22 @@ public class HomeController {
             boolean loginOk = authService.setLogin(loginForm, session);
             if (loginOk)
             {
-                model.addAttribute("name", loginForm.getNome());
-                model.addAttribute("msg", "Parabens, você está logado!");
-                return HOME_VIEW;
+                model.addAttribute(VIEW_ATTR_KEY_NAME, loginForm.getNome());
+                model.addAttribute(VIEW_ATTR_KEY_MSG, "Parabens, você está logado!");
+                return VIEW_HOME;
             }
         }
 
-        model.addAttribute("error", "login invalidos");
-        return LOGIN_VIEW;
+        model.addAttribute(VIEW_ATTR_KEY_ERROR, "login invalidos");
+        return VIEW_LOGIN;
 	}
 
     @RequestMapping(path= "/logout", method = RequestMethod.GET)
     public String logout_view(Model model, HttpSession session)
     {
         authService.setLogout(session);
-        return HOME_VIEW;
+        model.addAttribute(VIEW_ATTR_KEY_MSG, "Deslogado com sucesso!");
+        return VIEW_LOGIN;
     }
 
 
@@ -81,13 +87,13 @@ public class HomeController {
 	public String cadastro_view(Model model, HttpSession session)
 	{
 		//
-		return CADASTRO_VIEW;
+		return VIEW_CADASTRO;
 	}
 
 	@RequestMapping(path= "/register", method = RequestMethod.POST)
 	public String cadstro(Model model, HttpSession session, @ModelAttribute("registerForm") LoginForm loginForm)
 	{
 		//
-		return CADASTRO_VIEW;
+		return VIEW_CADASTRO;
 	}
 }

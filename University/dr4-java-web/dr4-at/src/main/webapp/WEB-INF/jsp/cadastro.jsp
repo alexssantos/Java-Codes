@@ -36,7 +36,7 @@
 			</div>
 
 			<!-- Register Form -->
-			<form:form action="/register" name="registerForm" method="POST" cssClass="m-1">
+			<form:form action="/register" modelAttribute="registerForm" method="POST" cssClass="m-1">
 				<div class="m-5">
 					<input type="text" id="login1" class="fadeIn second" name="nome" placeholder="Nome">
 					<input type="text" id="login2" class="fadeIn third" name="nome" placeholder="Email">
@@ -52,6 +52,10 @@
 			</div>
 		</div>
 	</div>
+
+	<script src="../../resources/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="../../resources/js/popper.min.js"></script>
+	<script src="../../resources/js/bootstrap.min.js"></script>
 </body>
 </html>
 

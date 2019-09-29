@@ -13,12 +13,14 @@
     <title>Login page</title>
 <%--    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">--%>
     <link rel="stylesheet" href="../../resources/css/login.css">
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
 <body>
-    <div style="color: red" class="align-content-center">${error}</div>
+
     <c:if test="${msg != null}">
-        <div style="color: red">${msg}</div> <br>
+        <span class="align-content-center alert">${msg}</span> <br>
     </c:if>
+
     <%--	LOGIN BOOTSTRAP 4--%>
     <div class="wrapper fadeInDown">
         <div id="formContent">
@@ -30,11 +32,12 @@
             </div>
 
             <!-- Login Form -->
-            <form:form action="/login" name="loginForm" method="POST">
+            <form:form action="/login" modelAttribute="loginForm" method="POST">
                 <input type="text" id="login" class="fadeIn second" name="nome" placeholder="login">
                 <input type="text" id="password" class="fadeIn third" name="senha" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Entrar">
             </form:form>
+            <div style="color:red">${error}</div>
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
@@ -43,8 +46,12 @@
             <div id="formFooter">
                 <a class="underlineHover" href="/register">Cadastro</a>
             </div>
-            <div style="color:red">${error}</div>
         </div>
     </div>
+
+
+    <script src="../../resources/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../resources/js/popper.min.js"></script>
+    <script src="../../resources/js/bootstrap.min.js"></script>
 </body>
 </html>
