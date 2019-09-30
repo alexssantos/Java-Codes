@@ -18,7 +18,7 @@
 <body>
 
     <c:if test="${msg != null}">
-        <span class="align-content-center alert">${msg}</span> <br>
+        <span class="text-lg-center alert">${msg}</span> <br>
     </c:if>
 
     <%--	LOGIN BOOTSTRAP 4--%>

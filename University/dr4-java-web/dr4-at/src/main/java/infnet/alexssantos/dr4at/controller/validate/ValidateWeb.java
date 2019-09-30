@@ -5,7 +5,7 @@ import infnet.alexssantos.dr4at.model.LoginForm;
 
 public class ValidateWeb {
 
-    public static boolean isLoginForm(LoginForm form)
+    public static boolean loginForm(LoginForm form)
     {
         if ((form == null) || (form.getNome().isEmpty()) || (form.getSenha().isEmpty())) {
             return false;
@@ -14,12 +14,16 @@ public class ValidateWeb {
         return true;
     }
 
-    public static boolean isCadastroForm(AlunoCadastroForm form)
+    public static boolean cadastroForm(AlunoCadastroForm form)
     {
-        if ((form == null) || (form.getNome().isEmpty()) || (form.getSenha().isEmpty()) || form.getEmail().isEmpty()) {
-            return false;
+        if ((form != null)
+            && (!form.getNome().isEmpty())
+            && (!form.getSenha().isEmpty())
+            && (!form.getEmail().isEmpty()))
+        {
+            return true;
         }
 
-        return true;
+        return false;
     }
 }

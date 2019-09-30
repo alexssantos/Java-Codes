@@ -20,8 +20,8 @@
 	<title>Cadastro</title>
 </head>
 <body>
+	<div class="text-lg-center alert" style="color:red">${error}</div>
 
-	<div style="color: red" class="align-content-center">${error}</div>
 	<c:if test="${msg != null}">
 		<div class="wrapper fadeInDown" style="color: red">${msg}</div> <br>
 	</c:if>
@@ -39,14 +39,14 @@
 			<form:form action="/register" modelAttribute="registerForm" method="POST" cssClass="m-1">
 				<div class="m-5">
 					<input type="text" id="login1" class="fadeIn second" name="nome" placeholder="Nome">
-					<input type="text" id="login2" class="fadeIn third" name="nome" placeholder="Email">
-					<input type="text" id="login3" class="fadeIn third" name="nome" placeholder="Senha">
+					<input type="text" id="login2" class="fadeIn third" name="email" placeholder="Email">
+					<input type="text" id="login3" class="fadeIn third" name="senha" placeholder="Senha">
 				</div>
 				<input type="submit" class="fadeIn fourth" value="Cadastro">
 			</form:form>
 
 			<!-- Login -->
-			<div style="color:red">${error}</div>
+			<div class="text-lg-center alert" style="color:red">${error}</div>
 			<div id="formFooter">
 				<a class="underlineHover" href="/login">Log in</a>
 			</div>
