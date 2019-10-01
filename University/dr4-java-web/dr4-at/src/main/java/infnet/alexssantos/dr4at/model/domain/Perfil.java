@@ -1,7 +1,11 @@
 package infnet.alexssantos.dr4at.model.domain;
 
 
+import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "perfil")
@@ -12,10 +16,13 @@ public class Perfil {
     @Column(name = "perfil_id", updatable = false, nullable = false)
     private Integer id;
 
-    @Column(name = "nome")
-    private String nome;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nome", unique = true)
+    private TipoPerfilEnum nome;
 
 
+    public static List<Perfil> allPerfils = new ArrayList<>();
     // =======================
     // CONSTRUCTOR
     // =======================
@@ -24,7 +31,7 @@ public class Perfil {
     public Perfil() {
     }
 
-    public Perfil(String nome) {
+    public Perfil(TipoPerfilEnum nome) {
         this.nome = nome;
     }
 
@@ -41,11 +48,11 @@ public class Perfil {
         this.id = id;
     }
 
-    public String getNome() {
+    public TipoPerfilEnum getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(TipoPerfilEnum nome) {
         this.nome = nome;
     }
 }

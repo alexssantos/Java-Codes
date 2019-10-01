@@ -107,7 +107,7 @@ public class HomeController extends AbstractController{
 	}
 
 	@RequestMapping(path= "/register", method = RequestMethod.POST)
-	public String cadstro(Model model, HttpSession session, @ModelAttribute("registerForm") AlunoCadastroForm form)
+	public String cadastro(Model model, HttpSession session, @ModelAttribute("registerForm") AlunoCadastroForm form)
 	{
         boolean isFormOk = ValidateWeb.cadastroForm(form);
 

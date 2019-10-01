@@ -93,5 +93,12 @@ public class AlunoService {
         return toUpdate;
     }
 
+    public int generateMatricula()
+    {
+        return getRandomIntegerBetweenRange(1000000,9999999);
+    }
 
+    public static int getRandomIntegerBetweenRange(double min, double max){
+        return (int)((Math.random()*((max-min)+1))+min);
+    }
 }
