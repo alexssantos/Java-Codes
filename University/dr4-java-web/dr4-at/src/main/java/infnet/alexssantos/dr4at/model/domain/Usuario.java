@@ -29,7 +29,7 @@ public class Usuario {
     // =======================
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "perfil_id", referencedColumnName = "perfil_id", unique = true)
+    @JoinColumn(name = "perfil_id", referencedColumnName = "perfil_id")
     private Perfil perfil;
 
 
