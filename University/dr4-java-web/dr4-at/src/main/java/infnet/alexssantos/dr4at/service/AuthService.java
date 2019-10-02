@@ -36,19 +36,19 @@ public class AuthService {
         return false;
     }
 
-    public boolean setLogin(LoginForm form, HttpSession session)
+    public Usuario setLogin(LoginForm form, HttpSession session)
     {
         Usuario usuario = new Usuario(); //usuarioService.getDao().getByNomeAndSenha(form.getNome(), form.getSenha());
 
         if (usuario == null){
-            return false;
+            return usuario;
         }
 
         //TODO: SAVE session
         session.setAttribute(LOGIN_STATUS_KEY, LOGIN_STATUS_OK);
         session.setAttribute("name", form.getNome());
 
-        return true;
+        return usuario;
     }
 
     public void setLogout(HttpSession session)

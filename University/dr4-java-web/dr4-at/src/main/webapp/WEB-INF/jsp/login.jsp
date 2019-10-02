@@ -16,11 +16,10 @@
 </head>
 <body>
     <p class="text-lg-center alert" style="color: green">${msg}</p> <br>
+    
     <%--	LOGIN BOOTSTRAP 4--%>
     <div class="wrapper fadeInDown">
         <div id="formContent">
-            <!-- Tabs Titles -->
-
             <!-- Icon -->
             <div class="fadeIn first img-login">
                 <img src="../../resources/img/man.svg" id="icon" alt="User Icon" />

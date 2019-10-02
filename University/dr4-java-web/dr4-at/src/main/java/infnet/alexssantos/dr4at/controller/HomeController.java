@@ -65,10 +65,11 @@ public class HomeController extends AbstractController{
 	{
         if (ValidateWeb.loginForm(loginForm))
         {
-            boolean loginOk = authService.setLogin(loginForm, session);
-            if (loginOk)
+            Usuario user = authService.setLogin(loginForm, session);
+            if (user != null)
             {
-                model.addAttribute(MODEL_ATTR_KEY_NAME, loginForm.getNome());
+                model.addAttribute(MODEL_ATTR_KEY_NAME, user.getNome());
+                model.addAttribute(MODEL_ATTR_KEY_EMAIL, user.getEmail());
                 model.addAttribute(MODEL_ATTR_KEY_MSG, "Parabens, você está logado!");
                 return VIEW_HOME;
             }

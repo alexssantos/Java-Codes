@@ -25,6 +25,7 @@
 
       <main role="main" class="inner cover h-100 mx-center">
           <h1 class="cover-heading">${name}, a vida é bela!</h1>
+          <p class="lead">email: ${email}</p>
           <p class="lead">${msg}</p>
         </main>
 
