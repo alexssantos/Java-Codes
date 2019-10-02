@@ -1,6 +1,3 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%--
   Created by IntelliJ IDEA.
   User: aarka
@@ -8,6 +5,10 @@
   Time: 1:24 AM
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"%> --%>
 
 <html>
 <head>	
@@ -25,7 +26,7 @@
 
 		<table class="table table-dark text-center">
 			<tr>
-			<th>ID</th><th>Nome</th>
+			<th>ID</th><th>NOME</th>
 			</tr>
 			<c:forEach var="curso" items="${CURSOS}">
 				<tr>					

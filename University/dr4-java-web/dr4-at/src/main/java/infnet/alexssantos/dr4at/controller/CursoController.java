@@ -18,7 +18,6 @@ public class CursoController {
     @Autowired
     CursoService cursoService;
 
-
     @RequestMapping(path = {"","/get"}, method = RequestMethod.GET)
     public String getCursos(Model model)
     {
