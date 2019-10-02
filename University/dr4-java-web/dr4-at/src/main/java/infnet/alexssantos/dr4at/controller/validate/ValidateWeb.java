@@ -7,7 +7,7 @@ public class ValidateWeb {
 
     public static boolean loginForm(LoginForm form)
     {
-        if ((form == null) || (form.getNome().isEmpty()) || (form.getSenha().isEmpty())) {
+        if ((form == null) || (form.getEmail().isEmpty()) || (form.getSenha().isEmpty())) {
             return false;
         }
 

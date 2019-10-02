@@ -5,7 +5,7 @@
   Time: 02:59
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
@@ -27,7 +27,7 @@
 
             <!-- Login Form -->
             <form:form action="/login" modelAttribute="loginForm" method="POST">
-                <input type="text" id="login" class="fadeIn second" name="nome" placeholder="login">
+                <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
                 <input type="text" id="password" class="fadeIn third" name="senha" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Entrar">
             </form:form>

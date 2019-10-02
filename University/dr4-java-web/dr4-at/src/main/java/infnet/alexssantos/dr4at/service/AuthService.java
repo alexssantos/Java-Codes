@@ -1,6 +1,5 @@
 package infnet.alexssantos.dr4at.service;
 
-import infnet.alexssantos.dr4at.model.AlunoCadastroForm;
 import infnet.alexssantos.dr4at.model.LoginForm;
 import infnet.alexssantos.dr4at.model.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class AuthService {
 
     public Usuario setLogin(LoginForm form, HttpSession session)
     {
-        Usuario usuario = usuarioService.getDao().getByNomeAndSenha(form.getNome(), form.getSenha());
+        Usuario usuario = usuarioService.getDao().getByEmailAndSenha(form.getEmail(), form.getSenha());
 
         if (usuario == null){
             return null;

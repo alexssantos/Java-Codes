@@ -11,5 +11,5 @@ public interface UsuarioReposotory extends JpaRepository<Usuario, Integer> {
     public Usuario getByEmail(String email);
 
 
-    public Usuario getByNomeAndSenha(String name, String senha);
+    public Usuario getByEmailAndSenha(String email, String senha);
 }
