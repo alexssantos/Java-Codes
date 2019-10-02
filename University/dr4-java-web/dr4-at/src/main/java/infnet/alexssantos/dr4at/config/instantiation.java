@@ -1,9 +1,6 @@
 package infnet.alexssantos.dr4at.config;
 
-import infnet.alexssantos.dr4at.model.domain.Curso;
-import infnet.alexssantos.dr4at.model.domain.Perfil;
-import infnet.alexssantos.dr4at.model.domain.Professor;
-import infnet.alexssantos.dr4at.model.domain.Usuario;
+import infnet.alexssantos.dr4at.model.domain.*;
 import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
 import infnet.alexssantos.dr4at.model.enums.TitulacaoEnum;
 import infnet.alexssantos.dr4at.repository.PerfilRepository;
@@ -32,6 +29,8 @@ public class instantiation implements CommandLineRunner {
     private ProfessorService professorService;
     @Autowired
     private AlunoService alunoService;
+    @Autowired
+    private DisciplinaService disciplinaService;
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -44,6 +43,7 @@ public class instantiation implements CommandLineRunner {
         createPerfis();
         createCursos();
         createProfessores();
+        createDisciplinas();
     }
 
     private void initConfigs()
@@ -58,7 +58,8 @@ public class instantiation implements CommandLineRunner {
         //TODO: Nota
         //TODO: Turma
         //TODO: Aluno
-        //TODO: Disciplina
+        //Disciplina
+        disciplinaService.getDao().deleteAll();
         //Curso
         cursoService.getDao().deleteAll();
         //TODO: Turma
@@ -129,6 +130,7 @@ public class instantiation implements CommandLineRunner {
         List<Usuario> usuariosToSave = new ArrayList<>();
         List<Professor> profsToSave = new ArrayList<>();
 
+        List<TitulacaoEnum> titulacaoList = Arrays.asList(TitulacaoEnum.values());
         int IX_CREATE = 10;
         for (int i=1; i<=IX_CREATE; i++)
         {
@@ -140,8 +142,6 @@ public class instantiation implements CommandLineRunner {
                     perfilProf);
             usuariosToSave.add(usuario);
 
-            List<TitulacaoEnum> titulacaoList = Arrays.asList(TitulacaoEnum.values());
-
             Professor professor = new Professor(
                     getAleatoryFromList(titulacaoList),
                     usuario
@@ -152,6 +152,31 @@ public class instantiation implements CommandLineRunner {
         trySave(usuarioService.getDao(), usuariosToSave);
         trySave(professorService.getDao(), profsToSave);
     }
+
+    private void createDisciplinas()
+    {
+        List<Disciplina> objsOnDb = disciplinaService.findAll();
+        if (objsOnDb.size() != 0) return;
+
+        //Create Cursos.
+        createCursos();
+        List<Curso> cursoList = cursoService.findAll();
+
+        List<Disciplina> itensToSave = new ArrayList<>();
+        int IX_CREATE = 10;
+        for (int i=1; i<=IX_CREATE; i++)
+        {
+            Disciplina newObj = new Disciplina(
+                    "COD-DISCIP"+i,
+                    "NOME-DISCIP-"+i,
+                    getAleatoryFromList(cursoList)
+            );
+            itensToSave.add(newObj);
+        }
+
+        trySave(disciplinaService.getDao(), itensToSave);
+    }
+
 
     // ================
     // => AUX

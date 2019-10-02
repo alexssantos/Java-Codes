@@ -40,7 +40,7 @@
                 <td>${discip.nome}</td>
                 <td>${discip.codigo}</td>
                 <td>${discip.curso.id}</td>
-                <td>${discip.curso.nomr}</td>                
+                <td>${discip.curso.nome}</td>                
             </tr>
         </c:forEach>
     </table>

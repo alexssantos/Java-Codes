@@ -23,7 +23,7 @@ public class Disciplina {
     // =======================
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "curso_id", referencedColumnName = "curso_id", unique = true)
+    @JoinColumn(name = "curso_id", referencedColumnName = "curso_id")
     private Curso curso;
 
 
