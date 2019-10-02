@@ -11,29 +11,11 @@
 <html>
 <head>
     <title>Login page</title>
-<%--    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">--%>
     <link rel="stylesheet" href="../../resources/css/login.css">
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
 <body>
-
-    <c:if test="${msg != null}">
-        <%-- <span class="text-lg-center alert">${msg}</span> <br> --%>
-        <div class="modal fade success-popup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Thank You !</h4>
-                </div>  
-            <div class="modal-body text-center">
-                <img src="http://osmhotels.com//assets/check-true.jpg">
-                <p class="lead">Contact form successfully submitted. Thank you, We will get back to you soon!</p>
-                <a href="index.php" class="rd_more btn btn-default">Go to Home</a>
-            </div>            
-        </div>    
-    </c:if>
-
+    <p class="text-lg-center alert" style="color: green">${msg}</p> <br>
     <%--	LOGIN BOOTSTRAP 4--%>
     <div class="wrapper fadeInDown">
         <div id="formContent">
@@ -66,5 +48,7 @@
     <script src="../../resources/js/jquery-3.2.1.slim.min.js"></script>
     <script src="../../resources/js/popper.min.js"></script>
     <script src="../../resources/js/bootstrap.min.js"></script>
+   
+
 </body>
 </html>
