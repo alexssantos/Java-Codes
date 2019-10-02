@@ -44,10 +44,13 @@
     </div>
 
 
+    <%@ include file="shared/footer.jspf" %>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="../../resources/js/jquery-3.2.1.slim.min.js"></script>
     <script src="../../resources/js/popper.min.js"></script>
     <script src="../../resources/js/bootstrap.min.js"></script>
-   
-
 </body>
 </html>

@@ -13,10 +13,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/home">Home</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
+            </li>           
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Listagem
@@ -25,7 +22,7 @@
                     <a class="dropdown-item" href="/alunos">Alunos</a>
                     <a class="dropdown-item" href="#">Professores</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Curso</a>
+                    <a class="dropdown-item" href="#/curso">Curso</a>
                     <a class="dropdown-item" href="#">Disciplina</a>
                     <a class="dropdown-item" href="#">Turma</a>
                     <div class="dropdown-divider"></div>
@@ -34,22 +31,19 @@
             </li>
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Edição
+                    Editar
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/alunos" tabindex="-1" aria-disabled="true">Alunos</a>
-                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Professores</a>
+                    <a class="dropdown-item" href="/alunos">Alunos</a>
+                    <a class="dropdown-item" href="#">Professores</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Curso</a>
-                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Disciplina</a>
-                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Turma</a>
+                    <a class="dropdown-item disabled" href="#" aria-disabled="true">Curso</a>
+                    <a class="dropdown-item disabled" href="#" aria-disabled="true">Disciplina</a>
+                    <a class="dropdown-item disabled" href="#" aria-disabled="true">Turma</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Perfil</a>
+                    <a class="dropdown-item disabled" href="#" aria-disabled="true">Perfil</a>
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            </li>           
         </ul>
         <form class="form-inline my-2 my-lg-0">                                    
             <a href="/logout" class="btn btn-outline-success my-2 my-sm-0" role="button" aria-pressed="true">Logout</a>

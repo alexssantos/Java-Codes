@@ -18,23 +18,19 @@
     <!-- Custom styles for this template -->
     <%-- <link rel="stylesheet" href="../../resources/css/home.css">  --%>
   </head>
-  <body class="text-center">
+  <body class="text-center d-flex h-100 flex-column">
 
     <div>
       <%@ include file="shared/navbar.jspf" %>
 
-      <main role="main" class="inner cover h-100 mx-center">
-          <h1 class="cover-heading">${name}, a vida é bela!</h1>
-          <p class="lead">email: ${email}</p>
-          <p class="lead">${msg}</p>
-        </main>
-
-        <footer class="mastfoot mt-auto">
-          <div class="inner">
-            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-          </div>
-        </footer>
+      <main role="main" class="inner cover p-3 mx-center">
+        <h1 class="cover-heading">${name}, a vida é bela!</h1>
+        <p class="lead">email: ${email}</p>
+        <p class="lead">${msg}</p>
+      </main>       
     </div>
+
+    <%@ include file="shared/footer.jspf" %>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

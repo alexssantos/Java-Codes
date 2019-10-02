@@ -17,7 +17,7 @@
 	 <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
-<body>
+<body class="d-flex h-100 flex-column">
 	<%@ include file="shared/navbar.jspf" %>
 
 	<div class="container text-center">
@@ -36,6 +36,8 @@
 		</table>
   	</div>
 
+	<%@ include file="shared/footer.jspf" %>
+	
 	<!-- Bootstrap 4 core JavaScript
 	================================================== -->	
 	<script src="../../resources/js/jquery-3.2.1.slim.min.js"></script>

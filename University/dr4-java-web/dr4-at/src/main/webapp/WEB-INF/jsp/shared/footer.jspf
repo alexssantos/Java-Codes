@@ -5,12 +5,11 @@
   Time: 02:55
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<footer class="footer mt-auto py-3">
+  <div class="container text-center">
+    <span class="text">Alex S. Santos</span><br>
+    <span class="text-muted">Assessment - Java Web</span><br>
+    <span class="text-muted">Prof.: Douglas Oliveira</span>
+  </div>
+</footer>
