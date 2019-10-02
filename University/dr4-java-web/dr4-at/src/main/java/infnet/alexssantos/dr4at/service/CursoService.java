@@ -16,6 +16,12 @@ public class CursoService {
     @Autowired
     CursoRepository dao;
 
+    public CursoRepository getDao()
+    {
+        return dao;
+    }
+
+
     public void save(Curso obj)
     {
         if (obj != null){

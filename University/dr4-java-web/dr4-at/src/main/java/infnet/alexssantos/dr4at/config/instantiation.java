@@ -6,6 +6,7 @@ import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
 import infnet.alexssantos.dr4at.repository.PerfilRepository;
 import infnet.alexssantos.dr4at.service.CursoService;
 import infnet.alexssantos.dr4at.service.PerfilService;
+import infnet.alexssantos.dr4at.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,8 @@ public class instantiation implements CommandLineRunner {
     private PerfilService perfilService;
     @Autowired
     private CursoService cursoService;
+    @Autowired
+    private UsuarioService usuarioService;
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -34,6 +37,7 @@ public class instantiation implements CommandLineRunner {
     public void run(String... args) throws Exception
     {
         initConfigs();
+        cleanDatabase();
         createPerfis();
         createCursos();
     }
@@ -42,6 +46,23 @@ public class instantiation implements CommandLineRunner {
     {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
+    }
+
+    public void cleanDatabase()
+    {
+        //By FK priority
+        //Nota
+        //Turma
+        //Aluno
+        //Disciplina
+        //Curso
+        cursoService.getDao().deleteAll();
+        //Turma
+        //Professor
+        //Usuario
+        usuarioService.getDao().deleteAll();
+        //Perfil
+        perfilService.getDao().deleteAll();
     }
 
     private void createPerfis()
@@ -79,11 +100,14 @@ public class instantiation implements CommandLineRunner {
 
     private void createCursos()
     {
+        List<Curso> cursosOnDb = cursoService.findAll();
+        if (cursosOnDb.size() != 0) return;
+
         Curso Engenharia = new Curso("ENGENHARIA");
         Curso Computacap = new Curso("COMPUTACAO");
         Curso Fisica = new Curso("FISICA");
 
-        cursoService.saveMany(Arrays.asList(Engenharia, Computacap, Fisica));
+        trySave(cursoService.getDao(), Arrays.asList(Engenharia, Computacap, Fisica));
     }
 
 
