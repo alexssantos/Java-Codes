@@ -51,7 +51,9 @@ public class HomeController extends AbstractController{
 
         if (logged)
         {
-            model.addAttribute(MODEL_ATTR_KEY_NAME, session.getAttribute("name"));
+            model.addAttribute(MODEL_ATTR_KEY_NAME, session.getAttribute(MODEL_ATTR_KEY_NAME));
+            model.addAttribute(MODEL_ATTR_KEY_EMAIL, session.getAttribute(MODEL_ATTR_KEY_EMAIL));
+            model.addAttribute(MODEL_ATTR_KEY_MSG, "Parabens, você está logado!");
             return VIEW_HOME;
         }
         else

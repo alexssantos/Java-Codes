@@ -15,6 +15,7 @@ public class AuthService {
     private static final String LOGIN_STATUS_FAILED = "FAILED";
     private static final String LOGIN_STATUS_OK = "OK";
 
+    private static Usuario userLogin;
 
     @Autowired
     UsuarioService usuarioService;
@@ -38,15 +39,16 @@ public class AuthService {
 
     public Usuario setLogin(LoginForm form, HttpSession session)
     {
-        Usuario usuario = new Usuario(); //usuarioService.getDao().getByNomeAndSenha(form.getNome(), form.getSenha());
+        Usuario usuario = usuarioService.getDao().getByNomeAndSenha(form.getNome(), form.getSenha());
 
         if (usuario == null){
-            return usuario;
+            return null;
         }
 
         //TODO: SAVE session
         session.setAttribute(LOGIN_STATUS_KEY, LOGIN_STATUS_OK);
-        session.setAttribute("name", form.getNome());
+        session.setAttribute("name", usuario.getNome());
+        session.setAttribute("email", usuario.getEmail());
 
         return usuario;
     }
