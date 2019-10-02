@@ -30,8 +30,11 @@
                 <th>ID</th>
                 <th>CÓDIGO</th>
                 <th>SALA</th>
-                <th>PROFESSOR</th>
-                <th>DISCIPLINA</th>
+                <th>PROFESSOR NOME</th>
+                <th>PROFESSOR EMAIL</th>
+                <th>DISCIPLINA CODIGO</th>
+                <th>DISCIPLINA NOME</th>
+                <th>CURSO</th>
             </tr>
             <c:forEach var="turma" items="${LIST}">
                 <tr>
@@ -39,9 +42,11 @@
                     <td>${turma.id}</td>
                     <td>${turma.codigo}</td>
                     <td>${turma.sala}</td>
-                    <td>${turma.professor.usuario.nome}}</td>
+                    <td>${turma.professor.usuario.nome}</td>
+                    <td>${turma.professor.usuario.email}</td>
                     <td>${turma.disciplina.codigo}</td>
                     <td>${turma.disciplina.nome}</td>
+                    <td>${turma.disciplina.curso.nome}</td>
                 </tr>
             </c:forEach>
         </table>

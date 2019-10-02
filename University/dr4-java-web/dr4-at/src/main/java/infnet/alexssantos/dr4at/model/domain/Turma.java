@@ -4,7 +4,10 @@ package infnet.alexssantos.dr4at.model.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "turma")
+@Table(
+    name = "turma"
+    //uniqueConstraints=@UniqueConstraint(columnNames={"professor_id", "disciplina_id"}) //Evita repedição de turmas com mesmo disciplina/professor.
+)
 public class Turma {
     
     @Id
@@ -24,11 +27,11 @@ public class Turma {
     // =======================
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "professor_id", referencedColumnName = "professor_id", unique = true)
+    @JoinColumn(name = "professor_id", referencedColumnName = "professor_id")
     private Professor professor;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "disciplina_id", referencedColumnName = "disciplina_id", unique = true)
+    @JoinColumn(name = "disciplina_id", referencedColumnName = "disciplina_id")
     private Disciplina disciplina;
 
 

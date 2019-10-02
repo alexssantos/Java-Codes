@@ -31,6 +31,9 @@ public class instantiation implements CommandLineRunner {
     private AlunoService alunoService;
     @Autowired
     private DisciplinaService disciplinaService;
+    @Autowired
+    private TurmaService turmaService;
+
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -44,6 +47,7 @@ public class instantiation implements CommandLineRunner {
         createCursos();
         createProfessores();
         createDisciplinas();
+        createTurmas();
     }
 
     private void initConfigs()
@@ -54,15 +58,16 @@ public class instantiation implements CommandLineRunner {
 
     public void cleanDatabase()
     {
-        //By FK priority
+        //DELETE By FK priority
+
         //TODO: Nota
-        //TODO: Turma
         //TODO: Aluno
+        //Turma
+        turmaService.getDao().deleteAll();
         //Disciplina
         disciplinaService.getDao().deleteAll();
         //Curso
         cursoService.getDao().deleteAll();
-        //TODO: Turma
         //Professor
         professorService.getDao().deleteAll();
         //Usuario
@@ -175,6 +180,32 @@ public class instantiation implements CommandLineRunner {
         }
 
         trySave(disciplinaService.getDao(), itensToSave);
+    }
+
+    public void createTurmas()
+    {
+        List<Turma> objsOnDb = turmaService.findAll();
+        if (objsOnDb.size() != 0) return;
+
+        createProfessores();
+        List<Professor> profList = professorService.findAll();
+        createDisciplinas();
+        List<Disciplina> discList = disciplinaService.findAll();
+
+        List<Turma> listToSave = new ArrayList<>();
+
+        int IX_CREATE = 10;
+        for (int i=1; i<=IX_CREATE; i++)
+        {
+            Turma turma = new Turma(
+                    "COD-TURMA-"+i,
+                    "SALA-"+i,
+                    getAleatoryFromList(profList),
+                    getAleatoryFromList(discList)
+            );
+            listToSave.add(turma);
+        }
+        trySave(turmaService.getDao(), listToSave);
     }
 
 

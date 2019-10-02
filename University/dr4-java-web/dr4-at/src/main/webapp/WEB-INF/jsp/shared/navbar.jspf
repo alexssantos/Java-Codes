@@ -27,7 +27,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/curso">Curso</a>
                     <a class="dropdown-item" href="/disciplina">Disciplina</a>
-                    <a class="dropdown-item" href="#">Turma</a>
+                    <a class="dropdown-item" href="/turma">Turma</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Perfil</a>
                 </div>
