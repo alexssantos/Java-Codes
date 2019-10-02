@@ -62,7 +62,7 @@ public class instantiation implements CommandLineRunner {
         //Curso
         cursoService.getDao().deleteAll();
         //TODO: Turma
-        //TODO: Professor
+        //Professor
         professorService.getDao().deleteAll();
         //Usuario
         usuarioService.getDao().deleteAll();

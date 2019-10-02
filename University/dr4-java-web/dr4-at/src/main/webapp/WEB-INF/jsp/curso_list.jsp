@@ -8,7 +8,6 @@
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"%> --%>
 
 <html>
 <head>	
@@ -19,17 +18,21 @@
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
 <body class="d-flex h-100 flex-column">
+	
 	<%@ include file="shared/navbar.jspf" %>
 
 	<div class="container text-center">
 		<h2 class="m-3">Cursos</h2>
 
 		<table class="table table-dark text-center">
-			<tr>
-			<th>ID</th><th>NOME</th>
+			<tr class="thead-dark">
+				<th>#</th>
+				<th>ID</th>
+				<th>NOME</th>
 			</tr>
 			<c:forEach var="curso" items="${CURSOS}">
 				<tr>					
+				 	<td>${CURSOS.indexOf(curso)}</td>
 					<td>${curso.id}</td>
 					<td>${curso.nome}</td>                
 				</tr>
