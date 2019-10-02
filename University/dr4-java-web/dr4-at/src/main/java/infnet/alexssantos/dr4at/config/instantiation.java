@@ -1,14 +1,17 @@
 package infnet.alexssantos.dr4at.config;
 
+import infnet.alexssantos.dr4at.model.domain.Curso;
 import infnet.alexssantos.dr4at.model.domain.Perfil;
 import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
 import infnet.alexssantos.dr4at.repository.PerfilRepository;
+import infnet.alexssantos.dr4at.service.CursoService;
 import infnet.alexssantos.dr4at.service.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +24,8 @@ public class instantiation implements CommandLineRunner {
 
     @Autowired
     private PerfilService perfilService;
-
+    @Autowired
+    private CursoService cursoService;
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -30,13 +34,14 @@ public class instantiation implements CommandLineRunner {
     public void run(String... args) throws Exception
     {
         initConfigs();
-
+        createPerfis();
+        createCursos();
     }
 
     private void initConfigs()
     {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        createPerfis();
+
     }
 
     private void createPerfis()
@@ -70,9 +75,15 @@ public class instantiation implements CommandLineRunner {
 
         List<Perfil> perfils = (haveToSave) ? dao.findAll() : perfilOnDbList;
         Perfil.allPerfils.addAll(perfils);
+    }
 
-        //this.perfilMedico = perfils.stream().filter(x -> x.getNome() == TipoPerfilEnum.ALUNO).findFirst().get();
-        //this.perfilPaciente = perfils.stream().filter(x -> x.getNome() == TipoPerfilEnum.PROFESSOR).findFirst().get();
+    private void createCursos()
+    {
+        Curso Engenharia = new Curso("ENGENHARIA");
+        Curso Computacap = new Curso("COMPUTACAO");
+        Curso Fisica = new Curso("FISICA");
+
+        cursoService.saveMany(Arrays.asList(Engenharia, Computacap, Fisica));
     }
 
 

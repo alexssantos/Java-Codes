@@ -19,17 +19,32 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Entidades
+                    Listagem
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Alunos</a>
+                    <a class="dropdown-item" href="/alunos">Alunos</a>
                     <a class="dropdown-item" href="#">Professores</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Curso</a>
                     <a class="dropdown-item" href="#">Disciplina</a>
                     <a class="dropdown-item" href="#">Turma</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Perfis</a>
+                    <a class="dropdown-item" href="#">Perfil</a>
+                </div>
+            </li>
+             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Edição
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/alunos" tabindex="-1" aria-disabled="true">Alunos</a>
+                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Professores</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Curso</a>
+                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Disciplina</a>
+                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Turma</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true">Perfil</a>
                 </div>
             </li>
             <li class="nav-item">
