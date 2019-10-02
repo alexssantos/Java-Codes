@@ -16,8 +16,10 @@ public class AlunoService {
     @Autowired
     AlunoRepository dao;
 
-    @Autowired
-    UsuarioReposotory usuarioRepo;
+    private AlunoRepository getDao()
+    {
+        return dao;
+    }
 
     public void save(Aluno obj)
     {

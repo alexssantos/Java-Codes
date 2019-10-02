@@ -1,5 +1,6 @@
 package infnet.alexssantos.dr4at.model.domain;
 
+import infnet.alexssantos.dr4at.model.enums.TitulacaoEnum;
 import org.hibernate.annotations.ValueGenerationType;
 
 import javax.persistence.*;
@@ -13,15 +14,17 @@ public class Professor {
     @Column(name = "professor_id", updatable = false, nullable = false)
     private Integer id;
 
+    //MESTRE, DOUTOR ou LIVRE-DOCENTE
+    @Enumerated(EnumType.STRING)
     @Column(name="titulacao")
-    private String titulacao;
+    private TitulacaoEnum titulacao;
 
 
     // =======================
     // RELATIONSHIPS
     // =======================
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id", unique = true)
     private Usuario usuario;
 
@@ -33,7 +36,7 @@ public class Professor {
     public Professor() {
     }
 
-    public Professor(String titulacao, Usuario usuario) {
+    public Professor(TitulacaoEnum titulacao, Usuario usuario) {
         this.titulacao = titulacao;
         this.usuario = usuario;
     }
@@ -52,11 +55,11 @@ public class Professor {
         this.id = id;
     }
 
-    public String getTitulacao() {
+    public TitulacaoEnum getTitulacao() {
         return titulacao;
     }
 
-    public void setTitulacao(String titulacao) {
+    public void setTitulacao(TitulacaoEnum titulacao) {
         this.titulacao = titulacao;
     }
 

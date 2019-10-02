@@ -2,11 +2,13 @@ package infnet.alexssantos.dr4at.config;
 
 import infnet.alexssantos.dr4at.model.domain.Curso;
 import infnet.alexssantos.dr4at.model.domain.Perfil;
+import infnet.alexssantos.dr4at.model.domain.Professor;
+import infnet.alexssantos.dr4at.model.domain.Usuario;
 import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
+import infnet.alexssantos.dr4at.model.enums.TitulacaoEnum;
 import infnet.alexssantos.dr4at.repository.PerfilRepository;
-import infnet.alexssantos.dr4at.service.CursoService;
-import infnet.alexssantos.dr4at.service.PerfilService;
-import infnet.alexssantos.dr4at.service.UsuarioService;
+import infnet.alexssantos.dr4at.service.*;
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Configuration
@@ -29,6 +28,10 @@ public class instantiation implements CommandLineRunner {
     private CursoService cursoService;
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private ProfessorService professorService;
+    @Autowired
+    private AlunoService alunoService;
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -40,6 +43,7 @@ public class instantiation implements CommandLineRunner {
         cleanDatabase();
         createPerfis();
         createCursos();
+        createProfessores();
     }
 
     private void initConfigs()
@@ -51,14 +55,15 @@ public class instantiation implements CommandLineRunner {
     public void cleanDatabase()
     {
         //By FK priority
-        //Nota
-        //Turma
-        //Aluno
-        //Disciplina
+        //TODO: Nota
+        //TODO: Turma
+        //TODO: Aluno
+        //TODO: Disciplina
         //Curso
         cursoService.getDao().deleteAll();
-        //Turma
-        //Professor
+        //TODO: Turma
+        //TODO: Professor
+        professorService.getDao().deleteAll();
         //Usuario
         usuarioService.getDao().deleteAll();
         //Perfil
@@ -110,6 +115,52 @@ public class instantiation implements CommandLineRunner {
         trySave(cursoService.getDao(), Arrays.asList(Engenharia, Computacap, Fisica));
     }
 
+    private void createProfessores()
+    {
+        List<Professor> objsOnDb = professorService.findAll();
+        if (objsOnDb.size() != 0) return;
+
+        Perfil perfilProf = Perfil.allPerfils
+                .stream()
+                .filter(x -> x.getNome() == TipoPerfilEnum.PROFESSOR)
+                .findFirst()
+                .get();
+
+        List<Usuario> usuariosToSave = new ArrayList<>();
+        List<Professor> profsToSave = new ArrayList<>();
+
+        int IX_CREATE = 10;
+        for (int i=1; i<=IX_CREATE; i++)
+        {
+            Usuario usuario = new Usuario(
+                    alunoService.generateMatricula(),
+                    "123",
+                    "Prof "+i,
+                    "prof"+i+"@prof",
+                    perfilProf);
+            usuariosToSave.add(usuario);
+
+            List<TitulacaoEnum> titulacaoList = Arrays.asList(TitulacaoEnum.values());
+
+            Professor professor = new Professor(
+                    getAleatoryFromList(titulacaoList),
+                    usuario
+            );
+            profsToSave.add(professor);
+        }
+
+        trySave(usuarioService.getDao(), usuariosToSave);
+        trySave(professorService.getDao(), profsToSave);
+    }
+
+    // ================
+    // => AUX
+    // ================
+    public static <T> T getAleatoryFromList(List<T> list)
+    {
+        Random rand = new Random();
+        return list.get(rand.nextInt(list.size()));
+    }
 
 
     // ================
