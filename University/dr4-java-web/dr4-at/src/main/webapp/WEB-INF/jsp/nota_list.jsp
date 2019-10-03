@@ -61,13 +61,3 @@
     <script src="../../resources/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Listagem de Professores</title>
-</head>
-<body>
-
-</body>
-</html>
