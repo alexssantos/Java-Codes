@@ -6,6 +6,7 @@ import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
 import infnet.alexssantos.dr4at.model.enums.TitulacaoEnum;
 import infnet.alexssantos.dr4at.repository.PerfilRepository;
 import infnet.alexssantos.dr4at.service.*;
+import org.aspectj.weaver.ast.Not;
 import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -270,6 +271,41 @@ public class instantiation implements CommandLineRunner {
         List<Turma> turmaList = turmaService.findAll();
         createAlunos();
         List<Aluno> alunoList = alunoService.findAll();
+
+        List<Nota> notasToSave = new ArrayList<>();
+
+        int IX_CREATE = 30;
+        for (int i=1; i<=IX_CREATE; i++)
+        {
+            Aluno ixAluno = getAleatoryFromList(alunoList);
+            Turma ixTurma = getAleatoryFromList(turmaList);
+
+            Boolean key = hasDuplicateNota(ixAluno, ixTurma, notasToSave);
+            while (key)
+            {
+                ixAluno = getAleatoryFromList(alunoList);
+                ixTurma = getAleatoryFromList(turmaList);
+                key = hasDuplicateNota(ixAluno, ixTurma, notasToSave);
+            }
+
+            Nota nota = new Nota(getAleatoryNumber(100),getAleatoryNumber(100), ixAluno, ixTurma);
+            notasToSave.add(nota);
+        }
+
+        trySave(notaService.getDao(), notasToSave);
+    }
+
+    private boolean hasDuplicateNota(Aluno ixAluno, Turma ixTurma, List<Nota> notasToSave)
+    {
+        Nota Duplicate = notasToSave
+                .stream()
+                .filter(nota -> (nota.getAluno() == ixAluno) && (nota.getTurma() == ixTurma))
+                .findFirst()
+                .map(x -> x)
+                .orElse(null);
+
+        if (Duplicate == null) return false;
+        return true;
     }
 
     // ================
@@ -279,6 +315,12 @@ public class instantiation implements CommandLineRunner {
     {
         Random rand = new Random();
         return list.get(rand.nextInt(list.size()));
+    }
+
+    public static int getAleatoryNumber(int MaxValue)
+    {
+        Random rand = new Random();
+        return rand.nextInt(MaxValue);
     }
 
     // ================
