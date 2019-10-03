@@ -3,7 +3,10 @@ package infnet.alexssantos.dr4at.model.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nota")
+@Table(
+    name = "nota",
+    uniqueConstraints=@UniqueConstraint(columnNames={"turma_id", "aluno_id"}) //Aluno não pode estar 2x na mesma turma
+)
 public class Nota {
 
     @Id
@@ -38,12 +41,12 @@ public class Nota {
     public Nota() {
     }
 
-//    public Nota(float av1, float av2, Aluno aluno, Turma turma) {
-//        this.av1 = av1;
-//        this.av2 = av2;
-//        this.aluno = aluno;
-//        this.turma = turma;
-//    }
+    public Nota(float av1, float av2, Aluno aluno, Turma turma) {
+        this.av1 = av1;
+        this.av2 = av2;
+        this.aluno = aluno;
+        this.turma = turma;
+    }
 
 
     // =======================

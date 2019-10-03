@@ -8,6 +8,7 @@
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <html>
 <head>
@@ -24,7 +25,7 @@
 <div class="container text-center">
     <h2 class="m-3">Disciplinas</h2>
 
-    <table class="table table-dark text-center">
+    <table class="table text-center">
         <tr class="thead-dark">
             <th>#</th>
             <th>ID</th>

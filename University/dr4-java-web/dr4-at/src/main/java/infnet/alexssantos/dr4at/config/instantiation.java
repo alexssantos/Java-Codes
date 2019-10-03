@@ -1,5 +1,6 @@
 package infnet.alexssantos.dr4at.config;
 
+import infnet.alexssantos.dr4at.Utils.UtilsString;
 import infnet.alexssantos.dr4at.model.domain.*;
 import infnet.alexssantos.dr4at.model.enums.TipoPerfilEnum;
 import infnet.alexssantos.dr4at.model.enums.TitulacaoEnum;
@@ -14,6 +15,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Configuration
@@ -28,12 +32,13 @@ public class instantiation implements CommandLineRunner {
     @Autowired
     private ProfessorService professorService;
     @Autowired
-    private AlunoService alunoService;
-    @Autowired
     private DisciplinaService disciplinaService;
     @Autowired
     private TurmaService turmaService;
-
+    @Autowired
+    private AlunoService alunoService;
+    @Autowired
+    private NotaService notaService;
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -43,17 +48,23 @@ public class instantiation implements CommandLineRunner {
     {
         initConfigs();
         cleanDatabase();
-        createPerfis();
-        createCursos();
-        createProfessores();
-        createDisciplinas();
-        createTurmas();
+        createEntitiesOnDb();
     }
 
     private void initConfigs()
     {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+    }
 
+    private void createEntitiesOnDb()
+    {
+        createPerfis();
+        createCursos();
+        createProfessores();
+        createDisciplinas();
+        createTurmas();
+        createAlunos();
+        createNotas();
     }
 
     public void cleanDatabase()
@@ -61,7 +72,9 @@ public class instantiation implements CommandLineRunner {
         //DELETE By FK priority
 
         //TODO: Nota
+
         //TODO: Aluno
+        alunoService.getDao().deleteAll();
         //Turma
         turmaService.getDao().deleteAll();
         //Disciplina
@@ -208,6 +221,56 @@ public class instantiation implements CommandLineRunner {
         trySave(turmaService.getDao(), listToSave);
     }
 
+    public void createAlunos()
+    {
+        List<Aluno> objsOnDb = alunoService.findAll();
+        if (objsOnDb.size() != 0) return;
+
+        Perfil perfilAluno = Perfil.allPerfils
+                .stream()
+                .filter(x -> x.getNome() == TipoPerfilEnum.ALUNO)
+                .findFirst()
+                .get();
+
+        createCursos();
+        List<Curso> cursoList = cursoService.findAll();
+        List<Usuario> usuariosToSave = new ArrayList<>();
+        List<Aluno> alunosToSave = new ArrayList<>();
+
+        List<TitulacaoEnum> titulacaoList = Arrays.asList(TitulacaoEnum.values());
+        int IX_CREATE = 30;
+        for (int i=1; i<=IX_CREATE; i++)
+        {
+            Usuario usuario = new Usuario(
+                    alunoService.generateMatricula(),
+                    "123",
+                    "Aluno "+i,
+                    "aluno"+i+"@aluno",
+                    perfilAluno);
+            usuariosToSave.add(usuario);
+
+            String dateNasc = sdf.format(UtilsString.getAleatoryDateString());
+            Aluno aluno = new Aluno(
+                    dateNasc,
+                    usuario,
+                    getAleatoryFromList(cursoList));
+            alunosToSave.add(aluno);
+        }
+
+        trySave(usuarioService.getDao(), usuariosToSave);
+        trySave(alunoService.getDao(), alunosToSave);
+    }
+
+    public void createNotas()
+    {
+        List<Nota> objsOnDb = notaService.findAll();
+        if (objsOnDb.size() != 0) return;
+
+        createTurmas();
+        List<Turma> turmaList = turmaService.findAll();
+        createAlunos();
+        List<Aluno> alunoList = alunoService.findAll();
+    }
 
     // ================
     // => AUX
@@ -217,7 +280,6 @@ public class instantiation implements CommandLineRunner {
         Random rand = new Random();
         return list.get(rand.nextInt(list.size()));
     }
-
 
     // ================
     // => GENERICS

@@ -24,7 +24,7 @@
 	<div class="container text-center">
 		<h2 class="m-3">Cursos</h2>
 
-		<table class="table table-dark text-center">
+		<table class="table text-center">
 			<tr class="thead-dark">
 				<th>#</th>
 				<th>ID</th>

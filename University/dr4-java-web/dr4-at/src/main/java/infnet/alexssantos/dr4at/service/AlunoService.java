@@ -16,7 +16,7 @@ public class AlunoService {
     @Autowired
     AlunoRepository dao;
 
-    private AlunoRepository getDao()
+    public AlunoRepository getDao()
     {
         return dao;
     }

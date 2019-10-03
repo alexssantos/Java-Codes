@@ -19,12 +19,12 @@ public class Aluno {
     // RELATIONSHIPS
     // =======================
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id", unique = true)
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "curso_id", referencedColumnName = "curso_id", unique = true)
+    @JoinColumn(name = "curso_id", referencedColumnName = "curso_id")
     private Curso curso;
 
 
@@ -35,9 +35,10 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String dataNasc, Usuario usuario) {
+    public Aluno(String dataNasc, Usuario usuario, Curso curso) {
         this.dataNasc = dataNasc;
         this.usuario = usuario;
+        this.curso = curso;
     }
 
 
