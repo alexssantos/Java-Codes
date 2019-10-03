@@ -280,12 +280,14 @@ public class instantiation implements CommandLineRunner {
             Aluno ixAluno = getAleatoryFromList(alunoList);
             Turma ixTurma = getAleatoryFromList(turmaList);
 
-            Boolean key = hasDuplicateNota(ixAluno, ixTurma, notasToSave);
-            while (key)
+            Boolean isDuplicate = hasDuplicateNota(ixAluno, ixTurma, notasToSave);
+            Boolean isCursoEquals = ixAluno.getCurso().getNome().toUpperCase().equals(ixTurma.getDisciplina().getCurso().getNome().toUpperCase());
+            while (isDuplicate || !isCursoEquals)
             {
                 ixAluno = getAleatoryFromList(alunoList);
                 ixTurma = getAleatoryFromList(turmaList);
-                key = hasDuplicateNota(ixAluno, ixTurma, notasToSave);
+                isDuplicate = hasDuplicateNota(ixAluno, ixTurma, notasToSave);
+                isCursoEquals = ixAluno.getCurso().getNome().toUpperCase().equals(ixTurma.getDisciplina().getCurso().getNome().toUpperCase());
             }
 
             Nota nota = new Nota(getAleatoryNumber(100),getAleatoryNumber(100), ixAluno, ixTurma);

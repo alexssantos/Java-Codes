@@ -29,9 +29,9 @@
                 <th>#</th>
                 <th>ID NOTA</th>
                 <th>ALUNO</th>
+                <th>TURMA</th>
                 <th>NOTA AV1</th>
                 <th>NOTA AV2</th>
-                <th>TURMA</th>
                 <th>DISCIPLINA</th>
                 <th>PROFESSOR</th>
                 <th>CURSO</th>
@@ -41,11 +41,11 @@
                     <td>${LIST.indexOf(nota)}</td>
                     <td>${nota.id}</td>
                     <td>${nota.aluno.usuario.nome}</td>
+                    <td>${nota.turma.codigo}</td>
                     <td>${nota.av1}</td>
                     <td>${nota.av2}</td>
-                    <td>${nota.turma.nome}</td>
                     <td>${nota.turma.disciplina.nome}</td>
-                    <td>${nota.turma.Professores.usuario.nome}</td>
+                    <td>${nota.turma.professor.usuario.nome}</td>
                     <td>${nota.turma.disciplina.curso.nome}</td>
                 </tr>
             </c:forEach>

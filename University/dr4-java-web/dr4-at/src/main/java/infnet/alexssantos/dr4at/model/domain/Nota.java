@@ -25,11 +25,11 @@ public class Nota {
     // RELATIONSHIPS
     // =======================
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "aluno_id", referencedColumnName = "aluno_id")
     private Aluno aluno;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "turma_id", referencedColumnName = "turma_id")
     private Turma turma;
 
